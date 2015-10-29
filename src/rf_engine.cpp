@@ -164,8 +164,6 @@ void RF_Engine::manageSignals(){
                     }
                     break;
                 case S_KILL_TREE:
-                    delete(taskManager[i]);
-                    taskManager[i]=NULL;
 
                     for(int ii=0;ii<taskManager.size();ii++)
                     {
@@ -178,6 +176,9 @@ void RF_Engine::manageSignals(){
                             }
                         }
                     }
+
+                    delete(taskManager[i]);
+                    taskManager[i]=NULL;
                     break;
             }
         }
@@ -235,6 +236,8 @@ RF_Process* RF_Engine::collision(string target, RF_Process* sender){
             }
         }
     }
+
+    return NULL;
 }
 RF_Process* RF_Engine::collision(int target, RF_Process* sender){
     RF_Process *t=taskManager[target];
