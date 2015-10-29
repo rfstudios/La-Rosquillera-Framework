@@ -26,67 +26,9 @@
 enum RF_KeyCode{
     _a,_b,_c,_d,_e,_f,_g,_h,_i,_j,_k,_l,_m,_n,_o,_p,_q,_r,_s,_t,_u,_v,_w,_x,_y,_z,
     _1,_2,_3,_4,_5,_6,_7,_8,_9,_0,
-    _return,_esc,_backspace,_tab,_space,
+    _return,_esc,_backspace,_tab,_space,_close_window,
     _FOO_KEY
 };
-/*enum keyCode{
-    _esc,
-    _1, _2, _3, _4, _5, _6, _7, _8, _9, _0,
-    _minus, _plus,
-    _backspace,
-    _tab,
-    _q, _w, _e, _r, _t, _y, _u, _i, _o, _p,
-    _a, _s, _d, _f, _g, _h, _j, _k, _l,
-    _z, _x, _c, _v, _b, _n, _m,
-    _f1, _f2, _f3, _f4, _f5, _f6, _f7, _f8, _f9, _f10, _f11, _f12,
-    _enter,
-    _c_enter,
-    _l_control,
-    _l_shift,
-    _comma,
-    _point,
-    _r_shift,
-    _prn_scr,
-    _l_alt,
-    _caps_lock,
-    _num_lock,
-    _scroll_lock,
-    _home,
-    _c_home,
-    _up,
-    _left,
-    _right,
-    _down,
-    _pgup,
-    _pgdn,
-    _end,
-    _ins,
-    _del,
-    _c_asterisk,
-    _c_minus,
-    _c_plus,
-    _c_1,
-    _c_2,
-    _c_3,
-    _c_4,
-    _c_5,
-    _c_6,
-    _c_8,
-    _c_0,
-    _c_del,
-    _less,
-    _equals,
-    _greater,
-    _asterisk,
-    _r_alt,
-    _r_control,
-    _menu,
-    _l_windows,
-    _r_windows,
-    _close_window,
-    _FOO_KEY
-};
-*/
 enum RF_Signal{
     S_AWAKE,
     S_AWAKE_TREE,
@@ -109,9 +51,5 @@ struct Transform{
 class RF_Engine;
 class RF_Process;
 class RF_Window;
-
-//Procesos
-/*class mainProcess;
-class exeControl;*/
 
 #endif // RF_DECLARES_H
