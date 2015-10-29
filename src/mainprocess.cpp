@@ -31,7 +31,7 @@ void mainProcess::Update()
     else
     {
         int nRandom=rand()%10000;
-        if(nRandom<500)
+        if(nRandom<50)
         {
             engine->newTask(new Enemigo(),id);
         }
