@@ -7,7 +7,7 @@
 
 1446084890 /home/yawin/Dokumentuak/c/LaRosquilleraFramework/include/rf_declares.h
 
-1446081652 /home/yawin/Dokumentuak/c/LaRosquilleraFramework/include/rf_engine.h
+1446160212 /home/yawin/Dokumentuak/c/LaRosquilleraFramework/include/rf_engine.h
 	"rf_window.h"
 	"rf_process.h"
 	"rf_declares.h"
@@ -51,11 +51,11 @@
 1446081990 /home/yawin/Dokumentuak/c/LaRosquilleraFramework/include/execontrol.h
 	"rf_process.h"
 
-1446128704 source:/home/yawin/Dokumentuak/c/LaRosquilleraFramework/src/mainprocess.cpp
+1446130576 source:/home/yawin/Dokumentuak/c/LaRosquilleraFramework/src/mainprocess.cpp
 	"mainprocess.h"
 	"execontrol.h"
 	"prota.h"
-	"enemyspawner.h"
+	"enemigo.h"
 
 1446082086 /home/yawin/Dokumentuak/c/LaRosquilleraFramework/include/mainprocess.h
 	"rf_process.h"

@@ -202,6 +202,20 @@ void RF_Engine::sendSignal(string type, int signal){
         }
     }
 }
+bool RF_Engine::exists(string type){
+    for(int i=0;i<taskManager.size();i++)
+    {
+        if(taskManager[i])
+        {
+            if(taskManager[i]->type==type)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
 /****************************************************************/
 
 /**Control de Debug**********************************************/

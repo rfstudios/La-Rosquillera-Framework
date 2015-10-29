@@ -63,6 +63,7 @@ class RF_Engine
             void manageSignals();
             void sendSignal(int task, int signal);
             void sendSignal(string type, int signal);
+            bool exists(string type);
         /************************************/
 
         SDL_Event event;    //Evento para controlar teclado

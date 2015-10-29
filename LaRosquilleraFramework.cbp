@@ -31,6 +31,8 @@
 		<Compiler>
 			<Add option="-std=c++11" />
 			<Add option="-Wall" />
+			<Add directory="include" />
+			<Add directory="src" />
 		</Compiler>
 		<Linker>
 			<Add library="SDL2" />
@@ -38,7 +40,6 @@
 			<Add library="SDL2_image" />
 		</Linker>
 		<Unit filename="include/enemigo.h" />
-		<Unit filename="include/enemyspawner.h" />
 		<Unit filename="include/execontrol.h" />
 		<Unit filename="include/laser.h" />
 		<Unit filename="include/mainprocess.h" />
@@ -50,7 +51,6 @@
 		<Unit filename="include/rf_window.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/enemigo.cpp" />
-		<Unit filename="src/enemyspawner.cpp" />
 		<Unit filename="src/execontrol.cpp" />
 		<Unit filename="src/laser.cpp" />
 		<Unit filename="src/mainprocess.cpp" />
