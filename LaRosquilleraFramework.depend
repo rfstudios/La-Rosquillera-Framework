@@ -1,0 +1,89 @@
+# depslib dependency file v1.0
+1446082172 source:/home/yawin/Dokumentuak/c/LaRosquilleraFramework/main.cpp
+	<SDL2/SDL.h>
+	"rf_declares.h"
+	"rf_engine.h"
+	"mainprocess.h"
+
+1446081599 /home/yawin/Dokumentuak/c/LaRosquilleraFramework/include/rf_declares.h
+
+1446081652 /home/yawin/Dokumentuak/c/LaRosquilleraFramework/include/rf_engine.h
+	"rf_window.h"
+	"rf_process.h"
+	"rf_declares.h"
+	"rf_time.h"
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<vector>
+	<iostream>
+
+1446081511 /home/yawin/Dokumentuak/c/LaRosquilleraFramework/include/rf_window.h
+	"rf_process.h"
+	<SDL2/SDL.h>
+	<string>
+	<vector>
+
+1446081864 /home/yawin/Dokumentuak/c/LaRosquilleraFramework/include/rf_process.h
+	"rf_engine.h"
+	"rf_declares.h"
+	<SDL2/SDL_image.h>
+	<string>
+
+1446080966 /home/yawin/Dokumentuak/c/LaRosquilleraFramework/include/rf_time.h
+	<SDL2/SDL.h>
+
+1446081669 source:/home/yawin/Dokumentuak/c/LaRosquilleraFramework/src/rf_engine.cpp
+	"rf_engine.h"
+	<string>
+
+1446081877 source:/home/yawin/Dokumentuak/c/LaRosquilleraFramework/src/rf_process.cpp
+	"rf_process.h"
+
+1446081681 source:/home/yawin/Dokumentuak/c/LaRosquilleraFramework/src/rf_time.cpp
+	"rf_time.h"
+
+1446081438 source:/home/yawin/Dokumentuak/c/LaRosquilleraFramework/src/rf_window.cpp
+	"rf_window.h"
+
+1446081988 source:/home/yawin/Dokumentuak/c/LaRosquilleraFramework/src/execontrol.cpp
+	"execontrol.h"
+
+1446081990 /home/yawin/Dokumentuak/c/LaRosquilleraFramework/include/execontrol.h
+	"rf_process.h"
+
+1446082607 source:/home/yawin/Dokumentuak/c/LaRosquilleraFramework/src/mainprocess.cpp
+	"mainprocess.h"
+	"execontrol.h"
+	"prota.h"
+	"enemyspawner.h"
+
+1446082086 /home/yawin/Dokumentuak/c/LaRosquilleraFramework/include/mainprocess.h
+	"rf_process.h"
+
+1446082467 source:/home/yawin/Dokumentuak/c/LaRosquilleraFramework/src/enemigo.cpp
+	"enemigo.h"
+	"rf_process.h"
+
+1446082446 /home/yawin/Dokumentuak/c/LaRosquilleraFramework/include/enemigo.h
+	"rf_process.h"
+
+1446082543 source:/home/yawin/Dokumentuak/c/LaRosquilleraFramework/src/enemyspawner.cpp
+	"enemyspawner.h"
+	"enemigo.h"
+
+1446082553 /home/yawin/Dokumentuak/c/LaRosquilleraFramework/include/enemyspawner.h
+	"rf_process.h"
+
+1446082361 source:/home/yawin/Dokumentuak/c/LaRosquilleraFramework/src/laser.cpp
+	"laser.h"
+
+1446082350 /home/yawin/Dokumentuak/c/LaRosquilleraFramework/include/laser.h
+	"rf_process.h"
+
+1446082286 source:/home/yawin/Dokumentuak/c/LaRosquilleraFramework/src/prota.cpp
+	"prota.h"
+	"laser.h"
+
+1446082335 /home/yawin/Dokumentuak/c/LaRosquilleraFramework/include/prota.h
+	"rf_process.h"
+
