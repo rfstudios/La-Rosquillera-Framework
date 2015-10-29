@@ -33,7 +33,6 @@ void Prota::Update()
 
 void Prota::Disparo()
 {
-    engine->Debug(disparado);
     if(disparado<0)
     {
         engine->newTask(new Laser(Vector2<float>(transform.position.x+10,transform.position.y-10)),id);
