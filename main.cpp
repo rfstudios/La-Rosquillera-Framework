@@ -16,7 +16,6 @@ int main()
     }while(e->isRunning());
 
     e->destroyWindow();
-
     return 0;
 }
 
