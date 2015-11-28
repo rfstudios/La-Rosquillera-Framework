@@ -25,6 +25,7 @@ RF_Process::RF_Process(string _type, int _father)
 {
     type=_type;
     father=_father;
+    graph=NULL;
 }
 
 RF_Process::~RF_Process()

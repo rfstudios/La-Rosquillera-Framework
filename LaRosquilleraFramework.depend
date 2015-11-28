@@ -87,3 +87,85 @@
 1446082335 /home/yawin/Dokumentuak/c/LaRosquilleraFramework/include/prota.h
 	"rf_process.h"
 
+1448752472 source:/home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/main.cpp
+	<SDL2/SDL.h>
+	"rf_declares.h"
+	"rf_engine.h"
+	"mainprocess.h"
+
+1446551473 /home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/include/rf_declares.h
+
+1446551473 /home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/include/rf_engine.h
+	"rf_window.h"
+	"rf_process.h"
+	"rf_declares.h"
+	"rf_time.h"
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<vector>
+	<iostream>
+
+1446551473 /home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/include/rf_window.h
+	"rf_process.h"
+	<SDL2/SDL.h>
+	<string>
+	<vector>
+
+1446551473 /home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/include/rf_process.h
+	"rf_engine.h"
+	"rf_declares.h"
+	<SDL2/SDL_image.h>
+	<string>
+
+1446551473 /home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/include/rf_time.h
+	<SDL2/SDL.h>
+
+1446551473 /home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/include/mainprocess.h
+	"rf_process.h"
+
+1446551473 source:/home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/src/enemigo.cpp
+	"enemigo.h"
+	"rf_process.h"
+
+1446551473 /home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/include/enemigo.h
+	"rf_process.h"
+
+1446551473 source:/home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/src/execontrol.cpp
+	"execontrol.h"
+
+1446551473 /home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/include/execontrol.h
+	"rf_process.h"
+
+1446551473 source:/home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/src/laser.cpp
+	"laser.h"
+
+1446551473 /home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/include/laser.h
+	"rf_process.h"
+
+1446551473 source:/home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/src/mainprocess.cpp
+	"mainprocess.h"
+	"execontrol.h"
+	"prota.h"
+	"enemigo.h"
+
+1446551473 /home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/include/prota.h
+	"rf_process.h"
+
+1446551473 source:/home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/src/prota.cpp
+	"prota.h"
+	"laser.h"
+
+1446562698 source:/home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/src/rf_engine.cpp
+	"rf_engine.h"
+	<string>
+
+1448752968 source:/home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/src/rf_process.cpp
+	"rf_process.h"
+
+1446551473 source:/home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/src/rf_time.cpp
+	"rf_time.h"
+
+1448752941 source:/home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/src/rf_window.cpp
+	"rf_window.h"
+	<iostream>
+

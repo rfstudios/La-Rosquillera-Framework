@@ -20,6 +20,8 @@
 */
 
 #include "rf_window.h"
+#include <iostream>
+using namespace std;
 
 RF_Window::RF_Window(string i_title, int i_windowMode, int i_posX, int i_posY, int i_width, int i_height, int i_rendererMode)
 {
@@ -48,12 +50,15 @@ void RF_Window::render(vector<RF_Process*>& tM)
     {
         if(tM[i])
         {
-            SDL_Rect r;
-            SDL_QueryTexture(tM[i]->graph,NULL,NULL,&r.w,&r.h);
+            if(tM[i]->graph)
+            {
+                SDL_Rect r;
+                SDL_QueryTexture(tM[i]->graph,NULL,NULL,&r.w,&r.h);
 
-            r.x=tM[i]->transform.position.x; r.y=tM[i]->transform.position.y;
+                r.x=tM[i]->transform.position.x; r.y=tM[i]->transform.position.y;
 
-            SDL_RenderCopy(renderer,tM[i]->graph,NULL,&r);
+                SDL_RenderCopy(renderer,tM[i]->graph,NULL,&r);
+            }
         }
     }
     SDL_RenderPresent(renderer);
