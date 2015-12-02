@@ -46,6 +46,7 @@ RF_Window::~RF_Window()
 void RF_Window::render(vector<RF_Process*>& tM)
 {
     SDL_RenderClear(renderer);
+
     for(int i=0;i<tM.size();i++)
     {
         if(tM[i])
@@ -61,6 +62,7 @@ void RF_Window::render(vector<RF_Process*>& tM)
             }
         }
     }
+
     SDL_RenderPresent(renderer);
 }
 
