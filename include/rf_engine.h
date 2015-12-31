@@ -31,6 +31,7 @@
 #include <SDL2/SDL_image.h>
 #include <vector>
 #include <iostream>
+#include <stdio.h>
 using namespace std;
 
 
@@ -81,7 +82,12 @@ class RF_Engine
             SDL_Texture* loadPNG(string file);
             RF_Process* collision(string target, RF_Process* sender);
             RF_Process* collision(int target, RF_Process* sender);
+
+            vector<YGF*> ygf; //Lista de ficheros de gráficos cargados;
+            int loadYgf(string filename);
         /************************/
+
+    private:
 };
 
 #endif // RF_ENGINE_H

@@ -23,6 +23,11 @@
 #ifndef RF_DECLARES_H
 #define RF_DECLARES_H
 
+#include <vector>
+#include <string>
+#include <SDL2/SDL.h>
+using namespace std;
+
 enum RF_KeyCode{
     _a,_b,_c,_d,_e,_f,_g,_h,_i,_j,_k,_l,_m,_n,_o,_p,_q,_r,_s,_t,_u,_v,_w,_x,_y,_z,
     _1,_2,_3,_4,_5,_6,_7,_8,_9,_0,
@@ -46,6 +51,18 @@ struct Vector2{
 struct Transform{
     Vector2<float> position, scale;
     float rotation;
+};
+struct YGF{
+    vector<string> names;
+    vector<SDL_Texture*> graph;
+    int id(string name)
+    {
+        for(int i=0;i<names.size();i++)
+        {
+            if(names[i]==name){return i;}
+        }
+        return -1;
+    }
 };
 
 class RF_Engine;

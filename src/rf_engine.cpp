@@ -21,6 +21,7 @@
 
 #include "rf_engine.h"
 #include <string>
+#include <SDL2/SDL_image.h>
 using namespace std;
 
 RF_Engine::RF_Engine(bool debug){
@@ -269,5 +270,26 @@ RF_Process* RF_Engine::collision(int target, RF_Process* sender){
 
     return NULL;
 }
-/****************************************************************/
+int RF_Engine::loadYgf(string filename){
+    /*
+        1 - Abrimos el fichero comprimido
+        2 - Descomprimimos uno a uno cada fichero
+        3 - Hacemos el while
+    */
 
+    YGF *newYGF = new YGF(); //Creamos una nueva estructura YGF
+    while(true)//Para cada fichero dentro del comprimido
+    {
+        //Extraemos el fichero
+
+        //Creamos la SDL_Texture
+        //SDL_Texture *g = new SDL_Texture();
+        /*SDL_RWops *rw;
+        rw=SDL_RWFromMem();
+        SDL_Texture *t = SDL_CreateTextureFromSurface(ventana->renderer,IMG_LoadPNG_RW(rw));
+        newYGF->graph.push_back(t);
+        SDL_FreeRW(rw);*/
+    }
+    ygf.push_back(newYGF);
+
+}

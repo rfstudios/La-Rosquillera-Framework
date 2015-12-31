@@ -93,9 +93,12 @@
 	"rf_engine.h"
 	"mainprocess.h"
 
-1446551473 /home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/include/rf_declares.h
+1449971244 /home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/include/rf_declares.h
+	<vector>
+	<string>
+	<SDL2/SDL.h>
 
-1446551473 /home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/include/rf_engine.h
+1449970928 /home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/include/rf_engine.h
 	"rf_window.h"
 	"rf_process.h"
 	"rf_declares.h"
@@ -104,6 +107,7 @@
 	<SDL2/SDL_image.h>
 	<vector>
 	<iostream>
+	<stdio.h>
 
 1446551473 /home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/include/rf_window.h
 	"rf_process.h"
@@ -155,9 +159,12 @@
 	"prota.h"
 	"laser.h"
 
-1446562698 source:/home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/src/rf_engine.cpp
+1449971251 source:/home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/src/rf_engine.cpp
 	"rf_engine.h"
 	<string>
+	<archive.h>
+	<archive_entry.h>
+	<SDL2/SDL_image.h>
 
 1448752968 source:/home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/src/rf_process.cpp
 	"rf_process.h"
@@ -169,7 +176,7 @@
 	"rf_window.h"
 	<iostream>
 
-1446551473 source:/home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/example/enemigo.cpp
+1449790317 source:/home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/example/enemigo.cpp
 	"enemigo.h"
 	"rf_process.h"
 
@@ -197,7 +204,7 @@
 1446551473 /home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/example/mainprocess.h
 	"rf_process.h"
 
-1446551473 source:/home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/example/mainprocess.cpp
+1449796360 source:/home/yawin/Dokumentuak/Dev/LaRosquilleraFramework/example/mainprocess.cpp
 	"mainprocess.h"
 	"execontrol.h"
 	"prota.h"

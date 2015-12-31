@@ -17,6 +17,14 @@ void mainProcess::Start()
     engine->newTask(new exeControl(),id);
     prota=engine->newTask(new Prota(Vector2<float>(640,700)),id);
 
+    YGF *newYGF = new YGF();
+    newYGF->names.push_back("Pito");
+    newYGF->names.push_back("Caca");
+    newYGF->names.push_back("Culo");
+    newYGF->names.push_back("Pedo");
+    newYGF->names.push_back("Pis ");
+
+    engine->ygf.push_back(newYGF);
     return;
 }
 void mainProcess::Update()

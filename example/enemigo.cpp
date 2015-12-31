@@ -22,22 +22,18 @@ void Enemigo::Start()
 
 void Enemigo::Update()
 {
-    engine->Debug(1);
     transform.position.x+=velocidad.x*engine->time->deltaTime;
     transform.position.y+=velocidad.y*engine->time->deltaTime;
 
-    engine->Debug(2);
     RF_Process *laser=engine->collision("laser",this);
     if(laser)
     {
-        engine->Debug(3.1f);
         engine->sendSignal(laser->id,S_KILL);
         signal=S_KILL;
     }
 
     if(transform.position.x<-20 || transform.position.x>1290 || transform.position.y>740)
     {
-        engine->Debug(3.2f);
         signal=S_KILL;
     }
 }

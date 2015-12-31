@@ -33,28 +33,29 @@
 			<Add option="-Wall" />
 			<Add directory="include" />
 			<Add directory="src" />
+			<Add directory="example" />
 		</Compiler>
 		<Linker>
 			<Add library="SDL2" />
 			<Add library="SDL2main" />
 			<Add library="SDL2_image" />
 		</Linker>
-		<Unit filename="include/enemigo.h" />
-		<Unit filename="include/execontrol.h" />
-		<Unit filename="include/laser.h" />
-		<Unit filename="include/mainprocess.h" />
-		<Unit filename="include/prota.h" />
+		<Unit filename="example/enemigo.cpp" />
+		<Unit filename="example/enemigo.h" />
+		<Unit filename="example/execontrol.cpp" />
+		<Unit filename="example/execontrol.h" />
+		<Unit filename="example/laser.cpp" />
+		<Unit filename="example/laser.h" />
+		<Unit filename="example/main.cpp" />
+		<Unit filename="example/mainprocess.cpp" />
+		<Unit filename="example/mainprocess.h" />
+		<Unit filename="example/prota.cpp" />
+		<Unit filename="example/prota.h" />
 		<Unit filename="include/rf_declares.h" />
 		<Unit filename="include/rf_engine.h" />
 		<Unit filename="include/rf_process.h" />
 		<Unit filename="include/rf_time.h" />
 		<Unit filename="include/rf_window.h" />
-		<Unit filename="main.cpp" />
-		<Unit filename="src/enemigo.cpp" />
-		<Unit filename="src/execontrol.cpp" />
-		<Unit filename="src/laser.cpp" />
-		<Unit filename="src/mainprocess.cpp" />
-		<Unit filename="src/prota.cpp" />
 		<Unit filename="src/rf_engine.cpp" />
 		<Unit filename="src/rf_process.cpp" />
 		<Unit filename="src/rf_time.cpp" />
