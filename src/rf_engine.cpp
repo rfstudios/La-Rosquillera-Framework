@@ -28,6 +28,7 @@ RF_Engine::RF_Engine(bool debug){
     isDebug=debug;
     SDL_Init(SDL_INIT_EVERYTHING);
     IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
+    Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096);
 
     time=new RF_Time();
 }
@@ -39,6 +40,9 @@ RF_Engine::~RF_Engine(){
     taskManager.clear();
 
     delete(ventana);
+
+    if(NULL != music) Mix_FreeMusic(music);
+    Mix_Quit();
     IMG_Quit();
     SDL_Quit();
 }
@@ -270,6 +274,16 @@ RF_Process* RF_Engine::collision(int target, RF_Process* sender){
 
     return NULL;
 }
+void RF_Engine::playSong(string file){
+        if(NULL != music)
+        {
+            Mix_FreeMusic(music);
+        }
+
+        music = Mix_LoadMUS(file.c_str());
+        Mix_PlayMusic(music, 0);
+}
+
 int RF_Engine::loadYgf(string filename){
     /*
         1 - Abrimos el fichero comprimido

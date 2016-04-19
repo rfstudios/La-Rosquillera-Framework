@@ -29,6 +29,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
 #include <vector>
 #include <iostream>
 #include <stdio.h>
@@ -67,6 +68,7 @@ class RF_Engine
             bool exists(string type);
         /************************************/
 
+        Mix_Music* music;
         SDL_Event event;    //Evento para controlar teclado
         bool key[_FOO_KEY]; //Array de teclas pulsadas
         RF_Time *time;
@@ -78,10 +80,11 @@ class RF_Engine
             void Debug(float t);
         /************************/
 
-        /**Utilities*************/
+        /**Utilidades************/
             SDL_Texture* loadPNG(string file);
             RF_Process* collision(string target, RF_Process* sender);
             RF_Process* collision(int target, RF_Process* sender);
+            void playSong(string file);
 
             vector<YGF*> ygf; //Lista de ficheros de gráficos cargados;
             int loadYgf(string filename);

@@ -217,3 +217,91 @@
 	"prota.h"
 	"laser.h"
 
+1455320485 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/enemigo.cpp
+	"enemigo.h"
+	"rf_process.h"
+
+1455320485 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/enemigo.h
+	"rf_process.h"
+
+1455320485 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/include/rf_process.h
+	"rf_engine.h"
+	"rf_declares.h"
+	<SDL2/SDL_image.h>
+	<string>
+
+1461060445 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/include/rf_engine.h
+	"rf_window.h"
+	"rf_process.h"
+	"rf_declares.h"
+	"rf_time.h"
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_mixer.h>
+	<vector>
+	<iostream>
+	<stdio.h>
+
+1455320485 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/include/rf_window.h
+	"rf_process.h"
+	<SDL2/SDL.h>
+	<string>
+	<vector>
+
+1455320485 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/include/rf_declares.h
+	<vector>
+	<string>
+	<SDL2/SDL.h>
+
+1455320485 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/include/rf_time.h
+	<SDL2/SDL.h>
+
+1455320485 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/execontrol.cpp
+	"execontrol.h"
+
+1455320485 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/execontrol.h
+	"rf_process.h"
+
+1455320485 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/laser.cpp
+	"laser.h"
+
+1455320485 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/laser.h
+	"rf_process.h"
+
+1455320485 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/main.cpp
+	<SDL2/SDL.h>
+	"rf_declares.h"
+	"rf_engine.h"
+	"mainprocess.h"
+
+1455320485 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/mainprocess.h
+	"rf_process.h"
+
+1455320485 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/mainprocess.cpp
+	"mainprocess.h"
+	"execontrol.h"
+	"prota.h"
+	"enemigo.h"
+
+1455320485 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/prota.h
+	"rf_process.h"
+
+1455320485 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/prota.cpp
+	"prota.h"
+	"laser.h"
+
+1461060597 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/src/rf_engine.cpp
+	"rf_engine.h"
+	<string>
+	<SDL2/SDL_image.h>
+
+1455320486 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/src/rf_process.cpp
+	"rf_process.h"
+
+1455320486 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/src/rf_time.cpp
+	"rf_time.h"
+
+1455320486 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/src/rf_window.cpp
+	"rf_window.h"
+	<iostream>
+

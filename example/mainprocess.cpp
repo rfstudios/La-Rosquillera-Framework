@@ -25,6 +25,7 @@ void mainProcess::Start()
     newYGF->names.push_back("Pis ");
 
     engine->ygf.push_back(newYGF);
+    engine->playSong("resources/st7.wav");
     return;
 }
 void mainProcess::Update()
