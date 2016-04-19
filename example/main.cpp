@@ -8,7 +8,7 @@
 int main()
 {
     RF_Engine *e = new RF_Engine(true);
-    e->newWindow("Hola mundo", SDL_WINDOW_OPENGL, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_RENDERER_ACCELERATED);
+    e->newWindow("Demo or Die", SDL_WINDOW_OPENGL, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_RENDERER_ACCELERATED);
     e->newTask(new mainProcess());
 
     do

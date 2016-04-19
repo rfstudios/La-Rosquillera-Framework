@@ -7,43 +7,68 @@
 
 #include "mainprocess.h"
 #include "execontrol.h"
-#include "prota.h"
-#include "enemigo.h"
+#include <SDL2/SDL_ttf.h>
 
 mainProcess::~mainProcess(){}
 
 void mainProcess::Start()
 {
     engine->newTask(new exeControl(),id);
-    prota=engine->newTask(new Prota(Vector2<float>(640,700)),id);
-
-    YGF *newYGF = new YGF();
-    newYGF->names.push_back("Pito");
-    newYGF->names.push_back("Caca");
-    newYGF->names.push_back("Culo");
-    newYGF->names.push_back("Pedo");
-    newYGF->names.push_back("Pis ");
-
-    engine->ygf.push_back(newYGF);
     engine->playSong("resources/st7.wav");
-    return;
-}
-void mainProcess::Update()
-{
-    if(!engine->taskManager[prota])
-    {
-        engine->sendSignal("enemigo",S_KILL);
-        engine->manageSignals();
 
-        prota=engine->newTask(new Prota(Vector2<float>(640,700)),id);
-    }
-    else
+    prepareSurface();
+
+    for(int i = 0; i < engine->ventana->width(); i++)
     {
-        int nRandom=rand()%10000;
-        if(nRandom<50)
+        for(int j = 0; j < engine->ventana->height(); j++)
         {
-            engine->newTask(new Enemigo(),id);
+            putPixel(i,j,0xffffff);
         }
     }
     return;
 }
+void mainProcess::Update()
+{
+    //generateTexture();
+    return;
+}
+void mainProcess::putPixel(int x, int y, Uint32 pixel){
+    int bpp = screen->format->BytesPerPixel;
+    engine->Debug(bpp);
+
+    /* Here p is the address to the pixel we want to set */
+    Uint8 *p = (Uint8 *)screen->pixels + y * screen->pitch + x * bpp;
+
+    switch(bpp) {
+    case 1:
+        *p = pixel;
+        break;
+
+    case 2:
+        *(Uint16 *)p = pixel;
+        break;
+
+    case 3:
+        if(SDL_BYTEORDER == SDL_BIG_ENDIAN) {
+            p[0] = (pixel >> 16) & 0xff;
+            p[1] = (pixel >> 8) & 0xff;
+            p[2] = pixel & 0xff;
+        } else {
+            p[0] = pixel & 0xff;
+            p[1] = (pixel >> 8) & 0xff;
+            p[2] = (pixel >> 16) & 0xff;
+        }
+        break;
+
+    case 4:
+        *(Uint32 *)p = pixel;
+        break;
+    }
+}
+void mainProcess::prepareSurface(){
+    screen = SDL_CreateRGBSurface(0,engine->ventana->width(), engine->ventana->height(),32,0,0,0,0);
+}
+void mainProcess::generateTexture(){
+    graph = SDL_CreateTextureFromSurface(engine->ventana->renderer, screen);
+}
+void mainProcess::clearSurface(){}

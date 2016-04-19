@@ -30,6 +30,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_ttf.h>
 #include <vector>
 #include <iostream>
 #include <stdio.h>
@@ -73,12 +74,21 @@ class RF_Engine
         bool key[_FOO_KEY]; //Array de teclas pulsadas
         RF_Time *time;
 
+        /**Textos*****************/
+            TTF_Font* font;
+            vector<YW_Text*> textSources;
+            int write(string txt, SDL_Color color, Vector2<int> pos);
+            int write(string txt, SDL_Color color, Vector2<float> pos);
+            int _writeGetPlace();
+            void deleteText(int txtID = -1);
+        /*************************/
+
         /**Control de debug*******/
             bool isDebug;
             void Debug(string t);
             void Debug(int t);
             void Debug(float t);
-        /************************/
+        /*************************/
 
         /**Utilidades************/
             SDL_Texture* loadPNG(string file);

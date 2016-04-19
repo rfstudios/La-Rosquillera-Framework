@@ -23,6 +23,7 @@
 #define RF_WINDOW_H
 
 class RF_Process;
+#include "rf_declares.h"
 #include "rf_process.h"
 #include <SDL2/SDL.h>
 #include <string>
@@ -33,12 +34,15 @@ class RF_Window
 {
     public:
         RF_Window(string i_title, int i_windowMode, int i_posX, int i_posY, int i_width, int i_height, int i_rendererMode);
-        void render(vector<RF_Process*>& tM);
+        void render(vector<RF_Process*>& tM, vector<YW_Text*>& textSources);
         void Dispose();
         virtual ~RF_Window();
 
         SDL_Window*     window;
         SDL_Renderer*   renderer;
+
+        int& width(){return _width;}
+        int& height(){return _height;}
 
     private:
         string          _title;

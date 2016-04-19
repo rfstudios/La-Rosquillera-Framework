@@ -29,8 +29,16 @@ RF_Engine::RF_Engine(bool debug){
     SDL_Init(SDL_INIT_EVERYTHING);
     IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
     Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096);
+    TTF_Init();
+    font = TTF_OpenFont("resources/Coving01.ttf", 20);
 
     time=new RF_Time();
+
+    if(isDebug)
+    {
+        write("Version de debug", {255,255,255}, Vector2<int>(476,450));
+        Debug("Version de debug");
+    }
 }
 RF_Engine::~RF_Engine(){
     for(int i=0;i<taskManager.size();i++)
@@ -43,6 +51,7 @@ RF_Engine::~RF_Engine(){
 
     if(NULL != music) Mix_FreeMusic(music);
     Mix_Quit();
+    TTF_Quit();
     IMG_Quit();
     SDL_Quit();
 }
@@ -107,7 +116,7 @@ void RF_Engine::update(){
     }
 }
 void RF_Engine::render(){
-    ventana->render(taskManager);
+    ventana->render(taskManager, textSources);
 }
 /****************************************************************/
 
@@ -282,6 +291,68 @@ void RF_Engine::playSong(string file){
 
         music = Mix_LoadMUS(file.c_str());
         Mix_PlayMusic(music, 0);
+}
+int RF_Engine::write(string txt, SDL_Color color, Vector2<float> pos){
+    Vector2<int> posInt; posInt.x = (int)pos.x; posInt.y = (int)pos.y;
+    write(txt, color, posInt);
+}
+int RF_Engine::write(string txt, SDL_Color color, Vector2<int> pos){
+    if(NULL != font)
+    {
+        SDL_Surface* textSurface = TTF_RenderText_Solid(font, txt.c_str(), color);
+        YW_Text* tmpTxt = new YW_Text();
+        tmpTxt->textSurface = textSurface;
+        tmpTxt->position = pos;
+
+        int pos = _writeGetPlace();
+        if(-1 == pos)
+        {
+            textSources.push_back(tmpTxt);
+            pos = textSources.size()-1;
+        }
+        else
+        {
+            textSources[pos] = tmpTxt;
+
+        }
+
+        return pos;
+    }
+    else
+    {
+        Debug("No hay fuente asignada");
+        return -1;
+    }
+}
+ int RF_Engine::_writeGetPlace(){
+    int _pos = -1;
+    for(int i = 0; i < textSources.size(); i++)
+    {
+        if(NULL == textSources[i])
+        {
+            _pos = i;
+            break;
+        }
+    }
+
+    return _pos;
+}
+void RF_Engine::deleteText(int txtID)
+{
+    if(-1 >= txtID)
+    {
+        for(int i=0;i<textSources.size();i++)
+        {
+            delete(textSources[i]);
+            textSources[i] = NULL;
+        }
+        textSources.clear();
+    }
+    else
+    {
+        delete(textSources[txtID]);
+        textSources[txtID] = NULL;
+    }
 }
 
 int RF_Engine::loadYgf(string filename){

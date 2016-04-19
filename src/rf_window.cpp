@@ -43,7 +43,7 @@ RF_Window::~RF_Window()
     Dispose();
 }
 
-void RF_Window::render(vector<RF_Process*>& tM)
+void RF_Window::render(vector<RF_Process*>& tM, vector<YW_Text*>& textSources)
 {
     SDL_RenderClear(renderer);
 
@@ -60,6 +60,20 @@ void RF_Window::render(vector<RF_Process*>& tM)
 
                 SDL_RenderCopy(renderer,tM[i]->graph,NULL,&r);
             }
+        }
+    }
+
+    for(int i=0;i<textSources.size();i++)
+    {
+        if(textSources[i])
+        {
+            SDL_Texture* tmpTexture = SDL_CreateTextureFromSurface(renderer,textSources[i]->textSurface);
+            SDL_Rect r;
+            SDL_QueryTexture(tmpTexture,NULL,NULL,&r.w,&r.h);
+            r.x=textSources[i]->position.x; r.y=textSources[i]->position.y;
+
+            SDL_RenderCopy(renderer,tmpTexture,NULL,&r);
+            SDL_DestroyTexture(tmpTexture);
         }
     }
 

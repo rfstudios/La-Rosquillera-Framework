@@ -52,6 +52,10 @@ struct Transform{
     Vector2<float> position, scale;
     float rotation;
 };
+struct YW_Text{
+    SDL_Surface* textSurface;
+    Vector2<int> position;
+};
 struct YGF{
     vector<string> names;
     vector<SDL_Texture*> graph;

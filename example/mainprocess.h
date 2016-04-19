@@ -19,8 +19,13 @@ class mainProcess : public RF_Process
         virtual void Start();
         virtual void Update();
 
+        void putPixel(int x, int y, Uint32 pixel);
+        void prepareSurface();
+        void generateTexture();
+        void clearSurface();
+
     private:
-        int prota;
+        SDL_Surface* screen;
 };
 
 #endif // MAINPROCESS_H
