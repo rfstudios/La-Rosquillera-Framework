@@ -13,6 +13,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
+					<Add directory="example" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +24,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
+					<Add directory="example" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -42,11 +46,19 @@
 			<Add library="SDL2_ttf" />
 			<Add library="SDL2_mixer" />
 		</Linker>
+		<Unit filename="example/background.cpp" />
+		<Unit filename="example/background.h" />
 		<Unit filename="example/execontrol.cpp" />
 		<Unit filename="example/execontrol.h" />
 		<Unit filename="example/main.cpp" />
 		<Unit filename="example/mainprocess.cpp" />
 		<Unit filename="example/mainprocess.h" />
+		<Unit filename="example/scene1.cpp" />
+		<Unit filename="example/scene1.h" />
+		<Unit filename="example/scene2.cpp" />
+		<Unit filename="example/scene2.h" />
+		<Unit filename="example/splashscreen.cpp" />
+		<Unit filename="example/splashscreen.h" />
 		<Unit filename="include/rf_declares.h" />
 		<Unit filename="include/rf_engine.h" />
 		<Unit filename="include/rf_process.h" />

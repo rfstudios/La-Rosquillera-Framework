@@ -63,6 +63,7 @@ class RF_Engine
         /**Task Manager**********************/
             vector<RF_Process*> taskManager;
             int newTask(RF_Process *task,int father=-1);
+            int getPlace();
             void manageSignals();
             void sendSignal(int task, int signal);
             void sendSignal(string type, int signal);
@@ -91,15 +92,18 @@ class RF_Engine
         /*************************/
 
         /**Utilidades************/
+            SDL_Surface* loadPNG_Surface(string file);
             SDL_Texture* loadPNG(string file);
             RF_Process* collision(string target, RF_Process* sender);
             RF_Process* collision(int target, RF_Process* sender);
             void playSong(string file);
 
+            Uint32 getPixel(SDL_Surface* surface, int x, int y);
+            void putPixel(SDL_Surface* surface, int x, int y, Uint32);
+
             vector<YGF*> ygf; //Lista de ficheros de gráficos cargados;
             int loadYgf(string filename);
         /************************/
-
     private:
 };
 

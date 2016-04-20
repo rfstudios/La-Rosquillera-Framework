@@ -49,7 +49,7 @@ void RF_Window::render(vector<RF_Process*>& tM, vector<YW_Text*>& textSources)
 
     for(int i=0;i<tM.size();i++)
     {
-        if(tM[i])
+        if(NULL != tM[i])
         {
             if(tM[i]->graph)
             {
@@ -65,7 +65,7 @@ void RF_Window::render(vector<RF_Process*>& tM, vector<YW_Text*>& textSources)
 
     for(int i=0;i<textSources.size();i++)
     {
-        if(textSources[i])
+        if(NULL != textSources[i])
         {
             SDL_Texture* tmpTexture = SDL_CreateTextureFromSurface(renderer,textSources[i]->textSurface);
             SDL_Rect r;

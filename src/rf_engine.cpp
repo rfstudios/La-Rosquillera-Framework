@@ -106,7 +106,7 @@ void RF_Engine::update(){
 
     for(int i=0;i<taskManager.size();i++)
     {
-        if(taskManager[i])
+        if(NULL != taskManager[i])
         {
             if(taskManager[i]->signal==S_AWAKE)
             {
@@ -131,12 +131,35 @@ void RF_Engine::isRunning(bool m_r){
 
 /**Task Manager**************************************************/
 int RF_Engine::newTask(RF_Process *task, int father){
-    taskManager.push_back(task);
-    taskManager[taskManager.size()-1]->father=father;
-    taskManager[taskManager.size()-1]->id=taskManager.size()-1;
-    taskManager[taskManager.size()-1]->setEngine(this);
-    taskManager[taskManager.size()-1]->Start();
-    return taskManager.size()-1;
+    int pos = getPlace();
+    if(0 > pos)
+    {
+        taskManager.push_back(task);
+        pos = taskManager.size()-1;
+    }
+    else
+    {
+        taskManager[pos] = task;
+    }
+
+    taskManager[pos]->father=father;
+    taskManager[pos]->id=taskManager.size()-1;
+    taskManager[pos]->setEngine(this);
+    taskManager[pos]->Start();
+    return pos;
+}
+int RF_Engine::getPlace(){
+    int _pos = -1;
+    for(int i = 0; i < taskManager.size(); i++)
+    {
+        if(NULL == taskManager[i])
+        {
+            _pos = i;
+            break;
+        }
+    }
+
+    return _pos;
 }
 void RF_Engine::manageSignals(){
     for(int i=0;i<taskManager.size();i++)
@@ -147,10 +170,10 @@ void RF_Engine::manageSignals(){
             {
                 case S_KILL:
                     delete(taskManager[i]);
-                    taskManager[i]=NULL;
+                    taskManager[i] = NULL;
                     break;
                 case S_SLEEP_TREE:
-                    taskManager[i]->signal=S_SLEEP;
+                    taskManager[i]->signal = S_SLEEP;
 
                     for(int ii=0;ii<taskManager.size();ii++)
                     {
@@ -158,13 +181,13 @@ void RF_Engine::manageSignals(){
                         {
                             if(taskManager[ii]->father==i)
                             {
-                                taskManager[ii]->signal=S_SLEEP;
+                                taskManager[ii]->signal = S_SLEEP;
                             }
                         }
                     }
                     break;
                 case S_AWAKE_TREE:
-                    taskManager[i]->signal=S_AWAKE;
+                    taskManager[i]->signal = S_AWAKE;
 
                     for(int ii=0;ii<taskManager.size();ii++)
                     {
@@ -172,13 +195,12 @@ void RF_Engine::manageSignals(){
                         {
                             if(taskManager[ii]->father==i)
                             {
-                                taskManager[ii]->signal=S_AWAKE;
+                                taskManager[ii]->signal = S_AWAKE;
                             }
                         }
                     }
                     break;
                 case S_KILL_TREE:
-
                     for(int ii=0;ii<taskManager.size();ii++)
                     {
                         if(taskManager[ii])
@@ -186,13 +208,13 @@ void RF_Engine::manageSignals(){
                             if(taskManager[ii]->father==i)
                             {
                                 delete(taskManager[ii]);
-                                taskManager[ii]=NULL;
+                                taskManager[ii] = NULL;
                             }
                         }
                     }
 
                     delete(taskManager[i]);
-                    taskManager[i]=NULL;
+                    taskManager[i] = NULL;
                     break;
             }
         }
@@ -248,6 +270,9 @@ void RF_Engine::Debug(float t){
 /****************************************************************/
 
 /**Utilidades****************************************************/
+SDL_Surface* RF_Engine::loadPNG_Surface(string file){
+    return IMG_Load(file.c_str());
+}
 SDL_Texture* RF_Engine::loadPNG(string file){
     return IMG_LoadTexture(ventana->renderer,file.c_str());
 }
@@ -337,8 +362,7 @@ int RF_Engine::write(string txt, SDL_Color color, Vector2<int> pos){
 
     return _pos;
 }
-void RF_Engine::deleteText(int txtID)
-{
+void RF_Engine::deleteText(int txtID){
     if(-1 >= txtID)
     {
         for(int i=0;i<textSources.size();i++)
@@ -354,6 +378,67 @@ void RF_Engine::deleteText(int txtID)
         textSources[txtID] = NULL;
     }
 }
+
+Uint32 RF_Engine::getPixel(SDL_Surface* surface, int x, int y){
+    int bpp = surface->format->BytesPerPixel;
+    /* Here p is the address to the pixel we want to retrieve */
+    Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
+
+    switch(bpp) {
+    case 1:
+        return *p;
+        break;
+
+    case 2:
+        return *(Uint16 *)p;
+        break;
+
+    case 3:
+        if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
+            return p[0] | p[1] << 8 | p[2] << 16;
+        else
+            return p[0] << 16 | p[1] << 8 | p[2];
+        break;
+
+    case 4:
+        return *(Uint32 *)p;
+        break;
+
+    default:
+        return 0;       /* shouldn't happen, but avoids warnings */
+    }
+}
+void RF_Engine::putPixel(SDL_Surface* surface, int x, int y, Uint32 pixel){
+    int bpp = surface->format->BytesPerPixel;
+    Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
+
+    switch(bpp) {
+    case 1:
+        *p = pixel;
+        break;
+
+    case 2:
+        *(Uint16 *)p = pixel;
+        break;
+
+    case 3:
+        if(SDL_BYTEORDER == SDL_BIG_ENDIAN) {
+            p[0] = (pixel >> 16) & 0xff;
+            p[1] = (pixel >> 8) & 0xff;
+            p[2] = pixel & 0xff;
+        } else {
+            p[0] = pixel & 0xff;
+            p[1] = (pixel >> 8) & 0xff;
+            p[2] = (pixel >> 16) & 0xff;
+        }
+        break;
+
+    case 4:
+        *(Uint32 *)p = pixel;
+        break;
+    }
+}
+
 
 int RF_Engine::loadYgf(string filename){
     /*

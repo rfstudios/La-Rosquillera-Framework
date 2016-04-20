@@ -230,7 +230,7 @@
 	<SDL2/SDL_image.h>
 	<string>
 
-1461085467 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/include/rf_engine.h
+1461109134 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/include/rf_engine.h
 	"rf_window.h"
 	"rf_process.h"
 	"rf_declares.h"
@@ -243,7 +243,7 @@
 	<iostream>
 	<stdio.h>
 
-1461077047 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/include/rf_window.h
+1461161319 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/include/rf_window.h
 	"rf_declares.h"
 	"rf_process.h"
 	<SDL2/SDL.h>
@@ -255,7 +255,7 @@
 	<string>
 	<SDL2/SDL.h>
 
-1455320485 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/include/rf_time.h
+1461194592 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/include/rf_time.h
 	<SDL2/SDL.h>
 
 1461063620 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/execontrol.cpp
@@ -270,18 +270,23 @@
 1455320485 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/laser.h
 	"rf_process.h"
 
-1461082357 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/main.cpp
+1461161772 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/main.cpp
 	<SDL2/SDL.h>
 	"rf_declares.h"
 	"rf_engine.h"
 	"mainprocess.h"
 
-1461086649 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/mainprocess.h
+1461105833 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/mainprocess.h
 	"rf_process.h"
+	"background.h"
 
-1461086746 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/mainprocess.cpp
+1461194592 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/mainprocess.cpp
 	"mainprocess.h"
 	"execontrol.h"
+	"splashscreen.h"
+	"scene1.h"
+	"scene2.h"
+	"rf_declares.h"
 	<SDL2/SDL_ttf.h>
 
 1455320485 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/prota.h
@@ -291,7 +296,7 @@
 	"prota.h"
 	"laser.h"
 
-1461082465 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/src/rf_engine.cpp
+1461189204 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/src/rf_engine.cpp
 	"rf_engine.h"
 	<string>
 	<SDL2/SDL_image.h>
@@ -299,10 +304,50 @@
 1455320486 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/src/rf_process.cpp
 	"rf_process.h"
 
-1455320486 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/src/rf_time.cpp
+1461143811 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/src/rf_time.cpp
 	"rf_time.h"
 
-1461078881 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/src/rf_window.cpp
+1461161312 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/src/rf_window.cpp
 	"rf_window.h"
 	<iostream>
+
+1461190988 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/background.cpp
+	"background.h"
+
+1461183777 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/background.h
+	"rf_process.h"
+
+1461110315 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/splashscreen.h
+	"rf_process.h"
+	"rf_engine.h"
+	"background.h"
+
+1461111466 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/src/splashscreen.cpp
+	"splashscreen.h"
+	"mainprocess.h"
+
+1461184637 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/scene1.cpp
+	"scene1.h"
+	"mainprocess.h"
+
+1461162650 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/scene1.h
+	"background.h"
+	"rf_process.h"
+	"rf_engine.h"
+
+1461162487 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/splashscreen.cpp
+	"splashscreen.h"
+	"mainprocess.h"
+
+1461195757 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/scene2.h
+	"background.h"
+	"rf_process.h"
+	"rf_engine.h"
+	<vector>
+
+1461194678 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/scene2.cpp
+	"scene2.h"
+	"mainprocess.h"
+	"rf_declares.h"
+	<math.h>
 

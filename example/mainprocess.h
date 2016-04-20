@@ -9,6 +9,7 @@
 #define MAINPROCESS_H
 
 #include "rf_process.h"
+#include "background.h"
 
 class mainProcess : public RF_Process
 {
@@ -19,13 +20,13 @@ class mainProcess : public RF_Process
         virtual void Start();
         virtual void Update();
 
-        void putPixel(int x, int y, Uint32 pixel);
-        void prepareSurface();
-        void generateTexture();
-        void clearSurface();
+        background* bg;
+
+        int& state(){return stateMachine;}
 
     private:
-        SDL_Surface* screen;
+        int stateMachine = 0;
+        int scene;
 };
 
 #endif // MAINPROCESS_H

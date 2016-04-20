@@ -33,9 +33,14 @@ class RF_Time
         void Update();
         float deltaTime;
         float timeScale;
+        int currentTime;
+
+        int fixedCTime(){return currentTime - fixValue;}
+        void setFixedCTime(){fixValue = currentTime;}
 
     private:
-        int lastFrameTime=0;
+        int lastFrameTime = 0;
+        int fixValue = 0;
 };
 
 #endif // RF_TIME_H

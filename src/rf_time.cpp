@@ -33,7 +33,7 @@ RF_Time::~RF_Time()
 
 void RF_Time::Update()
 {
-    int currentFrameTime=SDL_GetTicks();
-    deltaTime=(float)(currentFrameTime-lastFrameTime)*timeScale/1000;
-    lastFrameTime=currentFrameTime;
+    currentTime=SDL_GetTicks();
+    deltaTime=(float)(currentTime-lastFrameTime)*timeScale/1000;
+    lastFrameTime=currentTime;
 }
