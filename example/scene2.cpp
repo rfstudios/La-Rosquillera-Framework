@@ -1,23 +1,60 @@
 #include "scene2.h"
 #include "mainprocess.h"
 #include "rf_declares.h"
+#include "rf_3d.h"
 
 #include <math.h>
 using namespace std;
 
 void Scene2::Start()
 {
-    bg = dynamic_cast<mainProcess*>(engine->taskManager[father])->bg;
+    bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
+    RF_Engine::instance->Debug(RF_Engine::instance->time->fixedCTime());
+
+    RF_Engine::instance->Debug("Cargados:");
+    RF_Engine::instance->Debug(RF_3D::loadObj("resources/ico.yawobj"));
+    RF_Engine::instance->Debug(RF_3D::loadObj("resources/cubo.yawobj"));
+
+    Transform3D t(Vector3<float>(320.0f,240.0f,240.0f),Vector3<float>(0.0f,0.0f,0.0f),Vector3<float>(50.0f,50.0f,50.0f));
+    RF_3D::objectList[0]->transform = t;
+    RF_3D::objectList[1]->transform = t;
 }
 
 void Scene2::Update()
 {
-    engine->Debug(engine->time->fixedCTime());
-    deltaCount += engine->time->deltaTime;
+    deltaCount += RF_Engine::instance->time->deltaTime;
 
-    if(!lastFrame)
+    if(0.025f < deltaCount)
     {
-        lastFrame = Starfield(16775);
+        step++;
+
+        if(!lastFrame)
+        {
+            lastFrame = Starfield(16775);
+        }
+
+        if(16800 < RF_Engine::instance->time->fixedCTime())
+        {
+            if(lastFrame)
+            {
+                bg->clearSurface(0x000000);
+            }
+
+            Transform3D tmpT = RF_3D::objectList[0]->transform;
+
+            int tmpScl = cos(step*0.1) * 500;
+            if(50 > tmpScl){tmpScl = 50;}
+            RF_Engine::instance->Debug(tmpScl);
+            tmpT.scale.x = tmpT.scale.y = tmpT.scale.z = tmpScl;
+            tmpT.rotation.x += 1000; tmpT.rotation.y += 1100;//tmpT.scale.z = tmpScl;
+
+            RF_3D::objectList[0]->transform = RF_3D::objectList[1]->transform = tmpT;
+
+            SDL_Surface* tmpSrf = RF_3D::Draw_Only(0);
+            bg->addSurface(tmpSrf);
+        }
+
+        deltaCount = 0.0f;
     }
 
     ///TODO: Motor3D
@@ -26,87 +63,79 @@ void Scene2::Update()
 
 bool Scene2::Starfield(int limit)
 {
-    if(0 == engine->time->fixedCTime()%10)
+    if(100 > stars.size())
     {
-        if(100 > stars.size())
-        {
-            int xx = 320 + (rand()%100-50); if(320 == xx){xx = 315;}
-            int yy = 240 + (rand()%100-50); if(240 == yy){yy = 235;}
-            stars.push_back(Vector2<int>(xx,yy));
-            stars_speed.push_back(15 + rand()%11);
-        }
+        int xx = 320 + (rand()%100-50); if(320 == xx){xx = 315;}
+        int yy = 240 + (rand()%100-50); if(240 == yy){yy = 235;}
+        stars.push_back(Vector2<int>(xx,yy));
+        stars_speed.push_back(15 + rand()%11);
     }
 
-    if(0.025f < deltaCount)
+    bg->clearSurface(0x000000);
+    bool painted = false;
+    for(int i = 0; i < stars.size(); i++)
     {
-        deltaCount = 0.0f;
+        int xx = stars[i].x -( round(320 - stars[i].x) / stars_speed[i]);
+        int yy = stars[i].y -( round(240 - stars[i].y) / stars_speed[i]);
 
-        bg->clearSurface(0x000000);
-        bool painted = false;
-        for(int i = 0; i < stars.size(); i++)
+        if(xx == stars[i].x && yy == stars[i].y)
         {
-            int xx = stars[i].x -( round(320 - stars[i].x) / stars_speed[i]);
-            int yy = stars[i].y -( round(240 - stars[i].y) / stars_speed[i]);
+            xx = 320 + (rand()%100-50); if(320 == xx){xx = 315;}
+            yy = 240 + (rand()%100-50); if(240 == yy){yy = 235;}
+        }
 
-            if(xx == stars[i].x && yy == stars[i].y)
+        int dist = abs(xx - 320) + abs(yy - 240);
+        int sCant;
+
+        if(dist < 50)
+        {
+            sCant = 1;
+        }
+        else if(dist >= 50 && dist <= 100)
+        {
+            sCant = 2;
+        }
+        else if(dist >= 100 && dist <= 150)
+        {
+            sCant = 3;
+        }
+        else if(dist >= 150 && dist <= 200)
+        {
+            sCant = 4;
+        }
+        else if(dist > 200)
+        {
+            sCant = 5;
+        }
+
+        for(int i = 0; i < sCant; i++)
+        {
+            for(int j = 0; j < sCant; j++)
+            {
+                bg->putPixel(xx+i, yy+j, 0xffffff);
+                painted = true;
+            }
+        }
+
+        if(limit > RF_Engine::instance->time->fixedCTime())
+        {
+            if(0 > xx || 0 > yy || RF_Engine::instance->ventana->width() <= xx || RF_Engine::instance->ventana->height() <= yy)
             {
                 xx = 320 + (rand()%100-50); if(320 == xx){xx = 315;}
                 yy = 240 + (rand()%100-50); if(240 == yy){yy = 235;}
             }
-
-            int dist = abs(xx - 320) + abs(yy - 240);
-            int sCant;
-
-            if(dist < 50)
-            {
-                sCant = 1;
-            }
-            else if(dist >= 50 && dist <= 100)
-            {
-                sCant = 2;
-            }
-            else if(dist >= 100 && dist <= 150)
-            {
-                sCant = 3;
-            }
-            else if(dist >= 150 && dist <= 200)
-            {
-                sCant = 4;
-            }
-            else if(dist > 200)
-            {
-                sCant = 5;
-            }
-
-            for(int i = 0; i < sCant; i++)
-            {
-                for(int j = 0; j < sCant; j++)
-                {
-                    bg->putPixel(xx+i, yy+j, 0xffffff);
-                    painted = true;
-                }
-            }
-
-            if(limit > engine->time->fixedCTime())
-            {
-                if(0 > xx || 0 > yy || engine->ventana->width() <= xx || engine->ventana->height() <= yy)
-                {
-                    xx = 320 + (rand()%100-50); if(320 == xx){xx = 315;}
-                    yy = 240 + (rand()%100-50); if(240 == yy){yy = 235;}
-                }
-            }
-
-            stars[i].x = xx;
-            stars[i].y = yy;
         }
 
-        if(!painted)
-        {
-            stars.clear();
-            stars_speed.clear();
+        stars[i].x = xx;
+        stars[i].y = yy;
+    }
 
-            return true;
-        }
+    if(!painted)
+    {
+        stars.clear();
+        stars_speed.clear();
+
+        return true;
     }
 
     return false;

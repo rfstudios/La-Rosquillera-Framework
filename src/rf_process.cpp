@@ -33,12 +33,6 @@ RF_Process::~RF_Process()
     return;
 }
 
-void RF_Process::setEngine(RF_Engine *e)
-{
-    engine=e;
-}
-
-
 void RF_Process::Start()
 {
     return;

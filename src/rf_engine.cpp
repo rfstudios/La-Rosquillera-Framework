@@ -24,7 +24,11 @@
 #include <SDL2/SDL_image.h>
 using namespace std;
 
+RF_Engine* RF_Engine::instance = NULL;
+
 RF_Engine::RF_Engine(bool debug){
+    RF_Engine::instance = this;
+
     isDebug=debug;
     SDL_Init(SDL_INIT_EVERYTHING);
     IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
@@ -144,7 +148,7 @@ int RF_Engine::newTask(RF_Process *task, int father){
 
     taskManager[pos]->father=father;
     taskManager[pos]->id=taskManager.size()-1;
-    taskManager[pos]->setEngine(this);
+    //taskManager[pos]->setEngine(this);
     taskManager[pos]->Start();
     return pos;
 }
@@ -409,6 +413,8 @@ Uint32 RF_Engine::getPixel(SDL_Surface* surface, int x, int y){
     }
 }
 void RF_Engine::putPixel(SDL_Surface* surface, int x, int y, Uint32 pixel){
+    if(0 > x || 0 > y || surface->w <= x || surface->h <= y){return;}
+
     int bpp = surface->format->BytesPerPixel;
     Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
 

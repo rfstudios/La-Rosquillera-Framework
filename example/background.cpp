@@ -69,19 +69,19 @@ void background::putPixel(int x, int y, Uint32 pixel){
     needGenerate = true;
 }
 void background::prepareSurface(){
-    screen = SDL_CreateRGBSurface(0,engine->ventana->width(), engine->ventana->height(),32,0,0,0,0);
+    screen = SDL_CreateRGBSurface(0,RF_Engine::instance->ventana->width(), RF_Engine::instance->ventana->height(),32,0,0,0,0);
 }
 void background::generateTexture(){
     if(!needGenerate){return;}
     if(NULL == screen){return;}
     needGenerate = false;
     SDL_DestroyTexture(graph);
-    graph = SDL_CreateTextureFromSurface(engine->ventana->renderer, screen);
+    graph = SDL_CreateTextureFromSurface(RF_Engine::instance->ventana->renderer, screen);
 }
 void background::clearSurface(Uint32 color){
-    for(int i = 0; i < engine->ventana->width(); i+=3)
+    for(int i = 0; i < RF_Engine::instance->ventana->width(); i+=3)
     {
-        for(int j = 0; j < engine->ventana->height(); j+=3)
+        for(int j = 0; j < RF_Engine::instance->ventana->height(); j+=3)
         {
             putPixel(i,j,color);    putPixel(i,j+1,color);    putPixel(i,j+2,color);
             putPixel(i+1,j,color);  putPixel(i+1,j+1,color);  putPixel(i+1,j+2,color);
@@ -89,4 +89,19 @@ void background::clearSurface(Uint32 color){
         }
     }
     needGenerate = true;
+}
+void background::addSurface(SDL_Surface *tmpSrf){
+    for(int i=0;i<tmpSrf->w;i++)
+    {
+        for(int j=0;j<tmpSrf->h;j++)
+        {
+            Uint32 tmpC = RF_Engine::instance->getPixel(tmpSrf,i,j);
+
+            if(0x000000 != tmpC)
+            {
+                putPixel(i,j,tmpC);
+                needGenerate = true;
+            }
+        }
+    }
 }

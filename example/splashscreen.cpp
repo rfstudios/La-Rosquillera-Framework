@@ -3,16 +3,16 @@
 
 void SplashScreen::Start()
 {
-    srand (engine->time->currentTime);
-    bgImg = engine->loadPNG_Surface("resources/gfx/logo.png");
-    bg = dynamic_cast<mainProcess*>(engine->taskManager[father])->bg;
+    srand (RF_Engine::instance->time->currentTime);
+    bgImg = RF_Engine::instance->loadPNG_Surface("resources/gfx/logo.png");
+    bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
     bg->clearSurface(0xffffff);
     step = 0;
 }
 
 void SplashScreen::Update()
 {
-    deltaCont += engine->time->deltaTime;
+    deltaCont += RF_Engine::instance->time->deltaTime;
     if(0.025 <= deltaCont)
     {
         deltaCont = 0.0f;
@@ -32,7 +32,7 @@ void SplashScreen::Update()
 
                 if(0 <= xx && 0 <= yy && bgImg->w > xx && bgImg->h > yy)
                 {
-                    bg->putPixel(xx,yy,engine->getPixel(bgImg,i,j));
+                    bg->putPixel(xx,yy,RF_Engine::instance->getPixel(bgImg,i,j));
                 }
             }
         }
@@ -40,7 +40,7 @@ void SplashScreen::Update()
         if(150 <= step)
         {
             bg->clearSurface(0x000000);
-            dynamic_cast<mainProcess*>(engine->taskManager[father])->state() = 1;
+            dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->state() = 1;
         }
     }
 }

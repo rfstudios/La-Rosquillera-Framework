@@ -28,6 +28,11 @@
 #include <SDL2/SDL.h>
 using namespace std;
 
+enum RF_RenderModes{
+    RM_Point,
+    RM_Circles,
+    RM_Mesh
+};
 enum RF_KeyCode{
     _a,_b,_c,_d,_e,_f,_g,_h,_i,_j,_k,_l,_m,_n,_o,_p,_q,_r,_s,_t,_u,_v,_w,_x,_y,_z,
     _1,_2,_3,_4,_5,_6,_7,_8,_9,_0,
@@ -45,13 +50,32 @@ enum RF_Signal{
 template<typename T>
 struct Vector2{
     T x,y;
-    Vector2(T x0=0,T y0=0){x=x0; y=y0;}
+    Vector2(T x0=0, T y0=0){x=x0; y=y0;}
     Vector2(const Vector2& c){x=c.x; y=c.y;}
 };
 struct Transform{
     Vector2<float> position, scale;
     float rotation;
 };
+
+template<typename T>
+struct Vector3{
+    T x,y,z;
+    Vector3(T x0=0, T y0=0, T z0=0){x=x0; y=y0; z=z0;}
+    Vector3(const Vector3& c){x=c.x; y=c.y; z=c.z;}
+};
+struct Transform3D{
+    Vector3<float> position, rotation, scale;
+    Transform3D(Vector3<float> _position = Vector3<float>(0.0f,0.0f,0.0f),
+                Vector3<float> _rotation = Vector3<float>(0.0f,0.0f,0.0f),
+                Vector3<float> _scale = Vector3<float>(0.0f,0.0f,0.0f)      )
+                {position = _position; rotation = _rotation; scale = _scale;}
+};
+struct Faces{
+    int a,b,c,d;
+    Faces(int a0=0, int b0=0, int c0=0, int d0=-1){a=a0; b=b0; c=c0; d=d0;}
+};
+
 struct YW_Text{
     SDL_Surface* textSurface;
     Vector2<int> position;

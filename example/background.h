@@ -17,6 +17,7 @@ class background : public RF_Process
         void prepareSurface();
         void generateTexture();
         void clearSurface(Uint32 color = 0);
+        void addSurface(SDL_Surface *tmpSrf);
 
     private:
         SDL_Surface* screen;

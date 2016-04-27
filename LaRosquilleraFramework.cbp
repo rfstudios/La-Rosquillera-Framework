@@ -59,11 +59,15 @@
 		<Unit filename="example/scene2.h" />
 		<Unit filename="example/splashscreen.cpp" />
 		<Unit filename="example/splashscreen.h" />
+		<Unit filename="include/rf_3d.h" />
+		<Unit filename="include/rf_3d_object.h" />
 		<Unit filename="include/rf_declares.h" />
 		<Unit filename="include/rf_engine.h" />
 		<Unit filename="include/rf_process.h" />
 		<Unit filename="include/rf_time.h" />
 		<Unit filename="include/rf_window.h" />
+		<Unit filename="src/rf_3d.cpp" />
+		<Unit filename="src/rf_3d_object.cpp" />
 		<Unit filename="src/rf_engine.cpp" />
 		<Unit filename="src/rf_process.cpp" />
 		<Unit filename="src/rf_time.cpp" />

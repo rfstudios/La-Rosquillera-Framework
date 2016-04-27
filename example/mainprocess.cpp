@@ -17,14 +17,14 @@ mainProcess::~mainProcess(){}
 
 void mainProcess::Start()
 {
-    engine->newTask(new exeControl(),id);
+    RF_Engine::instance->newTask(new exeControl(),id);
 
-    int bgr = engine->newTask(new background(),id);
+    int bgr = RF_Engine::instance->newTask(new background(),id);
 
-    bg = dynamic_cast<background*>(engine->taskManager[bgr]);
+    bg = dynamic_cast<background*>(RF_Engine::instance->taskManager[bgr]);
     bg->prepareSurface();
 
-    scene = engine->newTask(new SplashScreen(),id);
+    scene = RF_Engine::instance->newTask(new SplashScreen(),id);
     return;
 }
 void mainProcess::Update()
@@ -32,22 +32,22 @@ void mainProcess::Update()
     switch(stateMachine)
     {
         case 1: //Scene1
-            if("Scene1" != engine->taskManager[scene]->type)
+            if("Scene1" != RF_Engine::instance->taskManager[scene]->type)
             {
-                engine->sendSignal(scene, S_KILL_TREE);
-                engine->playSong("resources/st7.wav");
-                engine->time->setFixedCTime();
+                RF_Engine::instance->sendSignal(scene, S_KILL_TREE);
+                RF_Engine::instance->playSong("resources/st7.wav");
+                RF_Engine::instance->time->setFixedCTime();
 
-                scene = engine->newTask(new Scene1(),id);
+                scene = RF_Engine::instance->newTask(new Scene1(),id);
             }
             break;
         case 2: //Scene2
-            if("Scene2" != engine->taskManager[scene]->type)
+            if("Scene2" != RF_Engine::instance->taskManager[scene]->type)
             {
-                engine->sendSignal(scene, S_KILL_TREE);
+                RF_Engine::instance->sendSignal(scene, S_KILL_TREE);
 
-                engine->time->setFixedCTime();
-                scene = engine->newTask(new Scene2(),id);
+                RF_Engine::instance->time->setFixedCTime();
+                scene = RF_Engine::instance->newTask(new Scene2(),id);
             }
             break;
     }

@@ -3,15 +3,15 @@
 
 void Scene1::Start()
 {
-    srand (engine->time->currentTime);
-    bgImg = engine->loadPNG_Surface("resources/gfx/demoordie.png");
-    bg = dynamic_cast<mainProcess*>(engine->taskManager[father])->bg;
+    srand (RF_Engine::instance->time->currentTime);
+    bgImg = RF_Engine::instance->loadPNG_Surface("resources/gfx/demoordie.png");
+    bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
 
     for(int i=0; i < bgImg->w; i++)
     {
         for(int j=0; j < bgImg->h; j++)
         {
-            bg->putPixel(i,j,engine->getPixel(bgImg,i,j));
+            bg->putPixel(i,j,RF_Engine::instance->getPixel(bgImg,i,j));
         }
     }
 
@@ -19,11 +19,11 @@ void Scene1::Start()
 }
 void Scene1::Update()
 {
-    if(8950 <= engine->time->fixedCTime())
+    if(8950 <= RF_Engine::instance->time->fixedCTime())
     {
-        if(17100 > engine->time->fixedCTime())
+        if(17100 > RF_Engine::instance->time->fixedCTime())
         {
-            deltaCont+=engine->time->deltaTime;
+            deltaCont+=RF_Engine::instance->time->deltaTime;
             if(0.5 <= deltaCont)
             {
                 if(1.02 <= deltaCont)
@@ -38,7 +38,7 @@ void Scene1::Update()
                 }
             }
         }
-        else if(34190 > engine->time->fixedCTime())
+        else if(34190 > RF_Engine::instance->time->fixedCTime())
         {
             if(-1 < nextX)
             {
@@ -47,18 +47,18 @@ void Scene1::Update()
                 nextX = -1;
             }
 
-            deltaCont+=engine->time->deltaTime;
+            deltaCont+=RF_Engine::instance->time->deltaTime;
             if(1.02 <= deltaCont)
             {
                 revolveChanels();
                 deltaCont = 0.0;
             }
         }
-        else if(38385 > engine->time->fixedCTime())
+        else if(38385 > RF_Engine::instance->time->fixedCTime())
         {
             if(-1 == nextX){nextX = 0;}
 
-            deltaCont+=engine->time->deltaTime;
+            deltaCont+=RF_Engine::instance->time->deltaTime;
             if(0.5 <= deltaCont)
             {
                 if(0.75 <= deltaCont)
@@ -73,7 +73,7 @@ void Scene1::Update()
         else
         {
             bg->clearSurface(0x000000);
-            dynamic_cast<mainProcess*>(engine->taskManager[father])->state() = 2;
+            dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->state() = 2;
         }
     }
     return;
@@ -86,7 +86,7 @@ void Scene1::setBar(int x, int width, bool black){
         {
             if(0 <= i && 0 <= j && bgImg->w > i && bgImg->h > j)
             {
-                Uint32 tmpC = engine->getPixel(bgImg,i,j);
+                Uint32 tmpC = RF_Engine::instance->getPixel(bgImg,i,j);
                 if(black) tmpC = 0xffffff;
 
                 bg->putPixel(i,j,0xffffff - tmpC);
@@ -101,7 +101,7 @@ void Scene1::getBar(int x, int width){
         {
             if(0 <= i && 0 <= j && bgImg->w > i && bgImg->h > j)
             {
-                bg->putPixel(i,j,engine->getPixel(bgImg,i,j));
+                bg->putPixel(i,j,RF_Engine::instance->getPixel(bgImg,i,j));
             }
         }
     }

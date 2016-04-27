@@ -26,6 +26,7 @@ class Scene2 : public RF_Process
 
         float deltaCount = 0.0f;
         bool lastFrame = false;
+        int step=0;
 };
 
 #endif // SCENE2_H

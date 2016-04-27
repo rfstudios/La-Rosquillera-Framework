@@ -43,11 +43,6 @@ class RF_Process
             SDL_Texture *graph;
             Transform transform;
         /*******************/
-
-        void setEngine(RF_Engine *e);
-
-    protected:
-        RF_Engine *engine;
 };
 
 #endif // RF_PROCESS_H

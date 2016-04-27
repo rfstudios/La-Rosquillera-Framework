@@ -36,10 +36,11 @@
 #include <stdio.h>
 using namespace std;
 
-
 class RF_Engine
 {
     public:
+        static RF_Engine* instance;
+
         RF_Engine(bool debug=false);
         virtual ~RF_Engine();
         void run();
