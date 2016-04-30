@@ -1,5 +1,6 @@
 #include "splashscreen.h"
 #include "mainprocess.h"
+#include "rf_primitive.h"
 
 void SplashScreen::Start()
 {
@@ -32,7 +33,7 @@ void SplashScreen::Update()
 
                 if(0 <= xx && 0 <= yy && bgImg->w > xx && bgImg->h > yy)
                 {
-                    bg->putPixel(xx,yy,RF_Engine::instance->getPixel(bgImg,i,j));
+                    bg->putPixel(xx,yy,RF_Primitive::getPixel(bgImg,i,j));
                 }
             }
         }

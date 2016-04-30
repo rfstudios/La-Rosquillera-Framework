@@ -25,8 +25,8 @@ class Scene2 : public RF_Process
         vector<int> stars_speed;
 
         float deltaCount = 0.0f;
-        bool lastFrame = false;
-        int step=0;
+        bool lastFrame = false, cH = false;
+        int step=0, cuentaobj=0, objtorend = 0;
 };
 
 #endif // SCENE2_H

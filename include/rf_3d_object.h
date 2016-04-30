@@ -16,7 +16,6 @@ class RF_3D_Object
 
         void finalizeCreation(){
             _vertex = vertex;
-            //vertex.clear();
         }
 
         void calculateMesh();

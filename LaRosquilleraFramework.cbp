@@ -63,6 +63,7 @@
 		<Unit filename="include/rf_3d_object.h" />
 		<Unit filename="include/rf_declares.h" />
 		<Unit filename="include/rf_engine.h" />
+		<Unit filename="include/rf_primitive.h" />
 		<Unit filename="include/rf_process.h" />
 		<Unit filename="include/rf_time.h" />
 		<Unit filename="include/rf_window.h" />

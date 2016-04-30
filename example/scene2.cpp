@@ -42,16 +42,46 @@ void Scene2::Update()
 
             Transform3D tmpT = RF_3D::objectList[0]->transform;
 
-            int tmpScl = cos(step*0.1) * 500;
+            int tmpScl = cos(step*0.025) * 500;
             if(50 > tmpScl){tmpScl = 50;}
-            RF_Engine::instance->Debug(tmpScl);
+
+            if(50 == tmpScl)
+            {
+                RF_3D::renderMode() = RM_Mesh;
+                cH = false;
+            }
+            else
+            {
+                RF_3D::renderMode() = RM_Point;
+
+                if(tmpScl > 400 && cH == false)
+                {
+                    cuentaobj++;
+                    RF_Engine::instance->Debug(cuentaobj);
+                    cH=true;
+                    if(cuentaobj>2)
+                    {
+                        if(cuentaobj%2==0)
+                        {
+                            objtorend=0;
+                        }
+                        else
+                        {
+                            objtorend=1;
+                        }
+                    }
+                }
+            }
+
             tmpT.scale.x = tmpT.scale.y = tmpT.scale.z = tmpScl;
-            tmpT.rotation.x += 1000; tmpT.rotation.y += 1100;//tmpT.scale.z = tmpScl;
+            tmpT.rotation.x += 0.1; tmpT.rotation.y += 0.11;//tmpT.scale.z = tmpScl;
 
             RF_3D::objectList[0]->transform = RF_3D::objectList[1]->transform = tmpT;
 
-            SDL_Surface* tmpSrf = RF_3D::Draw_Only(0);
+            SDL_Surface* tmpSrf = SDL_CreateRGBSurface(0,RF_Engine::instance->ventana->width(), RF_Engine::instance->ventana->height(),32,0,0,0,0);
+            RF_3D::Draw_Only(tmpSrf, objtorend);
             bg->addSurface(tmpSrf);
+            SDL_FreeSurface(tmpSrf);
         }
 
         deltaCount = 0.0f;

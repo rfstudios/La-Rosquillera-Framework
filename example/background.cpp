@@ -1,4 +1,6 @@
 #include "background.h"
+#include "rf_primitive.h"
+
 void background::Update()
 {
     generateTexture();
@@ -95,7 +97,7 @@ void background::addSurface(SDL_Surface *tmpSrf){
     {
         for(int j=0;j<tmpSrf->h;j++)
         {
-            Uint32 tmpC = RF_Engine::instance->getPixel(tmpSrf,i,j);
+            Uint32 tmpC = RF_Primitive::getPixel(tmpSrf,i,j);
 
             if(0x000000 != tmpC)
             {

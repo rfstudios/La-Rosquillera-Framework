@@ -1,5 +1,6 @@
 #include "scene1.h"
 #include "mainprocess.h"
+#include "rf_primitive.h"
 
 void Scene1::Start()
 {
@@ -11,7 +12,7 @@ void Scene1::Start()
     {
         for(int j=0; j < bgImg->h; j++)
         {
-            bg->putPixel(i,j,RF_Engine::instance->getPixel(bgImg,i,j));
+            bg->putPixel(i,j,RF_Primitive::getPixel(bgImg,i,j));
         }
     }
 
@@ -86,7 +87,7 @@ void Scene1::setBar(int x, int width, bool black){
         {
             if(0 <= i && 0 <= j && bgImg->w > i && bgImg->h > j)
             {
-                Uint32 tmpC = RF_Engine::instance->getPixel(bgImg,i,j);
+                Uint32 tmpC = RF_Primitive::getPixel(bgImg,i,j);
                 if(black) tmpC = 0xffffff;
 
                 bg->putPixel(i,j,0xffffff - tmpC);
@@ -101,7 +102,7 @@ void Scene1::getBar(int x, int width){
         {
             if(0 <= i && 0 <= j && bgImg->w > i && bgImg->h > j)
             {
-                bg->putPixel(i,j,RF_Engine::instance->getPixel(bgImg,i,j));
+                bg->putPixel(i,j,RF_Primitive::getPixel(bgImg,i,j));
             }
         }
     }

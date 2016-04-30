@@ -99,8 +99,8 @@ class RF_Engine
             RF_Process* collision(int target, RF_Process* sender);
             void playSong(string file);
 
-            Uint32 getPixel(SDL_Surface* surface, int x, int y);
-            void putPixel(SDL_Surface* surface, int x, int y, Uint32);
+            /*Uint32 getPixel(SDL_Surface* surface, int x, int y);
+            void putPixel(SDL_Surface* surface, int x, int y, Uint32);*/
 
             vector<YGF*> ygf; //Lista de ficheros de gráficos cargados;
             int loadYgf(string filename);

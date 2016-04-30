@@ -18,5 +18,4 @@ void RF_3D_Object::calculateMesh()
         vertex[i].y = transform.position.y + (sin(transform.rotation.z)*(vertex[i].x*cos(transform.rotation.y)+vertex[i].y*sin(transform.rotation.x)*sin(transform.rotation.y)+vertex[i].z*cos(transform.rotation.x)*sin(transform.rotation.y))+cos(transform.rotation.z)*(vertex[i].y*cos(transform.rotation.x)-vertex[i].z*sin(transform.rotation.x)));
         vertex[i].z = transform.position.z + (-vertex[i].x*sin(transform.rotation.y)+vertex[i].y*sin(transform.rotation.x)*cos(transform.rotation.y)+vertex[i].z*cos(transform.rotation.x)*cos(transform.rotation.y));
     }
-    RF_Engine::instance->Debug("--- RF_3D_OBJECT --- MESH CALCULATED ---");
 }

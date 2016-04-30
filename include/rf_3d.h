@@ -13,7 +13,7 @@ class RF_3D
         virtual ~RF_3D(){}
 
         static void Draw(){}
-        static SDL_Surface* Draw_Only(int objID = 0);
+        static void Draw_Only(SDL_Surface* screen, int objID = 0);
         static int loadObj(string file);
 
         static int& renderMode(){return _renderMode;}

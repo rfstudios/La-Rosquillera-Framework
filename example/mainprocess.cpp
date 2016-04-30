@@ -23,8 +23,8 @@ void mainProcess::Start()
 
     bg = dynamic_cast<background*>(RF_Engine::instance->taskManager[bgr]);
     bg->prepareSurface();
-
     scene = RF_Engine::instance->newTask(new SplashScreen(),id);
+    //stateMachine = -1;
     return;
 }
 void mainProcess::Update()

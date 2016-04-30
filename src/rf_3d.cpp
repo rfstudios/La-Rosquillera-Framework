@@ -1,5 +1,6 @@
 #include "rf_3d.h"
 #include "rf_engine.h"
+#include "rf_primitive.h"
 #include <stdio.h>
 
 vector<RF_3D_Object*> RF_3D::objectList = vector<RF_3D_Object*>();
@@ -48,7 +49,7 @@ int RF_3D::loadObj(string file)
                 tmpObj->vertex.push_back(Vector3<float>(aux[0],aux[1],aux[2]));
                 break;
             case 'f':
-                tmpObj->faces.push_back(Faces((int)aux[0],(int)aux[1],(int)aux[2],(int)aux[3]-1));
+                tmpObj->faces.push_back(Faces((int)aux[0]-1,(int)aux[1]-1,(int)aux[2]-1,(int)aux[3]-1));
                 break;
         }
     }
@@ -60,10 +61,8 @@ int RF_3D::loadObj(string file)
     return RF_3D::objectList.size()-1;
 }
 
-SDL_Surface* RF_3D::Draw_Only(int objID)
+void RF_3D::Draw_Only(SDL_Surface* screen, int objID)
 {
-    RF_Engine::instance->Debug("DrawOnly");
-    SDL_Surface* screen = SDL_CreateRGBSurface(0,RF_Engine::instance->ventana->width(), RF_Engine::instance->ventana->height(),32,0,0,0,0);
     RF_3D::objectList[objID]->calculateMesh();
 
     switch(RF_3D::renderMode())
@@ -71,28 +70,55 @@ SDL_Surface* RF_3D::Draw_Only(int objID)
         case RM_Point:
             for(int i=0; i<RF_3D::objectList[objID]->vertex.size();i++)
             {
-                RF_Engine::instance->putPixel(screen, RF_3D::objectList[objID]->vertex[i].x, RF_3D::objectList[objID]->vertex[i].y, 0xffffff);
-                //if(i==0){RF_Engine::instance->Debug("Coords"); RF_Engine::instance->Debug(RF_3D::objectList[objID]->vertex[i].x); RF_Engine::instance->Debug(RF_3D::objectList[objID]->vertex[i].y);}
+                RF_Primitive::putPixel(screen, RF_3D::objectList[objID]->vertex[i].x, RF_3D::objectList[objID]->vertex[i].y, 0xffffff);
+                RF_Primitive::putPixel(screen, RF_3D::objectList[objID]->vertex[i].x, RF_3D::objectList[objID]->vertex[i].y+1, 0xffffff);
+                RF_Primitive::putPixel(screen, RF_3D::objectList[objID]->vertex[i].x+1, RF_3D::objectList[objID]->vertex[i].y, 0xffffff);
+                RF_Primitive::putPixel(screen, RF_3D::objectList[objID]->vertex[i].x+1, RF_3D::objectList[objID]->vertex[i].y+1, 0xffffff);
             }
             break;
 
         case RM_Circles:
             break;
         case RM_Mesh:
-            for(int i=0; RF_3D::objectList[objID]->faces.size(); i++)
+            for(int i=0; i < RF_3D::objectList[objID]->faces.size(); i++)
             {
-                //draw_line(cfinales[caras[i][0]][0],cfinales[caras[i][0]][1],cfinales[caras[i][1]][0],cfinales[caras[i][1]][1]);
-                //draw_line(cfinales[caras[i][1]][0],cfinales[caras[i][1]][1],cfinales[caras[i][2]][0],cfinales[caras[i][2]][1]);
-                //if(caras[i][3]>-1)
-                //  draw_line(cfinales[caras[i][2]][0],cfinales[caras[i][2]][1],cfinales[caras[i][3]][0],cfinales[caras[i][3]][1]);
-                //  draw_line(cfinales[caras[i][3]][0],cfinales[caras[i][3]][1],cfinales[caras[i][0]][0],cfinales[caras[i][0]][1]);
-                //else
-                //  draw_line(cfinales[caras[i][2]][0],cfinales[caras[i][2]][1],cfinales[caras[i][0]][0],cfinales[caras[i][0]][1]);
-                //end
+                Vector2<int> p0,p1;
+                p0.x = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].a].x;
+                p0.y = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].a].y;
+                p1.x = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].b].x;
+                p1.y = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].b].y;
+                RF_Primitive::drawLine(screen,p0,p1,0xffffff);
 
+                p0.x = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].b].x;
+                p0.y = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].b].y;
+                p1.x = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].c].x;
+                p1.y = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].c].y;
+                RF_Primitive::drawLine(screen,p0,p1,0xffffff);
+
+                if(RF_3D::objectList[objID]->faces[i].d > -1)
+                {
+                    p0.x = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].c].x;
+                    p0.y = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].c].y;
+                    p1.x = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].d].x;
+                    p1.y = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].d].y;
+                    RF_Primitive::drawLine(screen,p0,p1,0xffffff);
+                    p0.x = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].d].x;
+                    p0.y = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].d].y;
+                    p1.x = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].a].x;
+                    p1.y = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].a].y;
+                    RF_Primitive::drawLine(screen,p0,p1,0xffffff);
+                }
+                else
+                {
+                    p0.x = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].c].x;
+                    p0.y = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].c].y;
+                    p1.x = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].a].x;
+                    p1.y = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].a].y;
+                    RF_Primitive::drawLine(screen,p0,p1,0xffffff);
+                }
             }
             break;
     }
 
-    return screen;
+    //return screen;
 }
