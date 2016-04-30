@@ -9,11 +9,8 @@ using namespace std;
 void Scene2::Start()
 {
     bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
-    RF_Engine::instance->Debug(RF_Engine::instance->time->fixedCTime());
-
-    RF_Engine::instance->Debug("Cargados:");
-    RF_Engine::instance->Debug(RF_3D::loadObj("resources/ico.yawobj"));
-    RF_Engine::instance->Debug(RF_3D::loadObj("resources/cubo.yawobj"));
+    RF_3D::loadObj("resources/ico.yawobj");
+    RF_3D::loadObj("resources/cubo.yawobj");
 
     Transform3D t(Vector3<float>(320.0f,240.0f,240.0f),Vector3<float>(0.0f,0.0f,0.0f),Vector3<float>(50.0f,50.0f,50.0f));
     RF_3D::objectList[0]->transform = t;
@@ -26,7 +23,7 @@ void Scene2::Update()
 
     if(0.025f < deltaCount)
     {
-        step++;
+        step++; step2++;
 
         if(!lastFrame)
         {
@@ -57,7 +54,6 @@ void Scene2::Update()
                 if(tmpScl > 400 && cH == false)
                 {
                     cuentaobj++;
-                    RF_Engine::instance->Debug(cuentaobj);
                     cH=true;
                     if(cuentaobj>2)
                     {
@@ -82,6 +78,42 @@ void Scene2::Update()
             RF_3D::Draw_Only(tmpSrf, objtorend);
             bg->addSurface(tmpSrf);
             SDL_FreeSurface(tmpSrf);
+
+            if(step2 > 100)
+            {
+                switch(textcont)
+                {
+                    case 0:
+                        Scrolltext("Stage7 - Genshiken", 100);
+                        break;
+                    case 1:
+                        Scrolltext("Achifaifa", 400);
+                        break;
+                    case 2:
+                        Scrolltext("Marcan", 300);
+                        break;
+                    case 3:
+                        Scrolltext("Freddy - Soga", 400);
+                        break;
+                    case 4:
+                        Scrolltext("Imobilis", 250);
+                        break;
+                    case 5:
+                        Scrolltext("Klondike", 150);
+                        break;
+                    case 6:
+                        Scrolltext("Zeru", 315);
+                        break;
+                    case 7:
+                        Scrolltext("Red & Zuzu", 275);
+                        break;
+                    case 8:
+                        Scrolltext("A.J.Y.", 350);
+                        break;
+                }
+                textcont++;
+                step2=0;
+            }
         }
 
         deltaCount = 0.0f;
@@ -91,8 +123,7 @@ void Scene2::Update()
     return;
 }
 
-bool Scene2::Starfield(int limit)
-{
+bool Scene2::Starfield(int limit){
     if(100 > stars.size())
     {
         int xx = 320 + (rand()%100-50); if(320 == xx){xx = 315;}
@@ -169,4 +200,24 @@ bool Scene2::Starfield(int limit)
     }
 
     return false;
+}
+void Scene2::Scrolltext(string text, int y){
+    int x = 643;
+    for(int i=0;i<text.length();i++)
+    {
+        RF_Engine::instance->newTask(new scrLetra(text.substr(i,1),Vector2<int>(x,y)),id);
+        x+=20;
+    }
+}
+
+void scrLetra::Update(){
+    if(-1 < textID && NULL != RF_Engine::instance->textSources[textID])
+    {
+        RF_Engine::instance->deleteText(textID);
+    }
+
+    textID = RF_Engine::instance->write(txt, {255,255,255}, Vector2<int>((int)pos.x, (int)(pos.y + cos(pos.x*0.05)*30)));
+    pos.x-=RF_Engine::instance->time->deltaTime*100;
+
+    if(-10 > pos.x){RF_Engine::instance->sendSignal(id,S_KILL);}
 }
