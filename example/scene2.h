@@ -28,7 +28,7 @@ class scrLetra : public RF_Process
 
     private:
         int textID = -1;
-        string txt="M";
+        string txt="";
 
         Vector2<float> pos;
 };

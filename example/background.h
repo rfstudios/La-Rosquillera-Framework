@@ -18,9 +18,9 @@ class background : public RF_Process
         void generateTexture();
         void clearSurface(Uint32 color = 0);
         void addSurface(SDL_Surface *tmpSrf);
+        SDL_Surface* screen;
 
     private:
-        SDL_Surface* screen;
         bool needGenerate = false;
 };
 

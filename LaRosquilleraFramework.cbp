@@ -33,6 +33,7 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-O3" />
 			<Add option="-std=c++11" />
 			<Add option="-Wall" />
 			<Add directory="include" />
@@ -57,6 +58,10 @@
 		<Unit filename="example/scene1.h" />
 		<Unit filename="example/scene2.cpp" />
 		<Unit filename="example/scene2.h" />
+		<Unit filename="example/scene3.cpp" />
+		<Unit filename="example/scene3.h" />
+		<Unit filename="example/scene4.cpp" />
+		<Unit filename="example/scene4.h" />
 		<Unit filename="example/splashscreen.cpp" />
 		<Unit filename="example/splashscreen.h" />
 		<Unit filename="include/rf_3d.h" />

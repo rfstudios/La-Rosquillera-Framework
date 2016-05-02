@@ -8,6 +8,7 @@ using namespace std;
 
 void Scene2::Start()
 {
+    RF_Engine::instance->font = TTF_OpenFont("resources/Purisa.ttf", 20);
     bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
     RF_3D::loadObj("resources/ico.yawobj");
     RF_3D::loadObj("resources/cubo.yawobj");
@@ -23,18 +24,19 @@ void Scene2::Update()
 
     if(0.025f < deltaCount)
     {
+        bg->clearSurface(0x000000);
         step++; step2++;
 
-        if(!lastFrame)
+        if(!lastFrame && cuentaobj == 0)
         {
             lastFrame = Starfield(16775);
         }
 
         if(16800 < RF_Engine::instance->time->fixedCTime())
         {
-            if(lastFrame)
+            if(cuentaobj>4)
             {
-                bg->clearSurface(0x000000);
+                lastFrame = Starfield(60000);
             }
 
             Transform3D tmpT = RF_3D::objectList[0]->transform;
@@ -70,7 +72,7 @@ void Scene2::Update()
             }
 
             tmpT.scale.x = tmpT.scale.y = tmpT.scale.z = tmpScl;
-            tmpT.rotation.x += 0.1; tmpT.rotation.y += 0.11;//tmpT.scale.z = tmpScl;
+            tmpT.rotation.x += 0.05; tmpT.rotation.y += 0.055;//tmpT.scale.z = tmpScl;
 
             RF_3D::objectList[0]->transform = RF_3D::objectList[1]->transform = tmpT;
 
@@ -84,16 +86,18 @@ void Scene2::Update()
                 switch(textcont)
                 {
                     case 0:
-                        Scrolltext("Stage7 - Genshiken", 100);
+                        Scrolltext("Stage7 Genshiken", 100);
                         break;
                     case 1:
                         Scrolltext("Achifaifa", 400);
                         break;
                     case 2:
+                        stars.clear();
+                        stars_speed.clear();
                         Scrolltext("Marcan", 300);
                         break;
                     case 3:
-                        Scrolltext("Freddy - Soga", 400);
+                        Scrolltext("Freddy Soga", 400);
                         break;
                     case 4:
                         Scrolltext("Imobilis", 250);
@@ -105,10 +109,10 @@ void Scene2::Update()
                         Scrolltext("Zeru", 315);
                         break;
                     case 7:
-                        Scrolltext("Red & Zuzu", 275);
+                        Scrolltext("Red&Zuzu", 75);
                         break;
                     case 8:
-                        Scrolltext("A.J.Y.", 350);
+                        Scrolltext("A.J.Y", 350);
                         break;
                 }
                 textcont++;
@@ -119,7 +123,11 @@ void Scene2::Update()
         deltaCount = 0.0f;
     }
 
-    ///TODO: Motor3D
+    if(55078 <= RF_Engine::instance->time->fixedCTime())
+    {
+        bg->clearSurface(0x000000);
+        dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->state() = 3;
+    }
     return;
 }
 
@@ -132,7 +140,6 @@ bool Scene2::Starfield(int limit){
         stars_speed.push_back(15 + rand()%11);
     }
 
-    bg->clearSurface(0x000000);
     bool painted = false;
     for(int i = 0; i < stars.size(); i++)
     {
@@ -219,5 +226,5 @@ void scrLetra::Update(){
     textID = RF_Engine::instance->write(txt, {255,255,255}, Vector2<int>((int)pos.x, (int)(pos.y + cos(pos.x*0.05)*30)));
     pos.x-=RF_Engine::instance->time->deltaTime*100;
 
-    if(-10 > pos.x){RF_Engine::instance->sendSignal(id,S_KILL);}
+    if(-10 > pos.x){signal = S_KILL;}
 }

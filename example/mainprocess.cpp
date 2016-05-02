@@ -10,6 +10,8 @@
 #include "splashscreen.h"
 #include "scene1.h"
 #include "scene2.h"
+#include "scene3.h"
+#include "scene4.h"
 #include "rf_declares.h"
 #include <SDL2/SDL_ttf.h>
 
@@ -23,10 +25,12 @@ void mainProcess::Start()
 
     bg = dynamic_cast<background*>(RF_Engine::instance->taskManager[bgr]);
     bg->prepareSurface();
-    scene = RF_Engine::instance->newTask(new Scene2(),id); //RF_Engine::instance->newTask(new SplashScreen(),id);
-    stateMachine = -1;
+
+    breik(new Scene2());
+    //scene = RF_Engine::instance->newTask(new SplashScreen(),id);
     return;
 }
+
 void mainProcess::Update()
 {
     switch(stateMachine)
@@ -50,6 +54,29 @@ void mainProcess::Update()
                 scene = RF_Engine::instance->newTask(new Scene2(),id);
             }
             break;
+        case 3: //Scene3
+            if("Scene3" != RF_Engine::instance->taskManager[scene]->type)
+            {
+                RF_Engine::instance->sendSignal(scene, S_KILL_TREE);
+
+                RF_Engine::instance->time->setFixedCTime();
+                scene = RF_Engine::instance->newTask(new Scene3(),id);
+            }
+            break;
+        case 4: //Scene4
+            if("Scene4" != RF_Engine::instance->taskManager[scene]->type)
+            {
+                RF_Engine::instance->sendSignal(scene, S_KILL_TREE);
+
+                RF_Engine::instance->time->setFixedCTime();
+                scene = RF_Engine::instance->newTask(new Scene4(),id);
+            }
+            break;
     }
     return;
+}
+
+void mainProcess::breik(RF_Process* escena){
+    scene = RF_Engine::instance->newTask(escena,id);
+    stateMachine = -1;
 }
