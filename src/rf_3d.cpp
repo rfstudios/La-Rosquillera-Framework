@@ -78,7 +78,10 @@ void RF_3D::Draw_Only(SDL_Surface* screen, int objID)
             break;
 
         case RM_Circles:
-            ///TODO: Añadir RM_Circles
+            for(int i=0; i<RF_3D::objectList[objID]->vertex.size();i++)
+            {
+                RF_Primitive::drawCircle(screen,Vector2<int>(RF_3D::objectList[objID]->vertex[i].x,RF_3D::objectList[objID]->vertex[i].y),4,0xffffff);
+            }
             break;
         case RM_Mesh:
             for(int i=0; i < RF_3D::objectList[objID]->faces.size(); i++)

@@ -13,6 +13,7 @@
 #include "scene3.h"
 #include "scene4.h"
 #include "rf_declares.h"
+#include "rf_primitive.h"
 #include <SDL2/SDL_ttf.h>
 
 mainProcess::~mainProcess(){}

@@ -280,7 +280,7 @@
 	"rf_process.h"
 	"background.h"
 
-1462149621 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/mainprocess.cpp
+1462190609 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/mainprocess.cpp
 	"mainprocess.h"
 	"execontrol.h"
 	"splashscreen.h"
@@ -289,6 +289,7 @@
 	"scene3.h"
 	"scene4.h"
 	"rf_declares.h"
+	"rf_primitive.h"
 	<SDL2/SDL_ttf.h>
 
 1455320485 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/prota.h
@@ -350,14 +351,14 @@
 	"rf_engine.h"
 	<vector>
 
-1462135805 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/scene2.cpp
+1462190749 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/scene2.cpp
 	"scene2.h"
 	"mainprocess.h"
 	"rf_declares.h"
 	"rf_3d.h"
 	<math.h>
 
-1462029351 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/src/rf_3d.cpp
+1462190676 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/src/rf_3d.cpp
 	"rf_3d.h"
 	"rf_engine.h"
 	"rf_primitive.h"
@@ -376,7 +377,7 @@
 	"rf_engine.h"
 	<math.h>
 
-1462027419 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/include/rf_primitive.h
+1462196909 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/include/rf_primitive.h
 	"rf_engine.h"
 	"rf_declares.h"
 	<SDL2/SDL.h>

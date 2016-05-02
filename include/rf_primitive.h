@@ -34,6 +34,21 @@ class RF_Primitive
             }
         }
 
+        static void drawCircle(SDL_Surface* surf, Vector2<int> p, int r, Uint32 color)
+        {
+            for(float i = 0; i <= r; i+=0.1)
+            {
+                float j2 = r*r-i*i;
+                float j = sqrt(j2);
+
+                putPixel(surf,p.x+round(i),p.y+round(j),color);
+                putPixel(surf,p.x-round(i),p.y+round(j),color);
+
+                putPixel(surf,p.x+round(i),p.y-round(j),color);
+                putPixel(surf,p.x-round(i),p.y-round(j),color);
+            }
+        }
+
         static Uint32 getPixel(SDL_Surface* surface, int x, int y)
         {
             int bpp = surface->format->BytesPerPixel;

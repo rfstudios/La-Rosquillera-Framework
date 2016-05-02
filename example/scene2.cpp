@@ -51,7 +51,7 @@ void Scene2::Update()
             }
             else
             {
-                RF_3D::renderMode() = RM_Point;
+                RF_3D::renderMode() = RM_Circles;
 
                 if(tmpScl > 400 && cH == false)
                 {
