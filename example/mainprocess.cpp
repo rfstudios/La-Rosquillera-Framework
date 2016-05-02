@@ -27,8 +27,8 @@ void mainProcess::Start()
     bg = dynamic_cast<background*>(RF_Engine::instance->taskManager[bgr]);
     bg->prepareSurface();
 
-    breik(new Scene2());
-    //scene = RF_Engine::instance->newTask(new SplashScreen(),id);
+    //breik(new Scene4());
+    scene = RF_Engine::instance->newTask(new SplashScreen(),id);
     return;
 }
 

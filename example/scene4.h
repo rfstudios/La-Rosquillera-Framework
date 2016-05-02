@@ -14,7 +14,14 @@ class Scene4 : public RF_Process
         Scene4():RF_Process("Scene4"){}
         virtual ~Scene4(){}
 
+        virtual void Start();
+        virtual void Update();
+
     private:
+        background* bg;
+        Uint32 bgImg[640][480];
+        int step = 0, rzScale = 2;
+        float deltacount = 0.0f;
 };
 
 #endif // SCENE4_H
