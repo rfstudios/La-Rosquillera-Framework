@@ -37,7 +37,7 @@ class Scene2 : public RF_Process
 {
     public:
         Scene2():RF_Process("Scene2"){}
-        virtual ~Scene2(){}
+        virtual ~Scene2();
 
         virtual void Start();
         virtual void Update();

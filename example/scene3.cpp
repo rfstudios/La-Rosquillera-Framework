@@ -78,10 +78,10 @@ void Scene3::metaballs(int type){
                         bg->putPixel(i,j,bgImg[i][j]);
                         break;
                     case 1:
-                        bg->putPixel(i,j,bgImg2[i][j]);
+                        bg->putPixel(i,j,bgImg[i][j]);
                         break;
                     case 2:
-                        bg->putPixel(i,j,bgImg[i][j]);
+                        bg->putPixel(i,j,bgImg2[i][j]);
                         break;
                 }
             }
@@ -91,11 +91,11 @@ void Scene3::metaballs(int type){
                 {
                     if(type == 1)
                     {
-                        bg->putPixel(i,j,bgImg[i][j]);
+                        bg->putPixel(i,j,bgImg2[i][j]);
                     }
                     else
                     {
-                        bg->putPixel(i,j,bgImg2[i][j]);
+                        bg->putPixel(i,j,bgImg[i][j]);
                     }
                 }
             }

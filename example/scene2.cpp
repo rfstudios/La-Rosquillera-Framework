@@ -131,6 +131,10 @@ void Scene2::Update()
     return;
 }
 
+Scene2::~Scene2(){
+    RF_3D::objectList.clear();
+}
+
 bool Scene2::Starfield(int limit){
     if(100 > stars.size())
     {

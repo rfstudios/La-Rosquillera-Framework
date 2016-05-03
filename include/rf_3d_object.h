@@ -19,8 +19,8 @@ class RF_3D_Object
         }
 
         void calculateMesh();
-    private:
         vector<Vector3<float>> _vertex; //Información original del objeto
+    private:
 };
 
 #endif // RF_3D_OBJECT_H

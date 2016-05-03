@@ -56,7 +56,7 @@ void Scene5::Update(){
     else
     {
         bg->clearSurface();
-        RF_Engine::instance->write("Escena5", {255,255,255}, Vector2<int>(260,240));
+        dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->state() = 6;
     }
 }
 

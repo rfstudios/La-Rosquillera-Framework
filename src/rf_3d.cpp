@@ -122,6 +122,36 @@ void RF_3D::Draw_Only(SDL_Surface* screen, int objID)
                 }
             }
             break;
+        case RM_LandScape:
+            Uint32 color = 0xff00ff;
+            for(int i=0; i<RF_3D::objectList[objID]->vertex.size();i++)
+            {
+                float z = RF_3D::objectList[objID]->_vertex[i].z;
+
+                if(-0.5f > z)
+                {
+                    color = 0xff0000;
+                }
+                else if(-0.5f <= z && -0.2f > z)
+                {
+                    color = 0xff00ff;
+                }
+                else if(-0.2f <= z && 0.3f >= z)
+                {
+                    color = 0xffff00;
+                }
+                else
+                {
+                    color = 0x00ffff;
+                }
+
+                RF_Primitive::drawFCircle(screen,Vector2<int>(RF_3D::objectList[objID]->vertex[i].x,RF_3D::objectList[objID]->vertex[i].y),2,color);
+                /*RF_Primitive::putPixel(screen, RF_3D::objectList[objID]->vertex[i].x, RF_3D::objectList[objID]->vertex[i].y, color);
+                RF_Primitive::putPixel(screen, RF_3D::objectList[objID]->vertex[i].x, RF_3D::objectList[objID]->vertex[i].y+1, color);
+                RF_Primitive::putPixel(screen, RF_3D::objectList[objID]->vertex[i].x+1, RF_3D::objectList[objID]->vertex[i].y, color);
+                RF_Primitive::putPixel(screen, RF_3D::objectList[objID]->vertex[i].x+1, RF_3D::objectList[objID]->vertex[i].y+1, color);*/
+            }
+            break;
     }
 
     //return screen;
