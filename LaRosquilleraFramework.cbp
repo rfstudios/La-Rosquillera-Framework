@@ -62,6 +62,8 @@
 		<Unit filename="example/scene3.h" />
 		<Unit filename="example/scene4.cpp" />
 		<Unit filename="example/scene4.h" />
+		<Unit filename="example/scene5.cpp" />
+		<Unit filename="example/scene5.h" />
 		<Unit filename="example/splashscreen.cpp" />
 		<Unit filename="example/splashscreen.h" />
 		<Unit filename="include/rf_3d.h" />

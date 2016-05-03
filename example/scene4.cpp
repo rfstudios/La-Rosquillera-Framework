@@ -16,7 +16,6 @@ void Scene4::Start(){
 }
 void Scene4::Update(){
     deltacount += RF_Engine::instance->time->deltaTime;
-
     if(0.025 < deltacount)
     {
         float zL = 10.0;
@@ -42,5 +41,11 @@ void Scene4::Update(){
 
         step++;
         deltacount = 0.0f;
+    }
+
+    if(16800 <= RF_Engine::instance->time->fixedCTime())
+    {
+        bg->clearSurface(0x000000);
+        dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->state() = 5;
     }
 }

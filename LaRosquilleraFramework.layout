@@ -6,9 +6,14 @@
 			<Cursor1 position="578" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include/rf_primitive.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/rf_primitive.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1201" topLine="32" />
+			<Cursor1 position="916" topLine="22" />
+		</Cursor>
+	</File>
+	<File name="example/scene5.h" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="example/scene1.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -43,6 +48,11 @@
 	</File>
 	<File name="example/scene4.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
+			<Cursor1 position="640" topLine="23" />
+		</Cursor>
+	</File>
+	<File name="example/scene5.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
@@ -66,14 +76,14 @@
 			<Cursor1 position="50" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="example/scene4.h" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="example/scene4.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="232" topLine="0" />
+			<Cursor1 position="233" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="include/rf_process.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="23" />
+			<Cursor1 position="1165" topLine="18" />
 		</Cursor>
 	</File>
 	<File name="src/rf_window.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -83,12 +93,12 @@
 	</File>
 	<File name="example/scene2.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2315" topLine="69" />
+			<Cursor1 position="152" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="example/scene3.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="example/scene3.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="881" topLine="0" />
+			<Cursor1 position="129" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="include/rf_3d.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -96,7 +106,7 @@
 			<Cursor1 position="244" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="example/scene2.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="example/scene2.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="816" topLine="21" />
 		</Cursor>
@@ -108,10 +118,10 @@
 	</File>
 	<File name="example/main.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="249" topLine="0" />
+			<Cursor1 position="223" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/rf_engine.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/rf_engine.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1293" topLine="15" />
 		</Cursor>
@@ -131,9 +141,9 @@
 			<Cursor1 position="973" topLine="12" />
 		</Cursor>
 	</File>
-	<File name="src/rf_3d.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/rf_3d.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2407" topLine="0" />
+			<Cursor1 position="2514" topLine="66" />
 		</Cursor>
 	</File>
 	<File name="include/rf_engine.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

@@ -8,7 +8,7 @@ using namespace std;
 
 void Scene2::Start()
 {
-    RF_Engine::instance->font = TTF_OpenFont("resources/Purisa.ttf", 20);
+    RF_Engine::instance->font = TTF_OpenFont("resources/Times_New_Roman.ttf", 30);
     bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
     RF_3D::loadObj("resources/ico.yawobj");
     RF_3D::loadObj("resources/cubo.yawobj");
@@ -208,12 +208,52 @@ bool Scene2::Starfield(int limit){
 
     return false;
 }
-void Scene2::Scrolltext(string text, int y){
-    int x = 643;
-    for(int i=0;i<text.length();i++)
+void Scene2::Scrolltext(string txt, int y){
+    int posX = 643;
+    for(int i=0;i<txt.length();i++)
     {
-        RF_Engine::instance->newTask(new scrLetra(text.substr(i,1),Vector2<int>(x,y)),id);
-        x+=20;
+        if(0<i)
+        {
+            if(txt.substr(i-1,1) == "M")
+            {
+                posX+=15;
+            }
+            else if(txt.substr(i-1,1) == "m")
+            {
+                posX+=10;
+            }
+            else if(txt.substr(i-1,1) == "l")
+            {
+                posX-=5;
+            }
+            else if(txt.substr(i-1,1) == "G")
+            {
+                posX+=5;
+            }
+            else if(txt.substr(i-1,1) == "A")
+            {
+                posX+=5;
+            }
+            else if(txt.substr(i-1,1) == "K")
+            {
+                posX+=10;
+            }
+            else if(txt.substr(i-1,1) == "t")
+            {
+                posX-=5;
+            }
+            else if(txt.substr(i-1,1) == "i")
+            {
+                posX-=5;
+            }
+            else if(txt.substr(i-1,1) == "E")
+            {
+                posX+=10;
+            }
+        }
+
+        RF_Engine::instance->newTask(new scrLetra(txt.substr(i,1),Vector2<int>(posX,y)),id);
+        posX+=20;
     }
 }
 

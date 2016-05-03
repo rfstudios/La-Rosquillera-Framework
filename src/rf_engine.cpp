@@ -147,7 +147,7 @@ int RF_Engine::newTask(RF_Process *task, int father){
     }
 
     taskManager[pos]->father=father;
-    taskManager[pos]->id=taskManager.size()-1;
+    taskManager[pos]->id=pos;
     taskManager[pos]->Start();
     return pos;
 }

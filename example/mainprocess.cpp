@@ -12,6 +12,7 @@
 #include "scene2.h"
 #include "scene3.h"
 #include "scene4.h"
+#include "scene5.h"
 #include "rf_declares.h"
 #include "rf_primitive.h"
 #include <SDL2/SDL_ttf.h>
@@ -27,7 +28,7 @@ void mainProcess::Start()
     bg = dynamic_cast<background*>(RF_Engine::instance->taskManager[bgr]);
     bg->prepareSurface();
 
-    //breik(new Scene4());
+    //breik(new Scene5());
     scene = RF_Engine::instance->newTask(new SplashScreen(),id);
     return;
 }
@@ -71,6 +72,15 @@ void mainProcess::Update()
 
                 RF_Engine::instance->time->setFixedCTime();
                 scene = RF_Engine::instance->newTask(new Scene4(),id);
+            }
+            break;
+        case 5: //Scene5
+            if("Scene5" != RF_Engine::instance->taskManager[scene]->type)
+            {
+                RF_Engine::instance->sendSignal(scene, S_KILL_TREE);
+
+                RF_Engine::instance->time->setFixedCTime();
+                scene = RF_Engine::instance->newTask(new Scene5(),id);
             }
             break;
     }

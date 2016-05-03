@@ -25,8 +25,6 @@ void Scene3::Start(){
     SDL_FreeSurface(bgImgS);
 }
 void Scene3::Update(){
-    RF_Engine::instance->Debug(RF_Engine::instance->time->fixedCTime());
-
     deltaCont += RF_Engine::instance->time->deltaTime;
     if(deltaCont > 0.025f)
     {
