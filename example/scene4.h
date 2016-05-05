@@ -19,8 +19,8 @@ class Scene4 : public RF_Process
 
     private:
         background* bg;
-        Uint32 bgImg[640][480];
-        int step = 0, rzScale = 2;
+        Uint32 bgImg[640][480], bgImg2[640][480];
+        int step = 0, contB = 0;
         float deltacount = 0.0f;
 };
 

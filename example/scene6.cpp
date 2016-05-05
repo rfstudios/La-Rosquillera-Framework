@@ -71,6 +71,10 @@ void Scene6::bezierText(string text, int y){
             {
                 x+=5;
             }
+            else if(text.substr(i,1) == "Y")
+            {
+                x-=5;
+            }
             else if(text.substr(i,1) == "m")
             {
                 x-=8;

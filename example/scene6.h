@@ -14,7 +14,7 @@ class BezierLetter : public RF_Process
             text = txt;
             step+=retardo;
 
-            step=0;
+            //step=0;
         }
         virtual ~BezierLetter(){}
 
