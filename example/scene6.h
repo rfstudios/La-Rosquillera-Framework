@@ -13,10 +13,13 @@ class BezierLetter : public RF_Process
             position = pos;
             text = txt;
             step+=retardo;
-
-            //step=0;
         }
-        virtual ~BezierLetter(){}
+        virtual ~BezierLetter(){
+            if(-1 < textID && NULL != RF_Engine::instance->textSources[textID])
+            {
+                RF_Engine::instance->deleteText(textID);
+            }
+        }
 
         virtual void Update();
 
@@ -43,7 +46,7 @@ class Scene6 : public RF_Process
     private:
         background* bg;
         float deltaCount = 0.0f;
-        int step = 0;
+        int step = 0, step2 = 0, cuentatexto = 0;
 };
 
 #endif // SCENE6_H

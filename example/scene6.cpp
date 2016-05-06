@@ -28,12 +28,10 @@ void Scene6::Start(){
 
     RF_3D::renderMode() = RM_LandScape;
 
-    bezierText("Thank's for watch my first demo.",50);
-    bezierText("Programmed in C++ for ",100);
-    bezierText("Euskal Encounter 24.",150);
-
-    bezierText("Music by Stage7 - Genshiken ",300);
-    bezierText("Code by Yawin ",350);
+    /*bezierText("La scene no estaba muerta ",100);
+    bezierText("Estaba de parranda ",150);
+    bezierText("The scene will rock again ",300);*/
+    /**/
 }
 
 void Scene6::Update(){
@@ -54,7 +52,53 @@ void Scene6::Update(){
         bg->addSurface(tmpSrf);
         SDL_FreeSurface(tmpSrf);
 
+        RF_Engine::instance->Debug(step2);
+
+        if(640 == step2)
+        {
+            switch(cuentatexto)
+            {
+                case 0:
+                    bezierText("Thank's for watch my first demo.",50);
+                    bezierText("Programmed in C++ for ",100);
+                    bezierText("Euskal Encounter 24.",150);
+
+                    bezierText("Music by Stage7 - Genshiken ",300);
+                    bezierText("Code by Yawin ",350);
+                    step2 = 200;
+                    break;
+
+                case 1:
+                    RF_Engine::instance->sendSignal("BezierLetter", S_KILL);
+                    step2 = 639;
+                    break;
+
+                case 2:
+                    bezierText("La scene no estaba muerta ",100);
+                    bezierText("Estaba de parranda ",150);
+                    bezierText("The scene will rock again ",300);
+                    step2 = 200;
+                    break;
+
+                case 3:
+                    RF_Engine::instance->sendSignal("BezierLetter", S_KILL);
+                    step2 = 639;
+                    break;
+
+                default:
+                    bezierText("E U S K A L   E N C O U N T E R   R U L 3 Z   ", 240);
+            }
+
+            cuentatexto++;
+        }
         step++;
+        step2++;
+        if(1327 < step2)
+        {
+            bg->clearSurface(0x000000);
+            dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->state() = 7;
+        }
+
         deltaCount = 0.0f;
     }
 }
@@ -62,7 +106,7 @@ void Scene6::Update(){
 void Scene6::bezierText(string text, int y){
     int x = 620;
 
-    for(int i = text.length()-1; i >= 0 ; i--)
+    for(int i = text.length()-1; i >= 0; i--)
     {
 
         if(text.length() - 1 > i)
@@ -141,7 +185,7 @@ void Scene6::bezierText(string text, int y){
             }
         }
 
-        RF_Engine::instance->newTask(new BezierLetter(text.substr(i,1),Vector2<int>(x,y),i),id);
+        RF_Engine::instance->newTask(new BezierLetter(text.substr(i,1),Vector2<int>(x,y),(text.length()-i)*10),id);
 
         x -= 15;
     }
@@ -162,7 +206,7 @@ void BezierLetter::Update(){
             deltaCount = 0.0f;
 
             float beziert = step * 0.01;
-            x = position.x*(1-beziert)*(pow(1-beziert,2)+5*pow(beziert,2));
+            x = position.x*(1-beziert)*(pow(1-beziert,4)+9.5*pow(beziert,3));
             y = position.y*(pow(1-beziert,3)+pow(beziert,3))+(y-50)*3*(beziert-pow(beziert,2));
         }
         textID = RF_Engine::instance->write(text, {255,255,255}, Vector2<int>(x, y));
