@@ -33,7 +33,6 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-O3" />
 			<Add option="-std=c++11" />
 			<Add option="-Wall" />
 			<Add directory="include" />

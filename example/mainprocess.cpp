@@ -2,7 +2,7 @@
   LA ROSQUILLERA FRAMEWORK
   Copyright (C) 2015 Yawin <tuzmakel@gmail.com>
 
-  This is an example of videogame. You can use as the fuck you want.
+  This is an example of a demo. You can use as the fuck you want.
 */
 
 #include "mainprocess.h"
