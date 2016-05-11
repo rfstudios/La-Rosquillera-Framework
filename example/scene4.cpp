@@ -3,6 +3,8 @@
 #include "rf_primitive.h"
 
 void Scene4::Start(){
+    RF_Engine::instance->Debug(type);
+
     bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
     SDL_Surface* bgImgS = RF_Engine::instance->loadPNG_Surface("resources/gfx/eBaby.png");
     SDL_Surface* bgImgS2 = RF_Engine::instance->loadPNG_Surface("resources/gfx/logo.png");

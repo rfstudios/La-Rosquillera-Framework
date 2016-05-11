@@ -3,6 +3,8 @@
 #include "mainprocess.h"
 
 void Scene3::Start(){
+    RF_Engine::instance->Debug(type);
+
     bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
     SDL_Surface* bgImgS = RF_Engine::instance->loadPNG_Surface("resources/gfx/euskal.png");
     for(int i=0; i<640; i++)

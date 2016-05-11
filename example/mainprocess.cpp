@@ -29,9 +29,8 @@ void mainProcess::Start()
     bg = dynamic_cast<background*>(RF_Engine::instance->taskManager[bgr]);
     bg->prepareSurface();
 
-    //breik(new Scene6());
+    //breik(new Scene4());
 
-    RF_Engine::instance->Debug("SplashScreen");
     scene = RF_Engine::instance->newTask(new SplashScreen(),id);
     return;
 }
@@ -47,7 +46,6 @@ void mainProcess::Update()
                 RF_Engine::instance->playSong("resources/st7.wav");
                 RF_Engine::instance->time->setFixedCTime();
 
-                RF_Engine::instance->Debug("Scene1");
                 scene = RF_Engine::instance->newTask(new Scene1(),id);
             }
             break;
@@ -56,7 +54,6 @@ void mainProcess::Update()
             {
                 RF_Engine::instance->sendSignal(scene, S_KILL_TREE);
 
-                RF_Engine::instance->Debug("Scene2");
                 RF_Engine::instance->time->setFixedCTime();
                 scene = RF_Engine::instance->newTask(new Scene2(),id);
             }
@@ -66,7 +63,6 @@ void mainProcess::Update()
             {
                 RF_Engine::instance->sendSignal(scene, S_KILL_TREE);
 
-                RF_Engine::instance->Debug("Scene3");
                 RF_Engine::instance->time->setFixedCTime();
                 scene = RF_Engine::instance->newTask(new Scene3(),id);
             }
@@ -76,7 +72,6 @@ void mainProcess::Update()
             {
                 RF_Engine::instance->sendSignal(scene, S_KILL_TREE);
 
-                RF_Engine::instance->Debug("Scene4");
                 RF_Engine::instance->time->setFixedCTime();
                 scene = RF_Engine::instance->newTask(new Scene4(),id);
             }
@@ -86,7 +81,6 @@ void mainProcess::Update()
             {
                 RF_Engine::instance->sendSignal(scene, S_KILL_TREE);
 
-                RF_Engine::instance->Debug("Scene5");
                 RF_Engine::instance->time->setFixedCTime();
                 scene = RF_Engine::instance->newTask(new Scene5(),id);
             }
@@ -96,14 +90,12 @@ void mainProcess::Update()
             {
                 RF_Engine::instance->sendSignal(scene, S_KILL_TREE);
 
-                RF_Engine::instance->Debug("Scene6");
                 RF_Engine::instance->time->setFixedCTime();
                 scene = RF_Engine::instance->newTask(new Scene6(),id);
             }
             break;
         case 7: //Fin
             RF_Engine::instance->sendSignal(scene, S_KILL_TREE);
-                RF_Engine::instance->Debug("Fin");
             RF_Engine::instance->isRunning(false);
 
             stateMachine = -1;

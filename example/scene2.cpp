@@ -8,6 +8,8 @@ using namespace std;
 
 void Scene2::Start()
 {
+    RF_Engine::instance->Debug(type);
+
     RF_Engine::instance->font = TTF_OpenFont("resources/Times_New_Roman.ttf", 30);
     bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
     RF_3D::loadObj("resources/ico.yawobj");
