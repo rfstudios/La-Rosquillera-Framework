@@ -37,6 +37,7 @@ RF_Engine::RF_Engine(bool debug){
     font = TTF_OpenFont("resources/Coving01.ttf", 20);
 
     time=new RF_Time();
+    ventana = new RF_Window("",SDL_WINDOW_HIDDEN,0,0,1,1,SDL_RENDERER_ACCELERATED);
 
     if(isDebug)
     {
