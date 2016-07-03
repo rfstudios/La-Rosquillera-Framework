@@ -114,7 +114,7 @@ void Scene2::Update()
                         Scrolltext("Red&Zuzu", 75);
                         break;
                     case 8:
-                        Scrolltext("A.J.Y", 350);
+                        Scrolltext("<3 A.J.Y <3", 350);
                         break;
                 }
                 textcont++;
@@ -269,7 +269,19 @@ void scrLetra::Update(){
         RF_Engine::instance->deleteText(textID);
     }
 
-    textID = RF_Engine::instance->write(txt, {255,255,255}, Vector2<int>((int)pos.x, (int)(pos.y + cos(pos.x*0.05)*30)));
+    int mod = 0;
+    SDL_Color c = {255,255,255};
+    if(txt == "3")
+    {
+        mod = 20;
+        c = {255,0,0};
+    }
+    else if(txt == "<")
+    {
+        c = {255,0,0};
+    }
+
+    textID = RF_Engine::instance->write(txt, c, Vector2<int>((int)pos.x, (int)(pos.y + cos((pos.x-mod)*0.05)*30)));
     pos.x-=RF_Engine::instance->time->deltaTime*100;
 
     if(-10 > pos.x){signal = S_KILL;}

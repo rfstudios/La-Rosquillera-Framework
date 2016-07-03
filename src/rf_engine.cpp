@@ -344,7 +344,6 @@ int RF_Engine::write(string txt, SDL_Color color, Vector2<int> pos){
             textSources[pos] = tmpTxt;
 
         }
-
         return pos;
     }
     else
