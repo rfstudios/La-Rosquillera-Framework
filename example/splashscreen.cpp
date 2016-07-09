@@ -16,9 +16,10 @@ void SplashScreen::Start()
 void SplashScreen::Update()
 {
     deltaCont += RF_Engine::instance->time->deltaTime;
-    if(0.025 <= deltaCont)
+    if(tempPause+0.025 <= deltaCont)
     {
         deltaCont = 0.0f;
+        tempPause = 0.0;
 
         step++;
 

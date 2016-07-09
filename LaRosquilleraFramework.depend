@@ -270,7 +270,7 @@
 1455320485 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/laser.h
 	"rf_process.h"
 
-1468017119 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/main.cpp
+1468065015 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/main.cpp
 	<SDL2/SDL.h>
 	"rf_declares.h"
 	"rf_engine.h"
@@ -323,7 +323,7 @@
 1463089571 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/background.h
 	"rf_process.h"
 
-1463089572 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/splashscreen.h
+1468065182 /home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/splashscreen.h
 	"rf_process.h"
 	"rf_engine.h"
 	"background.h"
@@ -342,7 +342,7 @@
 	"rf_process.h"
 	"rf_engine.h"
 
-1463089572 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/splashscreen.cpp
+1468065160 source:/home/yawin/Dokumentuak/c/La-Rosquillera-Framework/example/splashscreen.cpp
 	"splashscreen.h"
 	"mainprocess.h"
 	"rf_primitive.h"
