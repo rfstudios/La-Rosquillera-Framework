@@ -44,6 +44,8 @@ RF_Engine::RF_Engine(bool debug){
         write("Version de debug", {255,255,255}, Vector2<int>(476,450));
         Debug("Version de debug");
     }
+
+    SDL_ShowCursor(0);
 }
 RF_Engine::~RF_Engine(){
     for(int i=0;i<taskManager.size();i++)
