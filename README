@@ -1,9 +1,11 @@
-For compile you need the following dependencies:
-	- SDL2
-	- SDL2_image
-	- SDL2_mixer
-	- SDL2_ttf
-
-And compile with that preferences:
-	- Have g++ follow the C++11 ISO C++ language standard [-std=c++11]
+Demos list:
+	- Demo or die (http://www.pouet.net/prod.php?which=67837):
+		· Branch: DemoOrDie
+		· For compile you need the following dependencies:
+			- SDL2
+			- SDL2_image
+			- SDL2_mixer
+			- SDL2_ttf
+		· Compile with that preferences:
+			- Have g++ follow the C++11 ISO C++ language standard [-std=c++11]
 	
