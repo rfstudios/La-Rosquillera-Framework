@@ -8,31 +8,6 @@
 #include <vector>
 using namespace std;
 
-class scrLetra : public RF_Process
-{
-    public:
-        scrLetra(string text, Vector2<int> StartPosition):RF_Process("scrLetra"){
-            txt=text;
-            pos.x = (float)StartPosition.x;
-            pos.y = (float)StartPosition.y;
-        }
-
-        virtual ~scrLetra(){
-            if(-1 < textID && NULL != RF_Engine::instance->textSources[textID])
-            {
-                RF_Engine::instance->deleteText(textID);
-            }
-        }
-
-        virtual void Update();
-
-    private:
-        int textID = -1;
-        string txt="";
-
-        Vector2<float> pos;
-};
-
 class Scene2 : public RF_Process
 {
     public:
@@ -53,6 +28,7 @@ class Scene2 : public RF_Process
         float deltaCount = 0.0f;
         bool lastFrame = false, cH = false;
         int step=0, step2=0, cuentaobj=0, objtorend = 0, textcont=0;
+        SDL_Surface* tmpSrf;
 };
 
 #endif // SCENE2_H
