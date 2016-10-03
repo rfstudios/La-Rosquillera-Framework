@@ -104,6 +104,8 @@ class RF_Engine
 
             vector<YGF*> ygf; //Lista de ficheros de gráficos cargados;
             int loadYgf(string filename);
+
+            Vector2<int> rotozoom(Vector2<int> pos, Transform2D<int> t);
         /************************/
     private:
 };

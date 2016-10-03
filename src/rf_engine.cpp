@@ -354,7 +354,7 @@ int RF_Engine::write(string txt, SDL_Color color, Vector2<int> pos){
         return -1;
     }
 }
- int RF_Engine::_writeGetPlace(){
+int RF_Engine::_writeGetPlace(){
     int _pos = -1;
     for(int i = 0; i < textSources.size(); i++)
     {
@@ -406,4 +406,15 @@ int RF_Engine::loadYgf(string filename){
     }
     ygf.push_back(newYGF);
 
+}
+Vector2<int> RF_Engine::rotozoom(Vector2<int> pos, Transform2D<int> t)
+{
+    if(t.scale.x == 0) t.scale.x = 1;
+    if(t.scale.y == 0) t.scale.y = 1;
+
+    Vector2<int> retorno;
+    retorno.x=t.position.x + abs(pos.x * t.scale.x); if(retorno.x<0){retorno.x = abs(retorno.x) % 640;} if(retorno.x > 639){retorno.x = retorno.x % 640;}
+    retorno.y=t.position.y + abs(pos.y * t.scale.y); if(retorno.y<0){retorno.y = abs(retorno.y) % 480;} if(retorno.y > 479){retorno.y = retorno.y % 480;}
+
+    return retorno;
 }

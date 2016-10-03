@@ -54,9 +54,15 @@ struct Vector2{
     Vector2(T x0=0, T y0=0){x=x0; y=y0;}
     Vector2(const Vector2& c){x=c.x; y=c.y;}
 };
-struct Transform{
+struct Transform{ ///Deprecated
     Vector2<float> position, scale;
     float rotation;
+};
+
+template<typename T>
+struct Transform2D{
+    Vector2<T> position, scale;
+    T rotation;
 };
 
 template<typename T>

@@ -17,18 +17,11 @@ class Scene2 : public RF_Process
         virtual void Start();
         virtual void Update();
 
-        bool Starfield(int limit);
-        void Scrolltext(string text, int y);
-
     private:
         background* bg;
-        vector<Vector2<int>> stars;
-        vector<int> stars_speed;
-
-        float deltaCount = 0.0f;
-        bool lastFrame = false, cH = false;
-        int step=0, step2=0, cuentaobj=0, objtorend = 0, textcont=0;
-        SDL_Surface* tmpSrf;
+        Uint32 bgImg[640][480];
+        float deltacount=0.0f;
+        Transform2D<int> t;
 };
 
 #endif // SCENE2_H
