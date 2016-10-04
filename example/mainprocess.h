@@ -28,7 +28,7 @@ class mainProcess : public RF_Process
         int stateMachine = 0;
         int scene;
 
-        void breik(RF_Process* escena);
+        void breik(RF_Process* escena){}
 };
 
 #endif // MAINPROCESS_H

@@ -17,14 +17,21 @@ mainProcess::~mainProcess(){}
 
 void mainProcess::Start()
 {
-    RF_Engine::instance->newTask(new exeControl(),id);
+    //Levantamos el proceso que detectará, durante toda la ejecución, si pulsamos
+    //la tecla esc;
+        RF_Engine::instance->newTask(new exeControl(),id);
 
-    int bgr = RF_Engine::instance->newTask(new RF_Background(),id);
+    //Levantamos el proceso que controla el fondo
+        int bgr = RF_Engine::instance->newTask(new RF_Background(),id);
 
-    bg = dynamic_cast<RF_Background*>(RF_Engine::instance->taskManager[bgr]);
-    bg->prepareSurface();
+    //Establecemos un puntero a la instancia del fondo
+        bg = dynamic_cast<RF_Background*>(RF_Engine::instance->taskManager[bgr]);
 
-    breik(new Scene2());
+    //Inicializamos el fondo
+        bg->prepareSurface();
+
+    //Levantamos el proceso "Scene2"
+        scene = RF_Engine::instance->newTask(new Scene2(),id);
 
     //scene = RF_Engine::instance->newTask(new SplashScreen(),id);
     return;
@@ -96,9 +103,4 @@ void mainProcess::Update(){
             break;
     }*/
     return;
-}
-
-void mainProcess::breik(RF_Process* escena){
-    scene = RF_Engine::instance->newTask(escena,id);
-    stateMachine = -1;
 }

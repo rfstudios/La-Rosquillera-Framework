@@ -858,13 +858,13 @@
 	<SDL2/SDL.h>
 	<math.h>
 
-1473858839 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/execontrol.cpp
+1475581608 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/execontrol.cpp
 	"execontrol.h"
 
 1473858839 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/execontrol.h
 	"rf_process.h"
 
-1475580994 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/mainprocess.cpp
+1475581506 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/mainprocess.cpp
 	"mainprocess.h"
 	"execontrol.h"
 	"splashscreen.h"
@@ -873,7 +873,7 @@
 	"rf_primitive.h"
 	<SDL2/SDL_ttf.h>
 
-1475580986 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/mainprocess.h
+1475581522 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/mainprocess.h
 	"rf_process.h"
 	"rf_background.h"
 
@@ -887,10 +887,11 @@
 	"rf_process.h"
 	"rf_engine.h"
 
-1475580986 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/scene2.h
+1475582604 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/scene2.h
 	"rf_background.h"
 	"rf_process.h"
 	"rf_engine.h"
+	"rf_parallax_layer.h"
 	<vector>
 
 1473858839 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/scene3.h
@@ -917,7 +918,7 @@
 	"rf_process.h"
 	"rf_engine.h"
 
-1475532219 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/scene2.cpp
+1475584757 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/scene2.cpp
 	"scene2.h"
 	"mainprocess.h"
 	"rf_declares.h"
@@ -963,7 +964,7 @@
 	"rf_primitive.h"
 	<stdio.h>
 
-1475512472 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/main.cpp
+1475581791 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/main.cpp
 	<SDL2/SDL.h>
 	"rf_declares.h"
 	"rf_engine.h"
@@ -976,12 +977,14 @@
 	"rf_parallax_layer.h"
 	<vector>
 
-1475580632 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_parallax_layer.h
+1475582270 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_parallax_layer.h
+	"rf_engine.h"
 	"rf_declares.h"
 	<SDL/SDL_image.h>
 
-1475580596 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_parallax_layer.cpp
+1475584950 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_parallax_layer.cpp
 	"rf_parallax_layer.h"
+	"rf_primitive.h"
 
 1475580736 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_background.h
 	"rf_process.h"
