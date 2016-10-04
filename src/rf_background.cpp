@@ -1,13 +1,13 @@
-#include "background.h"
+#include "rf_background.h"
 #include "rf_primitive.h"
 
-void background::Update()
+void RF_Background::Update()
 {
     generateTexture();
     return;
 }
 
-Uint32 background::getPixel(int x, int y){
+Uint32 RF_Background::getPixel(int x, int y){
     int bpp = screen->format->BytesPerPixel;
     /* Here p is the address to the pixel we want to retrieve */
     Uint8 *p = (Uint8 *)screen->pixels + y * screen->pitch + x * bpp;
@@ -36,7 +36,7 @@ Uint32 background::getPixel(int x, int y){
         return 0;       /* shouldn't happen, but avoids warnings */
     }
 }
-void background::putPixel(int x, int y, Uint32 pixel){
+void RF_Background::putPixel(int x, int y, Uint32 pixel){
     if(0 > x || 0 > y || screen->w <= x || screen->h <= y){return;}
 
     int bpp = screen->format->BytesPerPixel;
@@ -70,17 +70,17 @@ void background::putPixel(int x, int y, Uint32 pixel){
 
     needGenerate = true;
 }
-void background::prepareSurface(){
+void RF_Background::prepareSurface(){
     screen = SDL_CreateRGBSurface(0,RF_Engine::instance->ventana->width(), RF_Engine::instance->ventana->height(),32,0,0,0,0);
 }
-void background::generateTexture(){
+void RF_Background::generateTexture(){
     if(!needGenerate){return;}
     if(NULL == screen){return;}
     needGenerate = false;
     SDL_DestroyTexture(graph);
     graph = SDL_CreateTextureFromSurface(RF_Engine::instance->ventana->renderer, screen);
 }
-void background::clearSurface(Uint32 color){
+void RF_Background::clearSurface(Uint32 color){
     for(int i = 0; i < RF_Engine::instance->ventana->width(); i+=3)
     {
         for(int j = 0; j < RF_Engine::instance->ventana->height(); j+=3)
@@ -92,7 +92,7 @@ void background::clearSurface(Uint32 color){
     }
     needGenerate = true;
 }
-void background::addSurface(SDL_Surface *tmpSrf){
+void RF_Background::addSurface(SDL_Surface *tmpSrf){
     for(int i=0;i<tmpSrf->w;i++)
     {
         for(int j=0;j<tmpSrf->h;j++)

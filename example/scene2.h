@@ -1,7 +1,7 @@
 #ifndef SCENE2_H
 #define SCENE2_H
 
-#include "background.h"
+#include "rf_background.h"
 #include "rf_process.h"
 #include "rf_engine.h"
 
@@ -18,7 +18,7 @@ class Scene2 : public RF_Process
         virtual void Update();
 
     private:
-        background* bg;
+        RF_Background* bg;
         Uint32 bgImg[640][480];
         float deltacount=0.0f;
         Transform2D<int> t;

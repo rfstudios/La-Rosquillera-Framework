@@ -1,14 +1,13 @@
-#ifndef BACKGROUND_H
-#define BACKGROUND_H
+#ifndef RF_BACKGROUND_H
+#define RF_BACKGROUND_H
 
 #include "rf_process.h"
 
-
-class background : public RF_Process
+class RF_Background : public RF_Process
 {
     public:
-        background():RF_Process("Background"){}
-        virtual ~background(){}
+        RF_Background():RF_Process("RF_Background"){}
+        virtual ~RF_Background(){}
 
         virtual void Update();
 
@@ -24,4 +23,4 @@ class background : public RF_Process
         bool needGenerate = false;
 };
 
-#endif // BACKGROUND_H
+#endif // RF_BACKGROUND_H

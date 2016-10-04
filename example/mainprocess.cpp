@@ -19,9 +19,9 @@ void mainProcess::Start()
 {
     RF_Engine::instance->newTask(new exeControl(),id);
 
-    int bgr = RF_Engine::instance->newTask(new background(),id);
+    int bgr = RF_Engine::instance->newTask(new RF_Background(),id);
 
-    bg = dynamic_cast<background*>(RF_Engine::instance->taskManager[bgr]);
+    bg = dynamic_cast<RF_Background*>(RF_Engine::instance->taskManager[bgr]);
     bg->prepareSurface();
 
     breik(new Scene2());

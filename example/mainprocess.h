@@ -9,7 +9,7 @@
 #define MAINPROCESS_H
 
 #include "rf_process.h"
-#include "background.h"
+#include "rf_background.h"
 
 class mainProcess : public RF_Process
 {
@@ -20,7 +20,7 @@ class mainProcess : public RF_Process
         virtual void Start();
         virtual void Update();
 
-        background* bg;
+        RF_Background* bg;
 
         int& state(){return stateMachine;}
 

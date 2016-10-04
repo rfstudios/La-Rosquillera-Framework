@@ -815,7 +815,7 @@
 	"background.h"
 	"rf_primitive.h"
 
-1473858839 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/background.h
+1475580200 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/background.h
 	"rf_process.h"
 
 1473858839 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_process.h
@@ -844,7 +844,7 @@
 	<string>
 	<vector>
 
-1475497496 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_declares.h
+1475532223 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_declares.h
 	<vector>
 	<string>
 	<SDL2/SDL.h>
@@ -864,7 +864,7 @@
 1473858839 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/execontrol.h
 	"rf_process.h"
 
-1475477588 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/mainprocess.cpp
+1475580994 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/mainprocess.cpp
 	"mainprocess.h"
 	"execontrol.h"
 	"splashscreen.h"
@@ -873,22 +873,22 @@
 	"rf_primitive.h"
 	<SDL2/SDL_ttf.h>
 
-1473858839 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/mainprocess.h
+1475580986 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/mainprocess.h
 	"rf_process.h"
-	"background.h"
+	"rf_background.h"
 
-1473858839 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/splashscreen.h
+1475580986 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/splashscreen.h
 	"rf_process.h"
 	"rf_engine.h"
-	"background.h"
+	"rf_background.h"
 
 1473858839 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/scene1.h
 	"background.h"
 	"rf_process.h"
 	"rf_engine.h"
 
-1475531940 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/scene2.h
-	"background.h"
+1475580986 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/scene2.h
+	"rf_background.h"
 	"rf_process.h"
 	"rf_engine.h"
 	<vector>
@@ -917,7 +917,7 @@
 	"rf_process.h"
 	"rf_engine.h"
 
-1475531845 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/scene2.cpp
+1475532219 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/scene2.cpp
 	"scene2.h"
 	"mainprocess.h"
 	"rf_declares.h"
@@ -968,4 +968,25 @@
 	"rf_declares.h"
 	"rf_engine.h"
 	"mainprocess.h"
+
+1475580137 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_parallax.cpp
+	"rf_parallax.h"
+
+1475580641 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_parallax.h
+	"rf_parallax_layer.h"
+	<vector>
+
+1475580632 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_parallax_layer.h
+	"rf_declares.h"
+	<SDL/SDL_image.h>
+
+1475580596 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_parallax_layer.cpp
+	"rf_parallax_layer.h"
+
+1475580736 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_background.h
+	"rf_process.h"
+
+1475580797 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_background.cpp
+	"rf_background.h"
+	"rf_primitive.h"
 
