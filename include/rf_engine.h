@@ -106,6 +106,7 @@ class RF_Engine
             int loadYgf(string filename);
 
             Vector2<int> rotozoom(Vector2<int> pos, Transform2D<int> t, Vector2<int> lim);
+                Vector2<int> retorno;
         /************************/
     private:
 };

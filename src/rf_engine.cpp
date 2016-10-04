@@ -412,9 +412,14 @@ Vector2<int> RF_Engine::rotozoom(Vector2<int> pos, Transform2D<int> t, Vector2<i
     if(t.scale.x == 0) t.scale.x = 1;
     if(t.scale.y == 0) t.scale.y = 1;
 
-    Vector2<int> retorno;
-    retorno.x=t.position.x + abs(pos.x * t.scale.x); if(retorno.x<0){retorno.x = abs(retorno.x) % lim.x;} if(retorno.x > lim.x-1){retorno.x = retorno.x % lim.x;}
-    retorno.y=t.position.y + abs(pos.y * t.scale.y); if(retorno.y<0){retorno.y = abs(retorno.y) % lim.y;} if(retorno.y > lim.y-1){retorno.y = retorno.y % lim.y;}
+    retorno.x=t.position.x + abs(pos.x * t.scale.x);
+    retorno.y=t.position.y + abs(pos.y * t.scale.y);
+
+    retorno.x = retorno.x * cos(t.rotation) - retorno.y * sin(t.rotation);
+    retorno.y = retorno.y * sin(t.rotation) + retorno.y * cos(t.rotation);
+
+    if(retorno.x<0){retorno.x = abs(retorno.x) % lim.x;} if(retorno.x > lim.x-1){retorno.x = retorno.x % lim.x;}
+    if(retorno.y<0){retorno.y = abs(retorno.y) % lim.y;} if(retorno.y > lim.y-1){retorno.y = retorno.y % lim.y;}
 
     return retorno;
 }
