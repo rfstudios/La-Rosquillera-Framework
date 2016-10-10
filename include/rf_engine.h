@@ -26,6 +26,7 @@
 #include "rf_process.h"
 #include "rf_declares.h"
 #include "rf_time.h"
+#include "rf_math.h";
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -99,13 +100,15 @@ class RF_Engine
             RF_Process* collision(int target, RF_Process* sender);
             void playSong(string file);
 
+            RF_Math* math;
+
             /*Uint32 getPixel(SDL_Surface* surface, int x, int y);
             void putPixel(SDL_Surface* surface, int x, int y, Uint32);*/
 
             vector<YGF*> ygf; //Lista de ficheros de gráficos cargados;
             int loadYgf(string filename);
 
-            Vector2<int> rotozoom(Vector2<int> pos, Transform2D<int> t, Vector2<int> lim);
+            Vector2<int> rotozoom(Vector2<int> pos, Transform2D<int> t, Vector2<int> lim, Vector2<bool> mirror = Vector2<bool>(true,true));
                 Vector2<int> retorno;
         /************************/
     private:

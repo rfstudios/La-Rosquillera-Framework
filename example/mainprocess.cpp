@@ -8,7 +8,9 @@
 #include "mainprocess.h"
 #include "execontrol.h"
 #include "splashscreen.h"
+#include "mainmenu.h"
 #include "scene2.h"
+#include "scenetest.h"
 #include "rf_declares.h"
 #include "rf_primitive.h"
 #include <SDL2/SDL_ttf.h>
@@ -38,16 +40,15 @@ void mainProcess::Start()
 }
 
 void mainProcess::Update(){
-    /*switch(stateMachine)
+    switch(stateMachine)
     {
-        case 1: //Scene1
-            if("Scene1" != RF_Engine::instance->taskManager[scene]->type)
+        case 1: //MenuOpciones
+            if("MainMenu" != RF_Engine::instance->taskManager[scene]->type)
             {
                 RF_Engine::instance->sendSignal(scene, S_KILL_TREE);
-                RF_Engine::instance->playSong("resources/st7.wav");
                 RF_Engine::instance->time->setFixedCTime();
 
-                scene = RF_Engine::instance->newTask(new Scene1(),id);
+                scene = RF_Engine::instance->newTask(new MainMenu(),id);
             }
             break;
         case 2: //Scene2
@@ -59,7 +60,7 @@ void mainProcess::Update(){
                 scene = RF_Engine::instance->newTask(new Scene2(),id);
             }
             break;
-        case 3: //Scene3
+        /*case 3: //Scene3
             if("Scene3" != RF_Engine::instance->taskManager[scene]->type)
             {
                 RF_Engine::instance->sendSignal(scene, S_KILL_TREE);
@@ -100,7 +101,7 @@ void mainProcess::Update(){
             RF_Engine::instance->isRunning(false);
 
             stateMachine = -1;
-            break;
-    }*/
+            break;*/
+    }
     return;
 }

@@ -49,10 +49,14 @@
 		<Unit filename="example/execontrol.cpp" />
 		<Unit filename="example/execontrol.h" />
 		<Unit filename="example/main.cpp" />
+		<Unit filename="example/mainmenu.cpp" />
+		<Unit filename="example/mainmenu.h" />
 		<Unit filename="example/mainprocess.cpp" />
 		<Unit filename="example/mainprocess.h" />
 		<Unit filename="example/scene2.cpp" />
 		<Unit filename="example/scene2.h" />
+		<Unit filename="example/scenetest.cpp" />
+		<Unit filename="example/scenetest.h" />
 		<Unit filename="example/splashscreen.cpp" />
 		<Unit filename="example/splashscreen.h" />
 		<Unit filename="include/rf_3d.h" />
@@ -60,6 +64,7 @@
 		<Unit filename="include/rf_background.h" />
 		<Unit filename="include/rf_declares.h" />
 		<Unit filename="include/rf_engine.h" />
+		<Unit filename="include/rf_math.h" />
 		<Unit filename="include/rf_parallax.h" />
 		<Unit filename="include/rf_parallax_layer.h" />
 		<Unit filename="include/rf_primitive.h" />

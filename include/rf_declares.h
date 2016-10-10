@@ -61,7 +61,8 @@ struct Transform{ ///Deprecated
 
 template<typename T>
 struct Transform2D{
-    Vector2<T> position, scale;
+    Vector2<T> position;
+    Vector2<float> scale;
     T rotation;
 };
 

@@ -15,7 +15,7 @@ class RF_Parallax
         virtual ~RF_Parallax(){}
 
         void draw(RF_Background* bg);
-        int newLayer(string path = "", Vector2<float> speed = Vector2<float>(1.0f, 1.0f));
+        int newLayer(string path = "", Vector2<float> speed = Vector2<float>(1.0f, 1.0f), Vector2<bool> mirror = Vector2<bool>(true,false));
         void move(Vector2<int> newPosition);
         void move(int x, int y);
         void position(Vector2<int> newPosition);

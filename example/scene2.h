@@ -27,6 +27,9 @@ class Scene2 : public RF_Process
         RF_Background* bg;
         float deltacount=0.0f;
         RF_Parallax* pL;
+
+        int step = 0;
+        int metarange;
 };
 
 #endif // SCENE2_H

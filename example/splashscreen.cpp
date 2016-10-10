@@ -11,12 +11,15 @@ void SplashScreen::Start()
     bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
     bg->clearSurface(0xffffff);
     step = 0;
+
+    w = -320 + RF_Engine::instance->ventana->width() * 0.5;
+    h = -240 + RF_Engine::instance->ventana->height() * 0.5;
 }
 
 void SplashScreen::Update()
 {
     deltaCont += RF_Engine::instance->time->deltaTime;
-    if(tempPause+0.025 <= deltaCont)
+    if(tempPause <= deltaCont)
     {
         deltaCont = 0.0f;
         tempPause = 0.0;
@@ -36,17 +39,17 @@ void SplashScreen::Update()
 
                 if(0 <= xx && 0 <= yy && bgImg->w > xx && bgImg->h > yy)
                 {
-                    bg->putPixel(xx,yy,RF_Primitive::getPixel(bgImg,i,j));
-                    bg->putPixel(xx,yy+1,RF_Primitive::getPixel(bgImg,i,j+1));
-                    bg->putPixel(xx,yy+2,RF_Primitive::getPixel(bgImg,i,j+2));
+                    bg->putPixel(w + xx, h + yy,RF_Primitive::getPixel(bgImg,i,j));
+                    bg->putPixel(w + xx, h + yy+1,RF_Primitive::getPixel(bgImg,i,j+1));
+                    bg->putPixel(w + xx, h + yy+2,RF_Primitive::getPixel(bgImg,i,j+2));
 
-                    bg->putPixel(xx+1,yy,RF_Primitive::getPixel(bgImg,i+1,j));
-                    bg->putPixel(xx+1,yy+1,RF_Primitive::getPixel(bgImg,i+1,j+1));
-                    bg->putPixel(xx+1,yy+2,RF_Primitive::getPixel(bgImg,i+1,j+2));
+                    bg->putPixel(w + xx+1, h + yy,RF_Primitive::getPixel(bgImg,i+1,j));
+                    bg->putPixel(w + xx+1, h + yy+1,RF_Primitive::getPixel(bgImg,i+1,j+1));
+                    bg->putPixel(w + xx+1, h + yy+2,RF_Primitive::getPixel(bgImg,i+1,j+2));
 
-                    bg->putPixel(xx+2,yy,RF_Primitive::getPixel(bgImg,i+2,j));
-                    bg->putPixel(xx+2,yy+1,RF_Primitive::getPixel(bgImg,i+2,j+1));
-                    bg->putPixel(xx+2,yy+2,RF_Primitive::getPixel(bgImg,i+2,j+2));
+                    bg->putPixel(w + xx+2, h + yy,RF_Primitive::getPixel(bgImg,i+2,j));
+                    bg->putPixel(w + xx+2, h + yy+1,RF_Primitive::getPixel(bgImg,i+2,j+1));
+                    bg->putPixel(w + xx+2, h + yy+2,RF_Primitive::getPixel(bgImg,i+2,j+2));
                 }
             }
         }

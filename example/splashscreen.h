@@ -18,8 +18,9 @@ class SplashScreen : public RF_Process
         SDL_Surface* bgImg;
         RF_Background* bg;
 
-        float deltaCont = 0.0f, tempPause = 5.0;
+        float deltaCont = 0.0f, tempPause = 3.0;
         int step;
+        int w,h;
 };
 
 #endif // SPLASHSCREEN_H

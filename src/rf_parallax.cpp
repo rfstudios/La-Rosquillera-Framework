@@ -27,9 +27,9 @@ void RF_Parallax::draw(RF_Background* bg)
     }
 }
 
-int RF_Parallax::newLayer(string path, Vector2<float> speed)
+int RF_Parallax::newLayer(string path, Vector2<float> speed, Vector2<bool> mirror)
 {
-    layers.push_back(new RF_Parallax_Layer(path,speed));
+    layers.push_back(new RF_Parallax_Layer(path,speed,mirror));
     return layers.size();
 }
 
@@ -45,8 +45,8 @@ void RF_Parallax::move(int x, int y)
 
     for(i = 0; i < layers.size(); i++)
     {
-        layers[i]->transform.position.x += (float)x / layers[i]->lSpeed.x;
-        layers[i]->transform.position.y += (float)y / layers[i]->lSpeed.y;
+        layers[i]->transform.position.x += (float)x / layers[i]->getSpeed().x;
+        layers[i]->transform.position.y += (float)y / layers[i]->getSpeed().y;
     }
 }
 
@@ -62,7 +62,7 @@ void RF_Parallax::position(int x, int y)
 
     for(i = 0; i < layers.size(); i++)
     {
-        layers[i]->transform.position.x = (float)x / layers[i]->lSpeed.x;
-        layers[i]->transform.position.y = (float)y / layers[i]->lSpeed.y;
+        layers[i]->transform.position.x = (float)x / layers[i]->getSpeed().x;
+        layers[i]->transform.position.y = (float)y / layers[i]->getSpeed().y;
     }
 }

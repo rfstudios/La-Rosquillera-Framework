@@ -41,9 +41,10 @@ RF_Engine::RF_Engine(bool debug){
 
     if(isDebug)
     {
-        write("Version de debug", {255,255,255}, Vector2<int>(476,450));
         Debug("Version de debug");
     }
+
+    math = new RF_Math();
 
     SDL_ShowCursor(0);
 }
@@ -69,6 +70,11 @@ void RF_Engine::newWindow(string title, int windowMode, int posX, int posY, int 
         destroyWindow();
     }
     ventana = new RF_Window(title,windowMode,posX,posY,width,height,rendererMode);
+
+    if(isDebug)
+    {
+        write("Version de debug", {255,255,255}, Vector2<int>(ventana->width()-164,ventana->height()-30));
+    }
 }
 void RF_Engine::destroyWindow(){
     delete(ventana);
@@ -407,19 +413,43 @@ int RF_Engine::loadYgf(string filename){
     ygf.push_back(newYGF);
 
 }
-Vector2<int> RF_Engine::rotozoom(Vector2<int> pos, Transform2D<int> t, Vector2<int> lim)
+Vector2<int> RF_Engine::rotozoom(Vector2<int> pos, Transform2D<int> t, Vector2<int> lim, Vector2<bool> mirror)
 {
     if(t.scale.x == 0) t.scale.x = 1;
     if(t.scale.y == 0) t.scale.y = 1;
 
-    retorno.x=t.position.x + abs(pos.x * t.scale.x);
-    retorno.y=t.position.y + abs(pos.y * t.scale.y);
+    retorno.x=-t.position.x + pos.x * t.scale.x;
+    retorno.y=-t.position.y + pos.y * t.scale.y;
 
-    retorno.x = retorno.x * cos(t.rotation) - retorno.y * sin(t.rotation);
-    retorno.y = retorno.y * sin(t.rotation) + retorno.y * cos(t.rotation);
+    retorno.x = retorno.x * math->preCos(t.rotation*1000) - retorno.y * math->preSin(t.rotation*1000);
+    retorno.y = retorno.y * math->preSin(t.rotation*1000) + retorno.y * math->preCos(t.rotation*1000);
 
-    if(retorno.x<0){retorno.x = abs(retorno.x) % lim.x;} if(retorno.x > lim.x-1){retorno.x = retorno.x % lim.x;}
-    if(retorno.y<0){retorno.y = abs(retorno.y) % lim.y;} if(retorno.y > lim.y-1){retorno.y = retorno.y % lim.y;}
+    if(retorno.x < 0 || retorno.x > lim.x - 1)
+    {
+        if(true == mirror.x)
+        {
+            retorno.x = retorno.x % lim.x;
+            if(retorno.x < 0){retorno.x = lim.x + retorno.x;}
+        }
+        else
+        {
+            if(retorno.x < 0){retorno.x = 0;}
+            if(retorno.x > lim.x - 1){retorno.x = lim.x - 1;}
+        }
+    }
+    if(retorno.y < 0 || retorno.y > lim.y - 1)
+    {
+        if(false == mirror.y)
+        {
+            if(retorno.y < 0){retorno.y = 0;}
+            if(retorno.y > lim.y - 1){retorno.y = lim.y - 1;}
+        }
+        else
+        {
+            retorno.y = retorno.y % lim.y;
+            if(retorno.y < 0){retorno.y = lim.y + retorno.y;}
+        }
+    }
 
     return retorno;
 }
