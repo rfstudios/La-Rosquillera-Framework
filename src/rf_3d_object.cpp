@@ -4,8 +4,8 @@
 
 void RF_3D_Object::calculateMesh()
 {
-    int siz = _vertex.size();
-    for(int i=0;i<_vertex.size();i++)
+    unsigned int siz = _vertex.size();
+    for(unsigned int i=0;i<siz;i++)
     {
         vertex[i].x = _vertex[i].x * transform.scale.x;
         vertex[i].y = _vertex[i].y * transform.scale.y;

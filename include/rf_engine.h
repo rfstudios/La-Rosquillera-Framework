@@ -26,7 +26,7 @@
 #include "rf_process.h"
 #include "rf_declares.h"
 #include "rf_time.h"
-#include "rf_math.h";
+#include "rf_math.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -67,7 +67,7 @@ class RF_Engine
             int newTask(RF_Process *task,int father=-1);
             int getPlace();
             void manageSignals();
-            void sendSignal(int task, int signal);
+            void sendSignal(unsigned int task, int signal);
             void sendSignal(string type, int signal);
             bool exists(string type);
         /************************************/

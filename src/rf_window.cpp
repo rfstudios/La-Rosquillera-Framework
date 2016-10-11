@@ -47,7 +47,7 @@ void RF_Window::render(vector<RF_Process*>& tM, vector<YW_Text*>& textSources)
 {
     SDL_RenderClear(renderer);
 
-    for(int i=0;i<tM.size();i++)
+    for(unsigned int i=0;i<tM.size();i++)
     {
         if(NULL != tM[i])
         {
@@ -63,7 +63,7 @@ void RF_Window::render(vector<RF_Process*>& tM, vector<YW_Text*>& textSources)
         }
     }
 
-    for(int i=0;i<textSources.size();i++)
+    for(unsigned int i=0;i<textSources.size();i++)
     {
         if(NULL != textSources[i])
         {

@@ -54,8 +54,6 @@ int RF_3D::loadObj(string file)
         }
     }
 
-    int siz = tmpObj->vertex.size();
-
     tmpObj->finalizeCreation();
     RF_3D::objectList.push_back(tmpObj);
     return RF_3D::objectList.size()-1;
@@ -68,7 +66,7 @@ void RF_3D::Draw_Only(SDL_Surface* screen, int objID)
     switch(RF_3D::renderMode())
     {
         case RM_Point:
-            for(int i=0; i<RF_3D::objectList[objID]->vertex.size();i++)
+            for(unsigned int i=0; i<RF_3D::objectList[objID]->vertex.size();i++)
             {
                 RF_Primitive::putPixel(screen, RF_3D::objectList[objID]->vertex[i].x, RF_3D::objectList[objID]->vertex[i].y, 0xffffff);
                 RF_Primitive::putPixel(screen, RF_3D::objectList[objID]->vertex[i].x, RF_3D::objectList[objID]->vertex[i].y+1, 0xffffff);
@@ -78,13 +76,13 @@ void RF_3D::Draw_Only(SDL_Surface* screen, int objID)
             break;
 
         case RM_Circles:
-            for(int i=0; i<RF_3D::objectList[objID]->vertex.size();i++)
+            for(unsigned int i=0; i<RF_3D::objectList[objID]->vertex.size();i++)
             {
                 RF_Primitive::drawCircle(screen,Vector2<int>(RF_3D::objectList[objID]->vertex[i].x,RF_3D::objectList[objID]->vertex[i].y),4,0xffffff);
             }
             break;
         case RM_Mesh:
-            for(int i=0; i < RF_3D::objectList[objID]->faces.size(); i++)
+            for(unsigned int i=0; i < RF_3D::objectList[objID]->faces.size(); i++)
             {
                 Vector2<int> p0,p1;
                 p0.x = RF_3D::objectList[objID]->vertex[RF_3D::objectList[objID]->faces[i].a].x;
@@ -124,7 +122,7 @@ void RF_3D::Draw_Only(SDL_Surface* screen, int objID)
             break;
         case RM_LandScape:
             Uint32 color = 0xff00ff;
-            for(int i=0; i<RF_3D::objectList[objID]->vertex.size();i++)
+            for(unsigned int i=0; i<RF_3D::objectList[objID]->vertex.size();i++)
             {
                 float z = RF_3D::objectList[objID]->_vertex[i].z;
 

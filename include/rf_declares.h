@@ -93,7 +93,7 @@ struct YGF{
     vector<SDL_Texture*> graph;
     int id(string name)
     {
-        for(int i=0;i<names.size();i++)
+        for(unsigned int i=0;i<names.size();i++)
         {
             if(names[i]==name){return i;}
         }

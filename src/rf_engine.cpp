@@ -49,7 +49,7 @@ RF_Engine::RF_Engine(bool debug){
     SDL_ShowCursor(0);
 }
 RF_Engine::~RF_Engine(){
-    for(int i=0;i<taskManager.size();i++)
+    for(unsigned int i=0;i<taskManager.size();i++)
     {
         delete(taskManager[i]);
     }
@@ -117,7 +117,7 @@ void RF_Engine::update(){
     manageSignals();
     time->Update();
 
-    for(int i=0;i<taskManager.size();i++)
+    for(unsigned int i=0;i<taskManager.size();i++)
     {
         if(NULL != taskManager[i])
         {
@@ -162,7 +162,7 @@ int RF_Engine::newTask(RF_Process *task, int father){
 }
 int RF_Engine::getPlace(){
     int _pos = -1;
-    for(int i = 0; i < taskManager.size(); i++)
+    for(unsigned int i = 0; i < taskManager.size(); i++)
     {
         if(NULL == taskManager[i])
         {
@@ -174,7 +174,7 @@ int RF_Engine::getPlace(){
     return _pos;
 }
 void RF_Engine::manageSignals(){
-    for(int i=0;i<taskManager.size();i++)
+    for(unsigned int i=0;i<taskManager.size();i++)
     {
         if(taskManager[i])
         {
@@ -187,7 +187,7 @@ void RF_Engine::manageSignals(){
                 case S_SLEEP_TREE:
                     taskManager[i]->signal = S_SLEEP;
 
-                    for(int ii=0;ii<taskManager.size();ii++)
+                    for(unsigned int ii=0;ii<taskManager.size();ii++)
                     {
                         if(taskManager[ii])
                         {
@@ -201,7 +201,7 @@ void RF_Engine::manageSignals(){
                 case S_AWAKE_TREE:
                     taskManager[i]->signal = S_AWAKE;
 
-                    for(int ii=0;ii<taskManager.size();ii++)
+                    for(unsigned int ii=0;ii<taskManager.size();ii++)
                     {
                         if(taskManager[ii])
                         {
@@ -213,7 +213,7 @@ void RF_Engine::manageSignals(){
                     }
                     break;
                 case S_KILL_TREE:
-                    for(int ii=0;ii<taskManager.size();ii++)
+                    for(unsigned int ii=0;ii<taskManager.size();ii++)
                     {
                         if(taskManager[ii])
                         {
@@ -232,14 +232,14 @@ void RF_Engine::manageSignals(){
         }
     }
 }
-void RF_Engine::sendSignal(int task, int signal){
+void RF_Engine::sendSignal(unsigned int task, int signal){
     if(task<taskManager.size() && taskManager[task])
     {
         taskManager[task]->signal=signal;
     }
 }
 void RF_Engine::sendSignal(string type, int signal){
-    for(int i=0;i<taskManager.size();i++)
+    for(unsigned int i=0;i<taskManager.size();i++)
     {
         if(taskManager[i])
         {
@@ -251,7 +251,7 @@ void RF_Engine::sendSignal(string type, int signal){
     }
 }
 bool RF_Engine::exists(string type){
-    for(int i=0;i<taskManager.size();i++)
+    for(unsigned int i=0;i<taskManager.size();i++)
     {
         if(taskManager[i])
         {
@@ -290,7 +290,7 @@ SDL_Texture* RF_Engine::loadPNG(string file){
 }
 
 RF_Process* RF_Engine::collision(string target, RF_Process* sender){
-    for(int i=0;i<taskManager.size();i++)
+    for(unsigned int i=0;i<taskManager.size();i++)
     {
         if(taskManager[i])
         {
@@ -331,7 +331,7 @@ void RF_Engine::playSong(string file){
 }
 int RF_Engine::write(string txt, SDL_Color color, Vector2<float> pos){
     Vector2<int> posInt; posInt.x = (int)pos.x; posInt.y = (int)pos.y;
-    write(txt, color, posInt);
+    return write(txt, color, posInt);
 }
 int RF_Engine::write(string txt, SDL_Color color, Vector2<int> pos){
     if(NULL != font)
@@ -362,7 +362,7 @@ int RF_Engine::write(string txt, SDL_Color color, Vector2<int> pos){
 }
 int RF_Engine::_writeGetPlace(){
     int _pos = -1;
-    for(int i = 0; i < textSources.size(); i++)
+    for(unsigned int i = 0; i < textSources.size(); i++)
     {
         if(NULL == textSources[i])
         {
@@ -376,7 +376,7 @@ int RF_Engine::_writeGetPlace(){
 void RF_Engine::deleteText(int txtID){
     if(-1 >= txtID)
     {
-        for(int i=0;i<textSources.size();i++)
+        for(unsigned int i=0;i<textSources.size();i++)
         {
             delete(textSources[i]);
             textSources[i] = NULL;
@@ -411,7 +411,7 @@ int RF_Engine::loadYgf(string filename){
         SDL_FreeRW(rw);*/
     }
     ygf.push_back(newYGF);
-
+    return ygf.size()-1;
 }
 Vector2<int> RF_Engine::rotozoom(Vector2<int> pos, Transform2D<int> t, Vector2<int> lim, Vector2<bool> mirror)
 {

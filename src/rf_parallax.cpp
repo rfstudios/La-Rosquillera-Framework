@@ -43,10 +43,10 @@ void RF_Parallax::move(int x, int y)
     transform.position.x += x;
     transform.position.y += y;
 
-    for(i = 0; i < layers.size(); i++)
+    for(ii = 0; ii < layers.size(); ii++)
     {
-        layers[i]->transform.position.x += (float)x / layers[i]->getSpeed().x;
-        layers[i]->transform.position.y += (float)y / layers[i]->getSpeed().y;
+        layers[ii]->transform.position.x += (float)x / layers[ii]->getSpeed().x;
+        layers[ii]->transform.position.y += (float)y / layers[ii]->getSpeed().y;
     }
 }
 
@@ -60,9 +60,9 @@ void RF_Parallax::position(int x, int y)
     transform.position.x = x;
     transform.position.y = y;
 
-    for(i = 0; i < layers.size(); i++)
+    for(ii = 0; ii < layers.size(); ii++)
     {
-        layers[i]->transform.position.x = (float)x / layers[i]->getSpeed().x;
-        layers[i]->transform.position.y = (float)y / layers[i]->getSpeed().y;
+        layers[ii]->transform.position.x = (float)x / layers[ii]->getSpeed().x;
+        layers[ii]->transform.position.y = (float)y / layers[ii]->getSpeed().y;
     }
 }

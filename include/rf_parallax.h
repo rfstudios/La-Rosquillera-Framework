@@ -26,7 +26,8 @@ class RF_Parallax
     private:
         vector<RF_Parallax_Layer*> layers;
 
-        int i,ii,j;
+        int i,j;
+        unsigned int ii;
         Uint32 color;
 };
 

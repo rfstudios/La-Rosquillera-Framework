@@ -12,7 +12,7 @@ void MainMenu::Start()
     pL->transform.position.x = 5000;
     pL->transform.position.y = RF_Engine::instance->ventana->height();
 
-    texto = RF_Engine::instance->write("Pulsa ENTER para empezar", {0,0,0}, Vector2<int>(-250 + RF_Engine::instance->ventana->width()>>1, -100 + RF_Engine::instance->ventana->height()>>1));
+    texto = RF_Engine::instance->write("Pulsa ENTER para empezar", {0,0,0}, Vector2<int>((RF_Engine::instance->ventana->width()>>1)-250, (RF_Engine::instance->ventana->height()>>1)-100));
 }
 
 void MainMenu::Update()
