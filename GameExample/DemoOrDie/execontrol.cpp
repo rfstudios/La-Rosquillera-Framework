@@ -11,8 +11,8 @@ exeControl::~exeControl(){}
 
 void exeControl::Update()
 {
-    if(engine->key[_esc] || engine->key[_close_window])
+    if(RF_Engine::instance->key[_esc] || RF_Engine::instance->key[_close_window])
     {
-        engine->isRunning(false);
+        RF_Engine::instance->isRunning(false);
     }
 }

@@ -51,7 +51,7 @@ void RF_Window::render(vector<RF_Process*>& tM, vector<YW_Text*>& textSources)
     {
         if(NULL != tM[i])
         {
-            if(tM[i]->graph)
+            if(NULL!=tM[i]->graph)
             {
                 SDL_Rect r;
                 SDL_QueryTexture(tM[i]->graph,NULL,NULL,&r.w,&r.h);

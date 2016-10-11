@@ -327,7 +327,7 @@ void RF_Engine::playSong(string file){
         }
 
         music = Mix_LoadMUS(file.c_str());
-        Mix_PlayMusic(music, 0);
+        Mix_PlayMusic(music, -1);
 }
 int RF_Engine::write(string txt, SDL_Color color, Vector2<float> pos){
     Vector2<int> posInt; posInt.x = (int)pos.x; posInt.y = (int)pos.y;

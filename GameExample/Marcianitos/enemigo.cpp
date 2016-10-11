@@ -14,7 +14,7 @@ void Enemigo::Start()
 {
     transform.position.y=-10;
     transform.position.x=rand()%1200+40;
-    graph=engine->loadPNG("resources/nave2.png");
+    graph=RF_Engine::instance->loadPNG("resources/nave2.png");
 
     velocidad.y=rand()%50+25;
     velocidad.x=rand()%100-50;
@@ -22,13 +22,13 @@ void Enemigo::Start()
 
 void Enemigo::Update()
 {
-    transform.position.x+=velocidad.x*engine->time->deltaTime;
-    transform.position.y+=velocidad.y*engine->time->deltaTime;
+    transform.position.x+=velocidad.x*RF_Engine::instance->time->deltaTime;
+    transform.position.y+=velocidad.y*RF_Engine::instance->time->deltaTime;
 
-    RF_Process *laser=engine->collision("laser",this);
+    RF_Process *laser=RF_Engine::instance->collision("laser",this);
     if(laser)
     {
-        engine->sendSignal(laser->id,S_KILL);
+        RF_Engine::instance->sendSignal(laser->id,S_KILL);
         signal=S_KILL;
     }
 

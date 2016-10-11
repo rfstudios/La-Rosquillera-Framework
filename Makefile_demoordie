@@ -1,0 +1,47 @@
+export CC = g++
+
+export EJECUTABLE = DemoOrDie
+
+export OBJ_FOLDER = obj
+
+export INCLUDES = -Iinclude \
+-Isrc \
+-Iexample
+
+export LIBS = -lSDL2 \
+-lSDL2main \
+-lSDL2_image \
+-lSDL2_ttf \
+-lSDL2_mixer
+
+export CFLAGS = -std=c++11 -Wall -O2 $(INCLUDES)
+
+export CFILES = GameExample/DemoOrDie/execontrol.cpp \
+GameExample/DemoOrDie/main.cpp \
+GameExample/DemoOrDie/mainprocess.cpp \
+GameExample/DemoOrDie/splashscreen.cpp \
+GameExample/DemoOrDie/background.cpp \
+GameExample/DemoOrDie/scene1.cpp \
+GameExample/DemoOrDie/scene2.cpp \
+GameExample/DemoOrDie/scene3.cpp \
+GameExample/DemoOrDie/scene4.cpp \
+GameExample/DemoOrDie/scene5.cpp \
+GameExample/DemoOrDie/scene6.cpp \
+src/rf_3d.cpp \
+src/rf_3d_object.cpp \
+src/rf_background.cpp \
+src/rf_engine.cpp \
+src/rf_parallax.cpp \
+src/rf_parallax_layer.cpp \
+src/rf_process.cpp \
+src/rf_time.cpp \
+src/rf_window.cpp
+
+export OBJECTS = $(CFILES:.cpp=.o)
+
+$(EJECUTABLE): $(OBJECTS)
+	$(CC) $(OBJECTS) $(LIBS) -o $@
+
+%.o : %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
+

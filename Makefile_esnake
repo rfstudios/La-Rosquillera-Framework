@@ -1,0 +1,42 @@
+export CC = g++
+
+export EJECUTABLE = Esnake
+
+export OBJ_FOLDER = obj
+
+export INCLUDES = -Iinclude \
+-Isrc \
+-Iexample
+
+export LIBS = -lSDL2 \
+-lSDL2main \
+-lSDL2_image \
+-lSDL2_ttf \
+-lSDL2_mixer
+
+export CFLAGS = -std=c++11 -Wall -O2 $(INCLUDES)
+
+export CFILES = GameExample/Esnake/execontrol.cpp \
+GameExample/Esnake/game.cpp \
+GameExample/Esnake/main.cpp \
+GameExample/Esnake/mainmenu.cpp \
+GameExample/Esnake/mainprocess.cpp \
+GameExample/Esnake/splashscreen.cpp \
+src/rf_3d.cpp \
+src/rf_3d_object.cpp \
+src/rf_background.cpp \
+src/rf_engine.cpp \
+src/rf_parallax.cpp \
+src/rf_parallax_layer.cpp \
+src/rf_process.cpp \
+src/rf_time.cpp \
+src/rf_window.cpp
+
+export OBJECTS = $(CFILES:.cpp=.o)
+
+$(EJECUTABLE): $(OBJECTS)
+	$(CC) $(OBJECTS) $(LIBS) -o $@
+
+%.o : %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
+

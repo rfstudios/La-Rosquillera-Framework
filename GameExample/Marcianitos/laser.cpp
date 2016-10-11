@@ -11,11 +11,11 @@ Laser::~Laser(){}
 
 void Laser::Start()
 {
-    graph=engine->loadPNG("resources/laser.png");
+    graph=RF_Engine::instance->loadPNG("resources/laser.png");
 }
 
 void Laser::Update()
 {
-    transform.position.y-=400*engine->time->deltaTime;
+    transform.position.y-=400*RF_Engine::instance->time->deltaTime;
     if(transform.position.y<10) signal=S_KILL;
 }
