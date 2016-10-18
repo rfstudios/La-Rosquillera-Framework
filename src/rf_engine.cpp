@@ -320,14 +320,14 @@ RF_Process* RF_Engine::collision(int target, RF_Process* sender){
 
     return NULL;
 }
-void RF_Engine::playSong(string file){
+void RF_Engine::playSong(string file, int loop){
         if(NULL != music)
         {
             Mix_FreeMusic(music);
         }
 
         music = Mix_LoadMUS(file.c_str());
-        Mix_PlayMusic(music, -1);
+        Mix_PlayMusic(music, loop);
 }
 int RF_Engine::write(string txt, SDL_Color color, Vector2<float> pos){
     Vector2<int> posInt; posInt.x = (int)pos.x; posInt.y = (int)pos.y;

@@ -98,7 +98,8 @@ class RF_Engine
             SDL_Texture* loadPNG(string file);
             RF_Process* collision(string target, RF_Process* sender);
             RF_Process* collision(int target, RF_Process* sender);
-            void playSong(string file);
+
+            void playSong(string file, int loop = -1);
 
             RF_Math* math;
 

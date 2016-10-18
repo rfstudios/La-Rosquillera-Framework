@@ -12,6 +12,8 @@ void Scene2::Start()
     RF_Engine::instance->Debug(type);
     bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
 
+    RF_Engine::instance->playSong("resources/musica.mp3");
+
     pL = new RF_Parallax(0,0);
 
     pL->newLayer("resources/gfx/hierba_parallax.png", Vector2<float>(1.0f, 1.5f));

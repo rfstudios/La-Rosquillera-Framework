@@ -16,6 +16,27 @@ void SceneTest::Start()
         bg->putPixel(i, 240 + RF_Engine::instance->math->preCos(i*1000,true)*100, 0xFFFFFF);
         bg->putPixel(i, 240 + RF_Engine::instance->math->preSin(i*1000,false)*100, 0xFF0000);
     }*/
+
+    RF_Engine::instance->Debug("TEST");
+    float a;
+    float b;
+    float t;
+
+    t = SDL_GetTicks();
+    for(a = 0.0f; a < 10000.0f; a+=0.001f)
+    {
+        b = RF_Engine::instance->math->preCos(a);
+    }
+    RF_Engine::instance->Debug(SDL_GetTicks() - t);
+
+    t = SDL_GetTicks();
+    for(a = 0.0f; a < 10000.0f; a+=0.001f)
+    {
+        b = cos(a);
+    }
+    RF_Engine::instance->Debug(SDL_GetTicks() - t);
+
+    RF_Engine::instance->Debug("/TEST");
 }
 
 void SceneTest::Update()

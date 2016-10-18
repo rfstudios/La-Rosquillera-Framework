@@ -20,34 +20,18 @@ class RF_Math
             }
         }
 
-        float preCos(int value, bool prec = true)
+        float preCos(int value)
         {
             //Explicación: ((Milésimas de grado) convertidas a grados) convertidos a radianes
                 float val = ((value%360000)/1000.0f)*M_PI/180;
-
-            if(true == prec)
-            {
                 return precCos[(int)(val*1000)];
-            }
-            else
-            {
-                return cos(val);
-            }
         }
 
-        float preSin(int value, bool prec = true)
+        float preSin(int value)
         {
             //Explicación: ((Milésimas de grado) convertidas a grados) convertidos a radianes
                 float val = ((value%360000)/1000.0f)*M_PI/180;
-
-            if(true == prec)
-            {
                 return precSin[(int)(val*1000)];
-            }
-            else
-            {
-                return sin(val);
-            }
         }
 
     private:
