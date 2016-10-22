@@ -4,12 +4,12 @@
 #include "rf_engine.h"
 #include "rf_declares.h"
 #include "rf_background.h"
-#include <SDL/SDL_image.h>
+#include <SDL2/SDL_image.h>
 
 class RF_Parallax_Layer
 {
     public:
-        RF_Parallax_Layer(string image_path="", Vector2<float> speed = Vector2<float>(1.0f,1.0f), Vector2<bool> mirror = Vector2<bool>(true,false));
+        RF_Parallax_Layer(string file="", Vector2<float> speed = Vector2<float>(1.0f,1.0f), Vector2<bool> mirror = Vector2<bool>(true,false));
         virtual ~RF_Parallax_Layer(){}
 
         Uint32 getRotoPixel(Vector2<int> pos);
@@ -20,6 +20,8 @@ class RF_Parallax_Layer
 
         Vector2<float>& getSpeed(){return lSpeed;}
         Vector2<bool>& getMirroring(){return _mirror;}
+        int setGfx(string file);
+        int setGfx(SDL_Surface* file);
 
         void drawAlone(RF_Background* bg);
 

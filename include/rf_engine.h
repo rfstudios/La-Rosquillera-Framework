@@ -27,6 +27,8 @@
 #include "rf_declares.h"
 #include "rf_time.h"
 #include "rf_math.h"
+#include "rf_asset_list.h"
+#include "rf_asset.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -72,7 +74,6 @@ class RF_Engine
             bool exists(string type);
         /************************************/
 
-        Mix_Music* music;
         SDL_Event event;    //Evento para controlar teclado
         bool key[_FOO_KEY]; //Array de teclas pulsadas
         RF_Time *time;
@@ -93,21 +94,28 @@ class RF_Engine
             void Debug(float t);
         /*************************/
 
+        /**Assets****************/
+            vector<RF_Asset_List*> assetManager;
+            void loadAsset(string path);
+            SDL_Surface* getGfx2DSrf(string id);
+            SDL_Texture* getGfx2D(string id);
+            Mix_Music* getAudioClip(string id);
+            TTF_Font* getFont(string id);
+            int _search_in_assetManager(int i, string id);
+            int assetCount(string id);
+            int assetCount(int id);
+        /*************************/
+
         /**Utilidades************/
             SDL_Surface* loadPNG_Surface(string file);
             SDL_Texture* loadPNG(string file);
             RF_Process* collision(string target, RF_Process* sender);
             RF_Process* collision(int target, RF_Process* sender);
 
-            void playSong(string file, int loop = -1);
-
             RF_Math* math;
 
             /*Uint32 getPixel(SDL_Surface* surface, int x, int y);
             void putPixel(SDL_Surface* surface, int x, int y, Uint32);*/
-
-            vector<YGF*> ygf; //Lista de ficheros de gráficos cargados;
-            int loadYgf(string filename);
 
             Vector2<int> rotozoom(Vector2<int> pos, Transform2D<int> t, Vector2<int> lim, Vector2<bool> mirror = Vector2<bool>(true,true));
                 Vector2<int> retorno;

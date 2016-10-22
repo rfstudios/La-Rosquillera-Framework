@@ -32,6 +32,10 @@ void mainProcess::Start()
     //Inicializamos el fondo
         bg->prepareSurface();
 
+    //Cargamos recursos
+        RF_Engine::instance->loadAsset("resources/gfx");
+        RF_Engine::instance->loadAsset("resources/misc");
+
     //Levantamos el proceso "Scene2"
         scene = RF_Engine::instance->newTask(new Scene2(),id);
 

@@ -11,7 +11,7 @@ Laser::~Laser(){}
 
 void Laser::Start()
 {
-    graph=RF_Engine::instance->loadPNG("resources/laser.png");
+    graph=RF_Engine::instance->getGfx2D("laser");
 }
 
 void Laser::Update()

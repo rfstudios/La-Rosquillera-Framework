@@ -1,27 +1,36 @@
 #include "rf_parallax_layer.h"
 #include "rf_primitive.h"
 
-RF_Parallax_Layer::RF_Parallax_Layer(string image_path, Vector2<float> speed, Vector2<bool> mirror)
+RF_Parallax_Layer::RF_Parallax_Layer(string file, Vector2<float> speed, Vector2<bool> mirror)
 {
-    if(image_path == ""){size.x = -1; return;}
     lSpeed = speed;
     _mirror = mirror;
 
+    if(file == ""){size.x = -1; return;}
+    int error = setGfx(file);
+}
+int RF_Parallax_Layer::setGfx(string file)
+{
+    return setGfx(RF_Engine::instance->getGfx2DSrf(file));
+}
+int RF_Parallax_Layer::setGfx(SDL_Surface* file)
+{
     transform.position = Vector2<int>(0,0);
     transform.scale = Vector2<float>(1.0f,1.0f);
     transform.rotation=0;
 
-    SDL_Surface* bgImgS = RF_Engine::instance->loadPNG_Surface(image_path);
-    size.x = bgImgS->w; size.y = bgImgS->h;
+    file;
+    size.x = file->w; size.y = file->h;
 
-    for(j=0; j<bgImgS->h; j++)
+    for(j=0; j<file->h; j++)
     {
-        for(i=0; i<bgImgS->w; i++)
+        for(i=0; i<file->w; i++)
         {
-            data.push_back(RF_Primitive::getPixel(bgImgS,i,j));
+            data.push_back(RF_Primitive::getPixel(file,i,j));
         }
     }
-    SDL_FreeSurface(bgImgS);
+
+    return 0;
 }
 
 Uint32 RF_Parallax_Layer::getRotoPixel(Vector2<int> pos)

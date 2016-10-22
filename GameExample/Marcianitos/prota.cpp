@@ -12,7 +12,7 @@ Prota::~Prota(){}
 
 void Prota::Start()
 {
-    graph=RF_Engine::instance->loadPNG("resources/nave1.png");
+    graph=RF_Engine::instance->getGfx2D("nave1");
     return;
 }
 void Prota::Update()

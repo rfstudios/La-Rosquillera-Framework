@@ -3,6 +3,7 @@
 #include "rf_declares.h"
 #include "rf_primitive.h"
 #include "rf_math.h"
+#include "rf_soundmanager.h"
 
 #include <math.h>
 using namespace std;
@@ -12,15 +13,15 @@ void Scene2::Start()
     RF_Engine::instance->Debug(type);
     bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
 
-    RF_Engine::instance->playSong("resources/musica.mp3");
+    RF_SoundManager::playSong("musica", -1);
 
     pL = new RF_Parallax(0,0);
 
-    pL->newLayer("resources/gfx/hierba_parallax.png", Vector2<float>(1.0f, 1.5f));
-    pL->newLayer("resources/gfx/mountain_front_parallax.png", Vector2<float>(1.5f, 1.6f));
-    pL->newLayer("resources/gfx/mountain_parallax.png", Vector2<float>(3.0f, 2.0f));
-    pL->newLayer("resources/gfx/nubes_parallax.png", Vector2<float>(8.0f, 8.0f));
-    pL->newLayer("resources/gfx/fondo_parallax.png", Vector2<float>(12.0f, 12.0f));
+    pL->newLayer("hierba_parallax", Vector2<float>(1.0f, 1.5f));
+    pL->newLayer("mountain_front_parallax", Vector2<float>(1.5f, 1.6f));
+    pL->newLayer("mountain_parallax", Vector2<float>(3.0f, 2.0f));
+    pL->newLayer("nubes_parallax", Vector2<float>(8.0f, 8.0f));
+    pL->newLayer("fondo_parallax", Vector2<float>(12.0f, 12.0f));
 
     metarange = RF_Engine::instance->ventana->width()>>1;
 

@@ -57,7 +57,7 @@ RF_Engine::~RF_Engine(){
 
     delete(ventana);
 
-    if(NULL != music) Mix_FreeMusic(music);
+    //if(NULL != music) Mix_FreeMusic(music); Habrá que parar el SoundManager
     Mix_Quit();
     TTF_Quit();
     IMG_Quit();
@@ -281,6 +281,103 @@ void RF_Engine::Debug(float t){
 }
 /****************************************************************/
 
+/**Assets********************************************************/
+void RF_Engine::loadAsset(string path){
+    RF_Asset_List* nA = new RF_Asset_List(path);
+    assetManager.push_back(nA);
+}
+
+SDL_Texture* RF_Engine::getGfx2D(string id){
+    return SDL_CreateTextureFromSurface(ventana->renderer, getGfx2DSrf(id));
+}
+SDL_Surface* RF_Engine::getGfx2DSrf(string id){
+    RF_Engine::instance->Debug(id);
+
+    int pos = -1; unsigned int i;
+    for(i = 0; i < assetManager.size() && pos == -1; i++)
+    {
+        pos = _search_in_assetManager(i,id);
+    }
+
+    SDL_Surface* ret = NULL;
+    if(pos != -1)
+    {
+        i--;
+        ret = dynamic_cast<RF_Gfx2D*>(assetManager[i]->assets[pos])->texture;
+    }
+
+    return ret;
+}
+Mix_Music* RF_Engine::getAudioClip(string id){
+    RF_Engine::instance->Debug(id);
+
+    int pos = -1; unsigned int i;
+    for(i = 0; i < assetManager.size() && pos == -1; i++)
+    {
+        pos = _search_in_assetManager(i,id);
+    }
+
+    Mix_Music* ret = NULL;
+    if(pos != -1)
+    {
+        i--;
+        ret = dynamic_cast<RF_AudioClip*>(assetManager[i]->assets[pos])->clip;
+    }
+
+    return ret;
+}
+TTF_Font* RF_Engine::getFont(string id){
+    RF_Engine::instance->Debug(id);
+
+    int pos = -1; unsigned int i;
+    for(i = 0; i < assetManager.size() && pos == -1; i++)
+    {
+        pos = _search_in_assetManager(i,id);
+    }
+
+    TTF_Font* ret = NULL;
+    if(pos != -1)
+    {
+        i--;
+        ret = dynamic_cast<RF_Font*>(assetManager[i]->assets[pos])->font;
+    }
+
+    return ret;
+}
+
+int RF_Engine::_search_in_assetManager(int i, string id){
+    RF_Asset_List* sL = assetManager[i];
+    int pos = -1;
+
+    for(int j = sL->assets.size()-1; j >= 0; j--)
+    {
+        if(sL->assets[j]->id == id)
+        {
+            pos = j;
+            break;
+        }
+    }
+
+    sL = NULL;
+    return pos;
+}
+int RF_Engine::assetCount(string id){
+    int pos = -1; unsigned int i;
+    for(i = 0; i < assetManager.size() && pos == -1; i++)
+    {
+        if(assetManager[i]->id == id)
+        {
+            pos = i;
+        }
+    }
+
+    return assetCount(pos);
+}
+int RF_Engine::assetCount(int id){
+    return assetManager[id]->assets.size();
+}
+/****************************************************************/
+
 /**Utilidades****************************************************/
 SDL_Surface* RF_Engine::loadPNG_Surface(string file){
     return IMG_Load(file.c_str());
@@ -319,15 +416,6 @@ RF_Process* RF_Engine::collision(int target, RF_Process* sender){
     }
 
     return NULL;
-}
-void RF_Engine::playSong(string file, int loop){
-        if(NULL != music)
-        {
-            Mix_FreeMusic(music);
-        }
-
-        music = Mix_LoadMUS(file.c_str());
-        Mix_PlayMusic(music, loop);
 }
 int RF_Engine::write(string txt, SDL_Color color, Vector2<float> pos){
     Vector2<int> posInt; posInt.x = (int)pos.x; posInt.y = (int)pos.y;
@@ -390,31 +478,7 @@ void RF_Engine::deleteText(int txtID){
     }
 }
 
-int RF_Engine::loadYgf(string filename){
-    /*
-        1 - Abrimos el fichero comprimido
-        2 - Descomprimimos uno a uno cada fichero
-        3 - Hacemos el while
-    */
-
-    YGF *newYGF = new YGF(); //Creamos una nueva estructura YGF
-    while(true)//Para cada fichero dentro del comprimido
-    {
-        //Extraemos el fichero
-
-        //Creamos la SDL_Texture
-        //SDL_Texture *g = new SDL_Texture();
-        /*SDL_RWops *rw;
-        rw=SDL_RWFromMem();
-        SDL_Texture *t = SDL_CreateTextureFromSurface(ventana->renderer,IMG_LoadPNG_RW(rw));
-        newYGF->graph.push_back(t);
-        SDL_FreeRW(rw);*/
-    }
-    ygf.push_back(newYGF);
-    return ygf.size()-1;
-}
-Vector2<int> RF_Engine::rotozoom(Vector2<int> pos, Transform2D<int> t, Vector2<int> lim, Vector2<bool> mirror)
-{
+Vector2<int> RF_Engine::rotozoom(Vector2<int> pos, Transform2D<int> t, Vector2<int> lim, Vector2<bool> mirror){
     if(t.scale.x == 0) t.scale.x = 1;
     if(t.scale.y == 0) t.scale.y = 1;
 

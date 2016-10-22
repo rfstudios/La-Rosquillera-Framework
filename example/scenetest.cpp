@@ -1,52 +1,59 @@
 #include "scenetest.h"
+#include "rf_soundmanager.h"
 
 void SceneTest::Start()
 {
     RF_Engine::instance->Debug(type);
     bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
-    pL = new RF_Parallax_Layer("resources/gfx/eBaby.png", Vector2<float>(1.0f, 1.0f), Vector2<bool>(true,true));
-    /*pL->transform.position.x = 3 * bg->screen->w>>1;
-    pL->transform.position.y = 3 * bg->screen->h>>1;*/
-    pL->transform.scale.x = pL->transform.scale.y = 3.0f;
 
-    bg->clearSurface(0xFFFFFF);
+    bg->clearSurface(0x000000);
 
-    /*for(int i = 0; i < RF_Engine::instance->ventana->width(); i++)
-    {
-        bg->putPixel(i, 240 + RF_Engine::instance->math->preCos(i*1000,true)*100, 0xFFFFFF);
-        bg->putPixel(i, 240 + RF_Engine::instance->math->preSin(i*1000,false)*100, 0xFF0000);
-    }*/
+    assetCont = RF_Engine::instance->assetCount("gfx");
+    RF_SoundManager::playSong(RF_Engine::instance->getAudioClip("musica"),-1);
 
-    RF_Engine::instance->Debug("TEST");
-    float a;
-    float b;
-    float t;
-
-    t = SDL_GetTicks();
-    for(a = 0.0f; a < 10000.0f; a+=0.001f)
-    {
-        b = RF_Engine::instance->math->preCos(a);
-    }
-    RF_Engine::instance->Debug(SDL_GetTicks() - t);
-
-    t = SDL_GetTicks();
-    for(a = 0.0f; a < 10000.0f; a+=0.001f)
-    {
-        b = cos(a);
-    }
-    RF_Engine::instance->Debug(SDL_GetTicks() - t);
-
-    RF_Engine::instance->Debug("/TEST");
+    RF_Engine::instance->font = RF_Engine::instance->getFont("Times_New_Roman");
+    RF_Engine::instance->write("Cacapito", {255,255,255}, Vector2<int>(RF_Engine::instance->ventana->width()>>1, RF_Engine::instance->ventana->height()-200));
 }
 
 void SceneTest::Update()
 {
-        pL->transform.position.x += RF_Engine::instance->math->preCos(RF_Engine::instance->time->currentTime*100)*50;
-        pL->transform.position.y += RF_Engine::instance->math->preSin(RF_Engine::instance->time->currentTime*100)*50;
+    deltacount += RF_Engine::instance->time->deltaTime;
 
-        pL->transform.scale.x = pL->transform.scale.y = RF_Engine::instance->math->preCos(RF_Engine::instance->time->currentTime*50)*10;
-        if(pL->transform.scale.x < 0){pL->transform.scale.x = -pL->transform.scale.x;}
-        if(pL->transform.scale.y < 0){pL->transform.scale.y = -pL->transform.scale.y;}
+    if(deltacount >= 1.0f)
+    {
+        deltacount = 0.0f;
 
-        pL->drawAlone(bg);
+        cont++; if(cont >= assetCont){cont = 0;}
+
+        switch(cont)
+        {
+            case 0:
+                graph = RF_Engine::instance->getGfx2D("demoordie");
+                break;
+            case 1:
+                graph = RF_Engine::instance->getGfx2D("eBaby");
+                break;
+            case 2:
+                graph = RF_Engine::instance->getGfx2D("euskal");
+                break;
+            case 3:
+                graph = RF_Engine::instance->getGfx2D("logo");
+                break;
+            case 4:
+                graph = RF_Engine::instance->getGfx2D("fondo_parallax");
+                break;
+            case 5:
+                graph = RF_Engine::instance->getGfx2D("hierba_parallax");
+                break;
+            case 6:
+                graph = RF_Engine::instance->getGfx2D("mountain_front_parallax");
+                break;
+            case 7:
+                graph = RF_Engine::instance->getGfx2D("mountain_parallax");
+                break;
+            case 8:
+                graph = RF_Engine::instance->getGfx2D("nubes_parallax");
+                break;
+        }
+    }
 }

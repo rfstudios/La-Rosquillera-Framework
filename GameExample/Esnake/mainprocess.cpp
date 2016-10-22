@@ -12,6 +12,7 @@
 #include "game.h"
 #include "rf_declares.h"
 #include "rf_primitive.h"
+#include "rf_soundmanager.h"
 #include <SDL2/SDL_ttf.h>
 
 mainProcess::~mainProcess(){}
@@ -31,6 +32,9 @@ void mainProcess::Start()
     //Inicializamos el fondo
         bg->prepareSurface();
 
+    //Cargamos recursos
+        RF_Engine::instance->loadAsset("resources");
+
     //Levantamos el proceso "Scene2"
         scene = RF_Engine::instance->newTask(new SplashScreen(),id);
 
@@ -47,7 +51,7 @@ void mainProcess::Update(){
                 RF_Engine::instance->sendSignal(scene, S_KILL_TREE);
                 RF_Engine::instance->time->setFixedCTime();
 
-                RF_Engine::instance->playSong("resources/musica.mp3");
+                RF_SoundManager::playSong("musica", -1);
                 scene = RF_Engine::instance->newTask(new MainMenu(),id);
             }
             break;

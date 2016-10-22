@@ -9,15 +9,17 @@
 #include "execontrol.h"
 #include "prota.h"
 #include "enemigo.h"
+#include "rf_soundmanager.h"
 
 mainProcess::~mainProcess(){}
 
 void mainProcess::Start()
 {
     RF_Engine::instance->newTask(new exeControl(),id);
-    prota=RF_Engine::instance->newTask(new Prota(Vector2<float>(640,700)),id);
+    RF_Engine::instance->loadAsset("resources");
+    RF_SoundManager::playSong("musica");
 
-    RF_Engine::instance->playSong("resources/musica.mp3");
+    prota=RF_Engine::instance->newTask(new Prota(Vector2<float>(640,700)),id);
     return;
 }
 void mainProcess::Update()

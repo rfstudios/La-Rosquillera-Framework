@@ -14,7 +14,7 @@ void Enemigo::Start()
 {
     transform.position.y=-10;
     transform.position.x=rand()%1200+40;
-    graph=RF_Engine::instance->loadPNG("resources/nave2.png");
+    graph=RF_Engine::instance->getGfx2D("nave2");
 
     velocidad.y=rand()%50+25;
     velocidad.x=rand()%100-50;

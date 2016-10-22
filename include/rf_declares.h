@@ -88,18 +88,6 @@ struct YW_Text{
     SDL_Surface* textSurface;
     Vector2<int> position;
 };
-struct YGF{
-    vector<string> names;
-    vector<SDL_Texture*> graph;
-    int id(string name)
-    {
-        for(unsigned int i=0;i<names.size();i++)
-        {
-            if(names[i]==name){return i;}
-        }
-        return -1;
-    }
-};
 
 class RF_Engine;
 class RF_Process;

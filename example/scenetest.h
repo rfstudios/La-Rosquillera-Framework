@@ -21,7 +21,8 @@ class SceneTest : public RF_Process
         virtual void Update();
 
     private:
-        RF_Parallax_Layer* pL;
+        float deltacount = 0.0f;
+        int cont = 0, assetCont;
         RF_Background* bg;
 };
 
