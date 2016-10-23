@@ -101,6 +101,7 @@ class RF_Engine
             SDL_Texture* getGfx2D(string id);
             Mix_Music* getAudioClip(string id);
             TTF_Font* getFont(string id, int pitch = -1);
+            Vector2<int> search_in_assetManager(string id);
             int _search_in_assetManager(int i, string id);
             int assetCount(string id);
             int assetCount(int id);

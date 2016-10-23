@@ -27,8 +27,14 @@ RF_Asset_List::RF_Asset_List(string path)
             return;
         }
 
-    //Creamos un puntero con el que iremos seleccionando los ficheros
-        FILE* fich;
+    //Creamos un puntero con el seleccionaremos el fichero de configuración (si existe);
+        /*FILE* fich; fich = fopen((path + "/package.cfg").c_str(),"r");
+        vector<string> cfg;
+        if(fich != NULL)
+        {
+            cfg.push_back("");
+            fgets(cfg[cfg.size()-1],fich)
+        }*/
 
     //Leyendo uno a uno todos los archivos que hay
         while ((ent = readdir (dir)) != NULL)

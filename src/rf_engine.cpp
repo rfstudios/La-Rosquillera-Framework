@@ -289,25 +289,33 @@ void RF_Engine::loadAsset(string path){
 
 SDL_Texture* RF_Engine::getGfx2D(string id){
     RF_Engine::instance->Debug(("getGfx2D [Info]: " + id));
-    SDL_Texture* tex = SDL_CreateTextureFromSurface(ventana->renderer, getGfx2DSrf(id));
 
-    RF_Engine::instance->Debug(("getGfx2D [Info]: Created texture from surface"));
-    return tex;
+    Vector2<int> pos = search_in_assetManager(id);
+    SDL_Texture* ret = NULL;
+
+    if(pos.y != -1)
+    {
+        ret = dynamic_cast<RF_Gfx2D*>(assetManager[pos.x]->assets[pos.y])->texture;
+        if(ret == NULL)
+        {
+            ret = SDL_CreateTextureFromSurface(ventana->renderer, dynamic_cast<RF_Gfx2D*>(assetManager[pos.x]->assets[pos.y])->surface);
+            dynamic_cast<RF_Gfx2D*>(assetManager[pos.x]->assets[pos.y])->texture = ret;
+
+            RF_Engine::instance->Debug("getGfx2D [Info]: No existía la textura así que se ha creado");
+        }
+    }
+
+    return ret;
 }
 SDL_Surface* RF_Engine::getGfx2DSrf(string id){
     RF_Engine::instance->Debug(("getGfx2DSrf [Info]: " + id));
 
-    int pos = -1; unsigned int i;
-    for(i = 0; i < assetManager.size() && pos == -1; i++)
-    {
-        pos = _search_in_assetManager(i,id);
-    }
-
+    Vector2<int> pos = search_in_assetManager(id);
     SDL_Surface* ret = NULL;
-    if(pos != -1)
+
+    if(pos.y != -1)
     {
-        i--;
-        ret = dynamic_cast<RF_Gfx2D*>(assetManager[i]->assets[pos])->texture;
+        ret = dynamic_cast<RF_Gfx2D*>(assetManager[pos.x]->assets[pos.y])->surface;
     }
 
     return ret;
@@ -315,17 +323,12 @@ SDL_Surface* RF_Engine::getGfx2DSrf(string id){
 Mix_Music* RF_Engine::getAudioClip(string id){
     RF_Engine::instance->Debug(("getAudioClip [Info]: " + id));
 
-    int pos = -1; unsigned int i;
-    for(i = 0; i < assetManager.size() && pos == -1; i++)
-    {
-        pos = _search_in_assetManager(i,id);
-    }
+    Vector2<int> pos = search_in_assetManager(id);
 
     Mix_Music* ret = NULL;
-    if(pos != -1)
+    if(pos.y != -1)
     {
-        i--;
-        ret = dynamic_cast<RF_AudioClip*>(assetManager[i]->assets[pos])->clip;
+        ret = dynamic_cast<RF_AudioClip*>(assetManager[pos.x]->assets[pos.y])->clip;
     }
 
     return ret;
@@ -333,30 +336,33 @@ Mix_Music* RF_Engine::getAudioClip(string id){
 TTF_Font* RF_Engine::getFont(string id, int pitch){
     RF_Engine::instance->Debug(("getFont [Info]: " + id));
 
-    int pos = -1; unsigned int i;
-    for(i = 0; i < assetManager.size() && pos == -1; i++)
-    {
-        pos = _search_in_assetManager(i,id);
-    }
+    Vector2<int> pos = search_in_assetManager(id);
 
     TTF_Font* ret = NULL;
-    if(pos != -1)
+    if(pos.y != -1)
     {
-        i--;
-
         if(pitch == -1)
         {
-            ret = dynamic_cast<RF_Font*>(assetManager[i]->assets[pos])->font;
+            ret = dynamic_cast<RF_Font*>(assetManager[pos.x]->assets[pos.y])->font;
         }
         else
         {
-            ret = TTF_OpenFont(dynamic_cast<RF_Font*>(assetManager[i]->assets[pos])->path.c_str(), pitch);
+            ret = TTF_OpenFont(dynamic_cast<RF_Font*>(assetManager[pos.x]->assets[pos.y])->path.c_str(), pitch);
         }
     }
 
     return ret;
 }
 
+Vector2<int> RF_Engine::search_in_assetManager(string id){
+    int pos = -1; unsigned int i;
+    for(i = 0; i < assetManager.size() && pos == -1; i++)
+    {
+        pos = _search_in_assetManager(i,id);
+    }
+
+    return Vector2<int>((int)i-1, pos); //1º Paquete 2º Recurso
+}
 int RF_Engine::_search_in_assetManager(int i, string id){
     RF_Asset_List* sL = assetManager[i];
     int pos = -1;

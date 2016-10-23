@@ -38,6 +38,11 @@ class RF_Gfx2D : public RF_Asset
     public:
         RF_Gfx2D(string name, SDL_Surface* gfx):RF_Asset(name)
         {
+            surface = gfx;
+            texture = NULL;
+        }
+        RF_Gfx2D(string name, SDL_Texture* gfx):RF_Asset(name)
+        {
             texture = gfx;
         }
 
@@ -45,9 +50,13 @@ class RF_Gfx2D : public RF_Asset
         {
             delete texture;
             texture = NULL;
+
+            delete surface;
+            surface = NULL;
         }
 
-        SDL_Surface* texture;
+        SDL_Surface* surface;
+        SDL_Texture* texture;
 };
 
 class RF_Font : public RF_Asset

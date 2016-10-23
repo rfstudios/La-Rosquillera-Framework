@@ -37,7 +37,7 @@ void mainProcess::Start()
         RF_Engine::instance->loadAsset("resources/misc");
 
     //Levantamos el proceso "Scene2"
-        scene = RF_Engine::instance->newTask(new Scene2(),id);
+        scene = RF_Engine::instance->newTask(new SceneTest(),id);
 
     //scene = RF_Engine::instance->newTask(new SplashScreen(),id);
     return;
