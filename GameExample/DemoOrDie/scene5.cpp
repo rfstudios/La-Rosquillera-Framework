@@ -7,7 +7,7 @@ using namespace std;
 void Scene5::Start(){
     RF_Engine::instance->Debug(type);
 
-    RF_Engine::instance->font = TTF_OpenFont("resources/Times_New_Roman.ttf", 30);
+    RF_Engine::instance->font = RF_Engine::instance->getFont("Times_New_Roman", 30);
     bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
 }
 

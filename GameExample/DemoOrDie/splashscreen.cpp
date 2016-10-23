@@ -7,7 +7,7 @@ void SplashScreen::Start()
     RF_Engine::instance->Debug(type);
 
     srand (RF_Engine::instance->time->currentTime);
-    bgImg = RF_Engine::instance->loadPNG_Surface("resources/gfx/logo.png");
+    bgImg = RF_Engine::instance->getGfx2DSrf("logo");
     bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
     bg->clearSurface(0xffffff);
     step = 0;

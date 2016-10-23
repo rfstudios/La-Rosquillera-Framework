@@ -6,8 +6,8 @@ void Scene4::Start(){
     RF_Engine::instance->Debug(type);
 
     bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
-    SDL_Surface* bgImgS = RF_Engine::instance->loadPNG_Surface("resources/gfx/eBaby.png");
-    SDL_Surface* bgImgS2 = RF_Engine::instance->loadPNG_Surface("resources/gfx/logo.png");
+    SDL_Surface* bgImgS = RF_Engine::instance->getGfx2DSrf("eBaby");
+    SDL_Surface* bgImgS2 = RF_Engine::instance->getGfx2DSrf("logo");
     for(int i=0; i<640; i++)
     {
         for(int j=0; j<480; j++)
@@ -23,8 +23,6 @@ void Scene4::Start(){
             }
         }
     }
-    SDL_FreeSurface(bgImgS);
-    SDL_FreeSurface(bgImgS2);
 }
 
 void Scene4::Update(){

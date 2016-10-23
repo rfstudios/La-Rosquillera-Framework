@@ -6,7 +6,7 @@ void Scene3::Start(){
     RF_Engine::instance->Debug(type);
 
     bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
-    SDL_Surface* bgImgS = RF_Engine::instance->loadPNG_Surface("resources/gfx/euskal.png");
+    SDL_Surface* bgImgS = RF_Engine::instance->getGfx2DSrf("euskal");
     for(int i=0; i<640; i++)
     {
         for(int j=0; j<480; j++)
@@ -15,7 +15,7 @@ void Scene3::Start(){
         }
     }
 
-    bgImgS = RF_Engine::instance->loadPNG_Surface("resources/gfx/demoordie.png");
+    bgImgS = RF_Engine::instance->getGfx2DSrf("demoordie");
     for(int i=0; i<640; i++)
     {
         for(int j=0; j<480; j++)
@@ -23,8 +23,6 @@ void Scene3::Start(){
             bgImg2[i][j] = RF_Primitive::getPixel(bgImgS,i,j);
         }
     }
-
-    SDL_FreeSurface(bgImgS);
 }
 void Scene3::Update(){
     deltaCont += RF_Engine::instance->time->deltaTime;

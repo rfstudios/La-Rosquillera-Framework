@@ -53,8 +53,9 @@ class RF_Gfx2D : public RF_Asset
 class RF_Font : public RF_Asset
 {
     public:
-        RF_Font(string name, TTF_Font* ttf):RF_Asset(name)
+        RF_Font(string name, TTF_Font* ttf, string _path):RF_Asset(name)
         {
+            path = _path;
             font = ttf;
         }
 
@@ -65,5 +66,6 @@ class RF_Font : public RF_Asset
         }
 
         TTF_Font* font;
+        string path;
 };
 #endif // RF_ASSET_H

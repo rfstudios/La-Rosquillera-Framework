@@ -288,10 +288,14 @@ void RF_Engine::loadAsset(string path){
 }
 
 SDL_Texture* RF_Engine::getGfx2D(string id){
-    return SDL_CreateTextureFromSurface(ventana->renderer, getGfx2DSrf(id));
+    RF_Engine::instance->Debug(("getGfx2D [Info]: " + id));
+    SDL_Texture* tex = SDL_CreateTextureFromSurface(ventana->renderer, getGfx2DSrf(id));
+
+    RF_Engine::instance->Debug(("getGfx2D [Info]: Created texture from surface"));
+    return tex;
 }
 SDL_Surface* RF_Engine::getGfx2DSrf(string id){
-    RF_Engine::instance->Debug(id);
+    RF_Engine::instance->Debug(("getGfx2DSrf [Info]: " + id));
 
     int pos = -1; unsigned int i;
     for(i = 0; i < assetManager.size() && pos == -1; i++)
@@ -309,7 +313,7 @@ SDL_Surface* RF_Engine::getGfx2DSrf(string id){
     return ret;
 }
 Mix_Music* RF_Engine::getAudioClip(string id){
-    RF_Engine::instance->Debug(id);
+    RF_Engine::instance->Debug(("getAudioClip [Info]: " + id));
 
     int pos = -1; unsigned int i;
     for(i = 0; i < assetManager.size() && pos == -1; i++)
@@ -326,8 +330,8 @@ Mix_Music* RF_Engine::getAudioClip(string id){
 
     return ret;
 }
-TTF_Font* RF_Engine::getFont(string id){
-    RF_Engine::instance->Debug(id);
+TTF_Font* RF_Engine::getFont(string id, int pitch){
+    RF_Engine::instance->Debug(("getFont [Info]: " + id));
 
     int pos = -1; unsigned int i;
     for(i = 0; i < assetManager.size() && pos == -1; i++)
@@ -339,7 +343,15 @@ TTF_Font* RF_Engine::getFont(string id){
     if(pos != -1)
     {
         i--;
-        ret = dynamic_cast<RF_Font*>(assetManager[i]->assets[pos])->font;
+
+        if(pitch == -1)
+        {
+            ret = dynamic_cast<RF_Font*>(assetManager[i]->assets[pos])->font;
+        }
+        else
+        {
+            ret = TTF_OpenFont(dynamic_cast<RF_Font*>(assetManager[i]->assets[pos])->path.c_str(), pitch);
+        }
     }
 
     return ret;

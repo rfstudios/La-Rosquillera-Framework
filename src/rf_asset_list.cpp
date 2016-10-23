@@ -23,7 +23,7 @@ RF_Asset_List::RF_Asset_List(string path)
     //Miramos que no haya error
         if (dir == NULL)
         {
-            RF_Engine::instance->Debug("LoadAsset [Error]: No se puede abrir directorio");
+            RF_Engine::instance->Debug(("LoadAsset [Error]: No se puede abrir directorio " + path));
             return;
         }
 
@@ -55,13 +55,13 @@ RF_Asset_List::RF_Asset_List(string path)
                     }
                     else if(t == 2) //TTF Font
                     {
-                        RF_Font* nA = new RF_Font(Aid, TTF_OpenFont(p.c_str(),12));
+                        RF_Font* nA = new RF_Font(Aid, TTF_OpenFont(p.c_str(),12), p);
                         assets.push_back(nA);
                     }
                 }
         }
 
-        RF_Engine::instance->Debug("LoadAsset [Info]: Assets cargados");
+        RF_Engine::instance->Debug(("LoadAsset [Info]: " + id + " done"));
 }
 
 int RF_Asset_List::asset_type(string ext)

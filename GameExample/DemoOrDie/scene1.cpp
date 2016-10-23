@@ -7,7 +7,7 @@ void Scene1::Start()
     RF_Engine::instance->Debug(type);
 
     srand (RF_Engine::instance->time->currentTime);
-    bgImg = RF_Engine::instance->loadPNG_Surface("resources/gfx/demoordie.png");
+    bgImg = RF_Engine::instance->getGfx2DSrf("demoordie");
     bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
 
     for(int i=0; i < bgImg->w; i++)

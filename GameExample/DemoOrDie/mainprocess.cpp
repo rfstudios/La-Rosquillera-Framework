@@ -16,6 +16,7 @@
 #include "scene6.h"
 #include "rf_declares.h"
 #include "rf_primitive.h"
+#include "rf_soundmanager.h";
 #include <SDL2/SDL_ttf.h>
 
 mainProcess::~mainProcess(){}
@@ -24,12 +25,15 @@ void mainProcess::Start()
 {
     RF_Engine::instance->newTask(new exeControl(),id);
 
+    RF_Engine::instance->loadAsset("resources/gfx");
+    RF_Engine::instance->loadAsset("resources/misc");
+
     int bgr = RF_Engine::instance->newTask(new background(),id);
 
     bg = dynamic_cast<background*>(RF_Engine::instance->taskManager[bgr]);
     bg->prepareSurface();
 
-    //breik(new Scene4());
+    //breik(new Scene2());
 
     scene = RF_Engine::instance->newTask(new SplashScreen(),id);
     return;
@@ -43,7 +47,7 @@ void mainProcess::Update()
             if("Scene1" != RF_Engine::instance->taskManager[scene]->type)
             {
                 RF_Engine::instance->sendSignal(scene, S_KILL_TREE);
-                RF_Engine::instance->playSong("resources/st7.wav");
+                RF_SoundManager::playSong("st7");
                 RF_Engine::instance->time->setFixedCTime();
 
                 scene = RF_Engine::instance->newTask(new Scene1(),id);
