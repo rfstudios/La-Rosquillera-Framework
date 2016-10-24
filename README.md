@@ -3,20 +3,20 @@
 Introducción
 ------------
 
-[La Rosquillera Framework] es un framework para hacer videojuegos con SDL2 que tiene como objetivo que el usuario pueda hacer juegos como rosquillas (o sea muchos, muy rápido y sin romperse la cabeza).
+[La Rosquillera Framework][] es un framework para hacer videojuegos con SDL2 que tiene como objetivo que el usuario pueda hacer juegos como rosquillas (o sea muchos, muy rápido y sin romperse la cabeza).
 
-#¿Qué ventajas ofrece respecto a usar SDL2 directamente?
+## ¿Qué ventajas ofrece respecto a usar SDL2 directamente?
 * Muchas.
 * Nah, en serio, ofrece toda una serie de clases ya diseñadas para facilitar la programación.
 * La clase RF_Engine mantiene un taskManager, el cual acumula procesos que compartan como clase base la clase RF_Process, y en cada fotograma se encarga de llamar a las distintas funciones de actualización y pintado.
 
-#Ideas pendientes de implementar
+## Ideas pendientes de implementar
 * Rotación y escala de los procesos
 * Parallax & Scrolls: Concepto de cámara
 * AudioManager
 * ...
 
-#Otras tareas pendientes
+## Otras tareas pendientes
 * Hacer la documentación
 * Hacer la documentación
 * Hacer la documentación
