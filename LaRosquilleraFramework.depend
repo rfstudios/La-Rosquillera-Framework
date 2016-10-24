@@ -950,7 +950,7 @@
 	"rf_engine.h"
 	<math.h>
 
-1477217866 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_engine.cpp
+1477218053 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_engine.cpp
 	"rf_engine.h"
 	<string>
 	<SDL2/SDL_image.h>
@@ -971,7 +971,7 @@
 	"rf_primitive.h"
 	<stdio.h>
 
-1476212911 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/main.cpp
+1477312652 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/main.cpp
 	<SDL2/SDL.h>
 	"rf_declares.h"
 	"rf_engine.h"
@@ -1051,7 +1051,7 @@
 	"rf_soundmanager.h"
 	"rf_engine.h"
 
-1477079361 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_asset_list.h
+1477317628 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_asset_list.h
 	"rf_asset.h"
 	<SDL2/SDL_image.h>
 	<SDL2/SDL_mixer.h>
@@ -1066,8 +1066,9 @@
 	<SDL2/SDL_ttf.h>
 	<string>
 
-1477217120 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_asset_list.cpp
+1477321649 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_asset_list.cpp
 	"rf_asset_list.h"
 	"rf_engine.h"
+	<ctype.h>
 	<iostream>
 

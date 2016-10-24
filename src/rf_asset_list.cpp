@@ -1,6 +1,7 @@
 #include "rf_asset_list.h"
 #include "rf_engine.h"
 
+#include <ctype.h>
 #include <iostream>
 
 RF_Asset_List::RF_Asset_List(string path)
@@ -28,13 +29,18 @@ RF_Asset_List::RF_Asset_List(string path)
         }
 
     //Creamos un puntero con el seleccionaremos el fichero de configuración (si existe);
-        /*FILE* fich; fich = fopen((path + "/package.cfg").c_str(),"r");
-        vector<string> cfg;
+        FILE* fich; fich = fopen((path + "/package.cfg").c_str(),"r");
+        RF_Engine::instance->Debug((path + "/package.cfg"));
         if(fich != NULL)
         {
-            cfg.push_back("");
-            fgets(cfg[cfg.size()-1],fich)
-        }*/
+            int lSize = 100;
+            char* buffer;
+
+            while(fgets(buffer, lSize, fich))
+            {
+                cfg.push_back(buffer);
+            }
+        }
 
     //Leyendo uno a uno todos los archivos que hay
         while ((ent = readdir (dir)) != NULL)
@@ -48,6 +54,8 @@ RF_Asset_List::RF_Asset_List(string path)
                     ext.erase(0,pos+1);
 
                     string p = path + "/" + ent->d_name;
+                    string opc = getConfig(Aid);
+
                     int t = asset_type(ext);
                     if (t == 0) //Gfx2D
                     {
@@ -61,7 +69,11 @@ RF_Asset_List::RF_Asset_List(string path)
                     }
                     else if(t == 2) //TTF Font
                     {
-                        RF_Font* nA = new RF_Font(Aid, TTF_OpenFont(p.c_str(),12), p);
+                        int pt = stoi(opc);
+                        if(pt == -1){pt = 12;}
+                        else if(pt < 1){pt = 1;}
+
+                        RF_Font* nA = new RF_Font(Aid, TTF_OpenFont(p.c_str(),pt), p);
                         assets.push_back(nA);
                     }
                 }
@@ -84,4 +96,29 @@ int RF_Asset_List::asset_type(string ext)
     {
         return 2; //Ttf
     }
+}
+
+string RF_Asset_List::getConfig(string file)
+{
+    string ret = "-1";
+    if(cfg.size() < 1){return ret;}
+
+    for(int i = cfg.size()-1; i >= 0 && ret == "-1"; i--)
+    {
+        string f = cfg[i];
+        string opc = f;
+        size_t pos = f.find_last_of('=');
+        f.erase(pos);
+        opc.erase(0,pos+1);
+
+        pos = f.find_last_of(' ');
+        f.erase(pos);
+
+        if(f == file)
+        {
+            ret = opc;
+        }
+    }
+
+    return ret;
 }

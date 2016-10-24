@@ -22,6 +22,8 @@ class RF_Asset_List
 
     private:
         int asset_type(string ext);
+        string getConfig(string file);
+        vector<string> cfg;
 };
 
 #endif // RF_ASSET_LIST_H
