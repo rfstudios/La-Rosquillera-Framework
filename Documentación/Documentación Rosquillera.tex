@@ -1,0 +1,99 @@
+\documentclass[10pt,a4paper,titlepage]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{titling}
+\renewcommand{\contentsname}{Indice de contenidos}
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    \vskip0.5em}
+}
+\newcommand{\mychapter}[2]{
+    \setcounter{chapter}{#1}
+    \setcounter{section}{0}
+    \chapter*{#2}
+    \addcontentsline{toc}{chapter}{#2}
+}
+\newcommand{\mysection}[2]{
+    \setcounter{section}{#1}
+    \setcounter{subsection}{0}
+    \section*{#2}
+    \addcontentsline{toc}{section}{#2}
+}
+
+\author{Autor: Yawin}
+\date{}
+\title{La Rosquillera Framework}
+\subtitle{Documentación v1.3$\beta$}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\mychapter{0}{Introducción}
+A lo largo de los casi diez años que llevo programando videojuegos y aplicaciones gráficas me he encontrado con que los motores y frameworks libres no reunen las características que necesito y los que sí las reúnen no son libres. El mundo del software libre tiene sus grandes logros (como los sistemas GNU, navegadores como Firefox y Midori, editores de vídeo como Natron, y un largo etcétera) pero cuando nos enfocamos en videojuegos nos encontramos con problemas: o no tiene soporte 3D, o su editor da problemas constantes, o su curva de dificultad es inhumana para un autodidacta.
+\\
+\\Por todo ello, y con la finalidad añadida de aprender, decidí desarrollar un framework para hacer videojuegos y aplicaciones gráficas que no tuviera una excesiva curva de dificultad, que tuviera la versatilidad que requiere la programación de videojuegos y, sobre todo, que respetara la libertad de sus usuarios.
+
+\mysection{0}{El paradigma}
+A lo largo de mi aprendizaje en el desarrollo de videojuegos, he conocido varias herramientas que me han influído en mi forma de entender los motores:
+
+\begin{itemize}
+\item Creo que todos los elementos del motor deben estar sincronizados a través de un gestor que los actualice uno a uno. Para ello entiendo la necesidad de una clase base "proceso" que agrupe a todos los elementos del juego.
+\item Todas las clases del motor deben ser virtuales para que el usuario pueda crear sus propias versiones sin tener que modificar el framework base.
+\item La gestión de recursos, así como el trabajo con las clases del framework, debe ser sencilla.
+\end{itemize}
+
+\mysection{1}{Dependencias}
+La Rosquillera Framework requiere las siguientes librerías:
+\begin{itemize}
+\item SDL2
+\item SDL2 Image
+\item SDL2 Mixer
+\item SDL2 TTF
+\end{itemize}
+
+\mychapter{1}{La gestión de procesos}
+La Rosquillera entiende cada elemento del juego como un proceso; un objeto actualizable con toda una batería de funciones y miembros comunes
+
+\mysection{0}{El task manager}
+Blah, blah, blah, blah, blah
+
+\mysection{1}{Los procesos}
+Blah, blah, blah, blah, blah
+
+\mychapter{2}{El motor principal}
+bla bla bla
+
+\mychapter{3}{Subsistemas}
+bla bla bla
+
+\mysection{0}{La ventana}
+Blah, blah, blah, blah, blah
+
+\mysection{1}{El reloj}
+Blah, blah, blah, blah, blah
+
+\mysection{2}{Matemáticas}
+Blah, blah, blah, blah, blah
+
+\mysection{3}{Parallax}
+Blah, blah, blah, blah, blah
+
+\mysection{4}{Sonido}
+Blah, blah, blah, blah, blah
+
+\mysection{5}{Subsistema de 3D}
+Blah, blah, blah, blah, blah
+
+\mychapter{4}{ToDo}
+bla bla bla
+
+\mychapter{5}{Consideraciones finales}
+bla bla bla
+
+\end{document}

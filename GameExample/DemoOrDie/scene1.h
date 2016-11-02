@@ -9,7 +9,7 @@ class Scene1 : public RF_Process
 {
     public:
         Scene1():RF_Process("Scene1"){}
-        virtual ~Scene1();
+        virtual ~Scene1(){}
 
         virtual void Start();
         virtual void Update();

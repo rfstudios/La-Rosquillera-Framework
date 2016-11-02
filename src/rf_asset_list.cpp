@@ -1,8 +1,17 @@
 #include "rf_asset_list.h"
 #include "rf_engine.h"
 
-#include <ctype.h>
-#include <iostream>
+#include <fstream>
+
+RF_Asset_List::~RF_Asset_List()
+{
+    int pos = -1; unsigned int i;
+    for(i = 0; i < assets.size(); i++)
+    {
+        delete assets[i];
+    }
+    assets.clear();
+}
 
 RF_Asset_List::RF_Asset_List(string path)
 {
@@ -29,18 +38,36 @@ RF_Asset_List::RF_Asset_List(string path)
         }
 
     //Creamos un puntero con el seleccionaremos el fichero de configuración (si existe);
-        FILE* fich; fich = fopen((path + "/package.cfg").c_str(),"r");
-        RF_Engine::instance->Debug((path + "/package.cfg"));
-        if(fich != NULL)
-        {
-            int lSize = 100;
-            char* buffer;
+        ifstream fich(path + "/package.cfg");
 
-            while(fgets(buffer, lSize, fich))
+        if(fich.is_open())
+        {
+            RF_Engine::instance->Debug((path + "/package.cfg"));
+
+            string buffer;
+            while(!fich.eof())
             {
+                fich >> buffer;
                 cfg.push_back(buffer);
             }
         }
+
+        /*FILE* fich; fich = fopen((path + "/package.cfg").c_str(),"r");
+        if(fich != NULL)
+        {
+            RF_Engine::instance->Debug((path + "/package.cfg"));
+
+            int lSize = 100;
+            char* buffer;
+
+            while(!feof(fich))
+            {
+                fgets(buffer, lSize, fich);
+                RF_Engine::instance->Debug("Con tres cojones");
+                cfg.push_back(buffer);
+                delete buffer;
+            }
+        }*/
 
     //Leyendo uno a uno todos los archivos que hay
         while ((ent = readdir (dir)) != NULL)
@@ -64,8 +91,18 @@ RF_Asset_List::RF_Asset_List(string path)
                     }
                     else if(t == 1) //AudioClip
                     {
-                        RF_AudioClip* nA = new RF_AudioClip(Aid, Mix_LoadMUS(p.c_str()));
-                        assets.push_back(nA);
+                        if(opc == "-1") {opc = getConfig("AllAudio");}
+
+                        if(opc == "fx")
+                        {
+                            RF_FXClip* nA = new RF_FXClip(Aid, Mix_LoadWAV(p.c_str()));
+                            assets.push_back(nA);
+                        }
+                        else
+                        {
+                            RF_AudioClip* nA = new RF_AudioClip(Aid, Mix_LoadMUS(p.c_str()));
+                            assets.push_back(nA);
+                        }
                     }
                     else if(t == 2) //TTF Font
                     {
@@ -103,20 +140,12 @@ string RF_Asset_List::getConfig(string file)
     string ret = "-1";
     if(cfg.size() < 1){return ret;}
 
-    for(int i = cfg.size()-1; i >= 0 && ret == "-1"; i--)
+    for(int i = 0; i <= cfg.size()-1 && ret == "-1"; i++)
     {
         string f = cfg[i];
-        string opc = f;
-        size_t pos = f.find_last_of('=');
-        f.erase(pos);
-        opc.erase(0,pos+1);
-
-        pos = f.find_last_of(' ');
-        f.erase(pos);
-
-        if(f == file)
+        if(f == file && i < cfg.size()-3)
         {
-            ret = opc;
+            ret = cfg[i+2];
         }
     }
 

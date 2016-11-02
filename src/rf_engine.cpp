@@ -32,7 +32,7 @@ RF_Engine::RF_Engine(bool debug){
     isDebug=debug;
     SDL_Init(SDL_INIT_EVERYTHING);
     IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
-    Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096);
+    Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 4096);
     TTF_Init();
     font = TTF_OpenFont("resources/Coving01.ttf", 20);
 
@@ -287,6 +287,19 @@ void RF_Engine::loadAsset(string path){
     assetManager.push_back(nA);
 }
 
+void RF_Engine::unloadAsset(string id){
+    int pos = -1; unsigned int i;
+    for(i = 0; i < assetManager.size() && pos == -1; i++)
+    {
+        if(assetManager[i]->id == id)
+        {
+            pos = i; //Activamos bandera de salida;
+            delete assetManager[i];
+            assetManager.erase(assetManager.begin()+pos);
+        }
+    }
+}
+
 SDL_Texture* RF_Engine::getGfx2D(string id){
     RF_Engine::instance->Debug(("getGfx2D [Info]: " + id));
 
@@ -329,6 +342,19 @@ Mix_Music* RF_Engine::getAudioClip(string id){
     if(pos.y != -1)
     {
         ret = dynamic_cast<RF_AudioClip*>(assetManager[pos.x]->assets[pos.y])->clip;
+    }
+
+    return ret;
+}
+Mix_Chunk* RF_Engine::getFXClip(string id){
+    RF_Engine::instance->Debug(("getFXClip [Info]: " + id));
+
+    Vector2<int> pos = search_in_assetManager(id);
+
+    Mix_Chunk* ret = NULL;
+    if(pos.y != -1)
+    {
+        ret = dynamic_cast<RF_FXClip*>(assetManager[pos.x]->assets[pos.y])->clip;
     }
 
     return ret;
@@ -392,7 +418,11 @@ int RF_Engine::assetCount(string id){
     return assetCount(pos);
 }
 int RF_Engine::assetCount(int id){
-    return assetManager[id]->assets.size();
+    int pos = -1;
+
+    if(id > -1){pos = assetManager[id]->assets.size();}
+
+    return pos;
 }
 /****************************************************************/
 
@@ -519,6 +549,7 @@ Vector2<int> RF_Engine::rotozoom(Vector2<int> pos, Transform2D<int> t, Vector2<i
             if(retorno.x > lim.x - 1){retorno.x = lim.x - 1;}
         }
     }
+
     if(retorno.y < 0 || retorno.y > lim.y - 1)
     {
         if(false == mirror.y)

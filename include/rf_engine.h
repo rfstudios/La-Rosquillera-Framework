@@ -97,9 +97,11 @@ class RF_Engine
         /**Assets****************/
             vector<RF_Asset_List*> assetManager;
             void loadAsset(string path);
+            void unloadAsset(string id);
             SDL_Surface* getGfx2DSrf(string id);
             SDL_Texture* getGfx2D(string id);
             Mix_Music* getAudioClip(string id);
+            Mix_Chunk* getFXClip(string id);
             TTF_Font* getFont(string id, int pitch = -1);
             Vector2<int> search_in_assetManager(string id);
             int _search_in_assetManager(int i, string id);
@@ -114,9 +116,6 @@ class RF_Engine
             RF_Process* collision(int target, RF_Process* sender);
 
             RF_Math* math;
-
-            /*Uint32 getPixel(SDL_Surface* surface, int x, int y);
-            void putPixel(SDL_Surface* surface, int x, int y, Uint32);*/
 
             Vector2<int> rotozoom(Vector2<int> pos, Transform2D<int> t, Vector2<int> lim, Vector2<bool> mirror = Vector2<bool>(true,true));
                 Vector2<int> retorno;

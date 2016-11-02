@@ -1,0 +1,21 @@
+1 Introducción
+	1.1 El paradigma
+	1.2 Dependencias
+
+2 RF_Process y el task manager
+	2.1 El task manager
+	2.2 RF_Process
+
+3 El motor principal
+
+4 Subsistemas
+	4.1 La ventana (RF_Window)
+	4.2 El reloj (RF_Time)
+	4.3 Matemáticas (RF_Math)
+	4.4 Parallax (RF_Parallax y RF_Parallax_Layer)
+	4.5 Sonido (RF_SoundManager)
+	4.6 Subsistema de 3D (RF_3D y RF_3D_Object)
+
+5 ToDo
+
+6 Consideraciones finales

@@ -15,7 +15,7 @@ class RF_Asset_List
 {
     public:
         RF_Asset_List(string path);
-        virtual ~RF_Asset_List(){}
+        virtual ~RF_Asset_List();
 
         string id;
         vector<RF_Asset*> assets;

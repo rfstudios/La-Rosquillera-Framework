@@ -38,6 +38,7 @@
 			<Add directory="include" />
 			<Add directory="src" />
 			<Add directory="example" />
+			<Add directory="lib" />
 		</Compiler>
 		<Linker>
 			<Add library="SDL2" />

@@ -24,13 +24,32 @@ class RF_AudioClip : public RF_Asset
             clip = a;
         }
 
-        ~RF_AudioClip()
+        virtual ~RF_AudioClip()
         {
+            Mix_FreeMusic(clip);
             delete clip;
             clip = NULL;
         }
 
         Mix_Music* clip;
+};
+
+class RF_FXClip : public RF_Asset
+{
+    public:
+        RF_FXClip(string name, Mix_Chunk* a):RF_Asset(name)
+        {
+            clip = a;
+        }
+
+        virtual ~RF_FXClip()
+        {
+            Mix_FreeChunk(clip);
+            delete clip;
+            clip = NULL;
+        }
+
+        Mix_Chunk* clip;
 };
 
 class RF_Gfx2D : public RF_Asset
@@ -46,12 +65,18 @@ class RF_Gfx2D : public RF_Asset
             texture = gfx;
         }
 
-        ~RF_Gfx2D()
+        virtual ~RF_Gfx2D()
         {
-            delete texture;
+            if(texture != NULL)
+            {
+                SDL_DestroyTexture(texture);
+            }
             texture = NULL;
 
-            delete surface;
+            if(surface != NULL)
+            {
+                SDL_FreeSurface(surface);
+            }
             surface = NULL;
         }
 
@@ -68,7 +93,7 @@ class RF_Font : public RF_Asset
             font = ttf;
         }
 
-        ~RF_Font()
+        virtual ~RF_Font()
         {
             delete font;
             font = NULL;

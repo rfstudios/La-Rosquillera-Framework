@@ -9,7 +9,7 @@ void SceneTest::Start()
     bg->clearSurface(0x000000);
 
     assetCont = RF_Engine::instance->assetCount("gfx");
-    RF_SoundManager::playSong(RF_Engine::instance->getAudioClip("musica"),-1);
+    RF_SoundManager::playFX("w2_robots");
 
     RF_Engine::instance->font = RF_Engine::instance->getFont("Times_New_Roman");
     RF_Engine::instance->write("Cacapito", {255,255,255}, Vector2<int>(RF_Engine::instance->ventana->width()>>1, RF_Engine::instance->ventana->height()-200));
@@ -53,6 +53,7 @@ void SceneTest::Update()
                 break;
             case 8:
                 graph = RF_Engine::instance->getGfx2D("nubes_parallax");
+                //RF_SoundManager::changeMusic("musica");
                 break;
         }
     }

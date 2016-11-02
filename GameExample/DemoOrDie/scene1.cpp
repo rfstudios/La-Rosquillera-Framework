@@ -66,7 +66,6 @@ void Scene1::Update()
             {
                 if(0.75 <= deltaCont)
                 {
-                    //revolveChanels();
                     setBar(colPos[nextX],128, true);
                     deltaCont = 0.0;
                     nextX++;
@@ -123,9 +122,4 @@ void Scene1::revolveChanels(int mod){
             }
         }
     }
-}
-
-Scene1::~Scene1()
-{
-    SDL_FreeSurface(bgImg);
 }
