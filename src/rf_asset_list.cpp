@@ -1,5 +1,6 @@
 #include "rf_asset_list.h"
 #include "rf_engine.h"
+#include "rf_primitive.h"
 
 #include <fstream>
 
@@ -52,23 +53,6 @@ RF_Asset_List::RF_Asset_List(string path)
             }
         }
 
-        /*FILE* fich; fich = fopen((path + "/package.cfg").c_str(),"r");
-        if(fich != NULL)
-        {
-            RF_Engine::instance->Debug((path + "/package.cfg"));
-
-            int lSize = 100;
-            char* buffer;
-
-            while(!feof(fich))
-            {
-                fgets(buffer, lSize, fich);
-                RF_Engine::instance->Debug("Con tres cojones");
-                cfg.push_back(buffer);
-                delete buffer;
-            }
-        }*/
-
     //Leyendo uno a uno todos los archivos que hay
         while ((ent = readdir (dir)) != NULL)
         {
@@ -86,8 +70,48 @@ RF_Asset_List::RF_Asset_List(string path)
                     int t = asset_type(ext);
                     if (t == 0) //Gfx2D
                     {
-                        RF_Gfx2D* nA = new RF_Gfx2D(Aid, RF_Engine::instance->loadPNG_Surface(p.c_str()));
-                        assets.push_back(nA);
+                        if(opc != "MultiSprite")
+                        {
+                            RF_Gfx2D* nA = new RF_Gfx2D(Aid, RF_Engine::instance->loadPNG_Surface(p.c_str()));
+                            assets.push_back(nA);
+                        }
+                        else
+                        {
+                            Vector2<int> size = getMultiSpriteConfig(Aid,path);
+                            SDL_Surface* srf = RF_Engine::instance->loadPNG_Surface(p.c_str());
+                            Uint8 bpp = srf->format->BytesPerPixel;
+                            Vector2<int> scale(srf->w / size.x, srf->h / size.y);
+                            SDL_Surface* dest = NULL;
+
+                            for(int i = 0; i < size.x; i++)
+                            {
+                                for(int j = 0; j < size.y; j++)
+                                {
+                                    RF_Engine::instance->Debug(("-- " + to_string(i) + "_" + to_string(j) + " --"));
+                                    dest = SDL_CreateRGBSurface(0, scale.x, scale.y, bpp,0,0,0,0);
+                                    RF_Engine::instance->Debug("Creada la surface");
+
+                                    for(int ii = 0; ii < scale.x; ii++)
+                                    {
+                                        for(int jj = 0; jj < scale.y; jj++)
+                                        {
+                                            RF_Primitive::putPixel(dest, ii, jj, RF_Primitive::getPixel(srf, ii + scale.x*i, jj + scale.y*j, bpp));
+                                        }
+                                    }
+                                    RF_Engine::instance->Debug("Pintados los píxeles");
+
+                                    RF_Gfx2D* push = new RF_Gfx2D((Aid + "_" + to_string(i) + "_" + to_string(j)),dest);
+                                    RF_Engine::instance->Debug(("Id: " + Aid + "_" + to_string(i) + "_" + to_string(j)));
+
+                                    assets.push_back(push);
+                                    RF_Engine::instance->Debug("Añadido a la lista");
+                                    RF_Engine::instance->Debug("");
+                                    dest = NULL;
+                                }
+                            }
+
+                            SDL_FreeSurface(srf);
+                        }
                     }
                     else if(t == 1) //AudioClip
                     {
@@ -146,6 +170,41 @@ string RF_Asset_List::getConfig(string file)
         if(f == file && i < cfg.size()-3)
         {
             ret = cfg[i+2];
+        }
+    }
+
+    return ret;
+}
+
+Vector2<int> RF_Asset_List::getMultiSpriteConfig(string file, string path)
+{
+    ifstream fich(path + "/" + file + ".cfg");
+    Vector2<int> ret(0,0);
+
+    if(fich.is_open())
+    {
+        RF_Engine::instance->Debug((path + "/" + file + ".cfg"));
+
+        vector<string> mcfg;
+
+        string buffer;
+        while(!fich.eof())
+        {
+            fich >> buffer;
+            mcfg.push_back(buffer);
+        }
+
+        for(int i = 0; i <= mcfg.size()-1 && (ret.x == 0 || ret.y == 0); i++)
+        {
+            string f = mcfg[i];
+            if(f == "width")
+            {
+                ret.x = atoi(mcfg[i+2].c_str());
+            }
+            if(f == "height")
+            {
+                ret.y = atoi(mcfg[i+2].c_str());
+            }
         }
     }
 

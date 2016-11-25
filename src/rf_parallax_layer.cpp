@@ -1,7 +1,7 @@
 #include "rf_parallax_layer.h"
 #include "rf_primitive.h"
 
-RF_Parallax_Layer::RF_Parallax_Layer(string file, Vector2<float> speed, Vector2<bool> mirror)
+RF_Parallax_Layer::RF_Parallax_Layer(string file, Vector2<float> speed, Vector2<int> mirror)
 {
     lSpeed = speed;
     _mirror = mirror;
@@ -9,6 +9,25 @@ RF_Parallax_Layer::RF_Parallax_Layer(string file, Vector2<float> speed, Vector2<
     if(file == ""){size.x = -1; return;}
     int error = setGfx(file);
 }
+
+void RF_Parallax_Layer::setPos(Vector2<int> newPos)
+{
+    transform.position.x = newPos.x;
+    transform.position.y = newPos.y;
+
+    if((transform.position.x < 0 || transform.position.x + RF_Engine::instance->ventana->width() > size.x) && _mirror.x == BLOCK)
+    {
+        if(transform.position.x < 0) transform.position.x = 0;
+        else transform.position.x = size.x - RF_Engine::instance->ventana->width();
+    }
+
+    if((transform.position.y < 0 || transform.position.y + RF_Engine::instance->ventana->height() > size.y) && _mirror.y == BLOCK)
+    {
+        if(transform.position.y < 0) transform.position.y = 0;
+        else transform.position.y = size.y - RF_Engine::instance->ventana->height();
+    }
+}
+
 int RF_Parallax_Layer::setGfx(string file)
 {
     return setGfx(RF_Engine::instance->getGfx2DSrf(file));
@@ -36,8 +55,8 @@ int RF_Parallax_Layer::setGfx(SDL_Surface* file)
 Uint32 RF_Parallax_Layer::getRotoPixel(Vector2<int> pos)
 {
     if(size.x == -1){return 0x000000;}
-
-    tmp = RF_Engine::instance->rotozoom(pos, transform, size, _mirror);
+;
+    tmp = RF_Engine::instance->rotozoom(pos, transform, size, Vector2<bool>(_mirror.x == REPEAT, _mirror.y == REPEAT));
     return data[size.x*tmp.y + tmp.x];
 }
 

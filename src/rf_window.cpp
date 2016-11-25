@@ -20,6 +20,7 @@
 */
 
 #include "rf_window.h"
+#include "rf_parallax.h"
 #include <iostream>
 using namespace std;
 
@@ -57,6 +58,12 @@ void RF_Window::render(vector<RF_Process*>& tM, vector<YW_Text*>& textSources)
                 SDL_QueryTexture(tM[i]->graph,NULL,NULL,&r.w,&r.h);
 
                 r.x=tM[i]->transform.position.x; r.y=tM[i]->transform.position.y;
+
+                if(tM[i]->ctype == C_SCROLL)
+                {
+                    r.x -= RF_Parallax::instance->transform.position.x;
+                    r.y -= RF_Parallax::instance->transform.position.y;
+                }
 
                 SDL_RenderCopy(renderer,tM[i]->graph,NULL,&r);
             }

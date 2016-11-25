@@ -1,6 +1,7 @@
 #ifndef RF_ASSET_H
 #define RF_ASSET_H
 
+#include "rf_declares.h"
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>

@@ -7,7 +7,7 @@ void Game::Start()
 
     bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
     pL = new RF_Parallax_Layer();
-        pL->getMirroring() = Vector2<bool>(true,true);
+        pL->getMirroring() = Vector2<int>(REPEAT,REPEAT);
         pL->size = Vector2<int>(bg->screen->w,bg->screen->h);
         pL->transform.position = Vector2<int>(0,0);
         pL->transform.scale = Vector2<float>(1.0f,1.0f);
@@ -268,7 +268,7 @@ void Game::restart()
     snake_direction = 1;
     fC = 0;
 
-    pL->getMirroring() = Vector2<bool>(true,true);
+    pL->getMirroring() = Vector2<int>(REPEAT,REPEAT);
     pL->size = Vector2<int>(bg->screen->w,bg->screen->h);
     pL->transform.position = Vector2<int>(0,0);
     pL->transform.scale = Vector2<float>(1.0f,1.0f);

@@ -54,8 +54,7 @@
 		<Unit filename="example/mainmenu.h" />
 		<Unit filename="example/mainprocess.cpp" />
 		<Unit filename="example/mainprocess.h" />
-		<Unit filename="example/scene2.cpp" />
-		<Unit filename="example/scene2.h" />
+		<Unit filename="example/protatest.h" />
 		<Unit filename="example/scenetest.cpp" />
 		<Unit filename="example/scenetest.h" />
 		<Unit filename="example/splashscreen.cpp" />

@@ -6,7 +6,9 @@
 class RF_Background : public RF_Process
 {
     public:
-        RF_Background():RF_Process("RF_Background"){}
+        static RF_Background* instance;
+
+        RF_Background():RF_Process("RF_Background"){instance = this;}
         virtual ~RF_Background(){}
 
         virtual void Update();

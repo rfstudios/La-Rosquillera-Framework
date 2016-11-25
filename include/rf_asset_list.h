@@ -6,6 +6,7 @@
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
 
+#include "rf_declares.h"
 #include <dirent.h>
 #include <vector>
 #include <string>
@@ -23,6 +24,7 @@ class RF_Asset_List
     private:
         int asset_type(string ext);
         string getConfig(string file);
+        Vector2<int> getMultiSpriteConfig(string file, string path);
         vector<string> cfg;
 };
 

@@ -38,10 +38,11 @@ class RF_Process
         virtual void Update();
 
         /**Propiedades******/
-            unsigned int id, father, signal=S_AWAKE;
+            unsigned int id, father, signal = S_AWAKE;
             string type="";
             SDL_Texture *graph;
             Transform transform;
+            int ctype = C_SCREEN;
         /*******************/
 };
 

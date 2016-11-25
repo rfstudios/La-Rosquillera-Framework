@@ -40,6 +40,15 @@ enum RF_KeyCode{
     _return,_esc,_backspace,_tab,_space,_close_window,
     _FOO_KEY
 };
+enum RF_Mirroring{
+    REPEAT,
+    NO_REPEAT,
+    BLOCK
+};
+enum ctype_flags{
+    C_SCREEN,
+    C_SCROLL
+};
 enum RF_Signal{
     S_AWAKE,
     S_AWAKE_TREE,
@@ -53,6 +62,11 @@ struct Vector2{
     T x,y;
     Vector2(T x0=0, T y0=0){x=x0; y=y0;}
     Vector2(const Vector2& c){x=c.x; y=c.y;}
+
+    bool operator==(Vector2& c)
+    {
+     return (x == c.x) && (y == c.y);
+    }
 };
 struct Transform{ ///Deprecated
     Vector2<float> position, scale;

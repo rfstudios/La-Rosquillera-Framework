@@ -286,7 +286,6 @@ void RF_Engine::loadAsset(string path){
     RF_Asset_List* nA = new RF_Asset_List(path);
     assetManager.push_back(nA);
 }
-
 void RF_Engine::unloadAsset(string id){
     int pos = -1; unsigned int i;
     for(i = 0; i < assetManager.size() && pos == -1; i++)
@@ -530,8 +529,8 @@ Vector2<int> RF_Engine::rotozoom(Vector2<int> pos, Transform2D<int> t, Vector2<i
     if(t.scale.x == 0) t.scale.x = 1;
     if(t.scale.y == 0) t.scale.y = 1;
 
-    retorno.x=-t.position.x + pos.x * t.scale.x;
-    retorno.y=-t.position.y + pos.y * t.scale.y;
+    retorno.x=t.position.x + pos.x * t.scale.x;
+    retorno.y=t.position.y + pos.y * t.scale.y;
 
     retorno.x = retorno.x * math->preCos(t.rotation*1000) - retorno.y * math->preSin(t.rotation*1000);
     retorno.y = retorno.y * math->preSin(t.rotation*1000) + retorno.y * math->preCos(t.rotation*1000);

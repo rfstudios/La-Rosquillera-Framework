@@ -9,7 +9,6 @@
 #include "execontrol.h"
 #include "splashscreen.h"
 #include "mainmenu.h"
-#include "scene2.h"
 #include "scenetest.h"
 #include "rf_declares.h"
 #include "rf_primitive.h"
@@ -35,6 +34,7 @@ void mainProcess::Start()
     //Cargamos recursos
         RF_Engine::instance->loadAsset("resources/gfx");
         RF_Engine::instance->loadAsset("resources/misc");
+        RF_Engine::instance->loadAsset("resources/rpg_test");
 
     //Levantamos el proceso "Scene2"
         scene = RF_Engine::instance->newTask(new SceneTest(),id);
@@ -55,7 +55,7 @@ void mainProcess::Update(){
                 scene = RF_Engine::instance->newTask(new MainMenu(),id);
             }
             break;
-        case 2: //Scene2
+        /*case 2: //Scene2
             if("Scene2" != RF_Engine::instance->taskManager[scene]->type)
             {
                 RF_Engine::instance->sendSignal(scene, S_KILL_TREE);
@@ -64,7 +64,7 @@ void mainProcess::Update(){
                 scene = RF_Engine::instance->newTask(new Scene2(),id);
             }
             break;
-        /*case 3: //Scene3
+        case 3: //Scene3
             if("Scene3" != RF_Engine::instance->taskManager[scene]->type)
             {
                 RF_Engine::instance->sendSignal(scene, S_KILL_TREE);

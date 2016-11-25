@@ -1,6 +1,7 @@
 #include "rf_background.h"
 #include "rf_primitive.h"
 
+RF_Background* RF_Background::instance = NULL;
 void RF_Background::Update()
 {
     generateTexture();

@@ -9,7 +9,7 @@
 class RF_Parallax_Layer
 {
     public:
-        RF_Parallax_Layer(string file="", Vector2<float> speed = Vector2<float>(1.0f,1.0f), Vector2<bool> mirror = Vector2<bool>(true,false));
+        RF_Parallax_Layer(string file="", Vector2<float> speed = Vector2<float>(1.0f,1.0f), Vector2<int> mirror = Vector2<int>(1,0));
         virtual ~RF_Parallax_Layer(){}
 
         Uint32 getRotoPixel(Vector2<int> pos);
@@ -19,7 +19,8 @@ class RF_Parallax_Layer
         Transform2D<int> transform;
 
         Vector2<float>& getSpeed(){return lSpeed;}
-        Vector2<bool>& getMirroring(){return _mirror;}
+        Vector2<int>& getMirroring(){return _mirror;}
+        void setPos(Vector2<int> newPos);
         int setGfx(string file);
         int setGfx(SDL_Surface* file);
 
@@ -27,8 +28,7 @@ class RF_Parallax_Layer
 
     private:
         int i,j;
-        Vector2<int> tmp;
-        Vector2<bool> _mirror;
+        Vector2<int> tmp, _mirror;
         Vector2<float> lSpeed;
 };
 

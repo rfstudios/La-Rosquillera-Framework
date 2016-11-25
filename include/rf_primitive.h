@@ -62,9 +62,10 @@ class RF_Primitive
             }
         }
 
-        static Uint32 getPixel(SDL_Surface* surface, int x, int y)
+        static Uint32 getPixel(SDL_Surface* surface, int x, int y, int _bpp = -1)
         {
-            int bpp = surface->format->BytesPerPixel;
+            int bpp = _bpp;
+            if(_bpp == -1) bpp = surface->format->BytesPerPixel;
             /* Here p is the address to the pixel we want to retrieve */
             Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
 
