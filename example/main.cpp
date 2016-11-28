@@ -11,7 +11,7 @@ int main()
         RF_Engine *e = new RF_Engine(true);
 
     //Creamos una nueva ventana para el motor
-        e->newWindow("Parallax", /*SDL_WINDOW_FULLSCREEN |*/ SDL_WINDOW_OPENGL, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 500, SDL_RENDERER_ACCELERATED); //1080, 520
+        e->newWindow("MultiSprite", /*SDL_WINDOW_FULLSCREEN |*/ SDL_WINDOW_OPENGL, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 500, SDL_RENDERER_ACCELERATED); //1080, 520
 
     //Levantamos el proceso maestro de nuestro programa
         e->newTask(new mainProcess());

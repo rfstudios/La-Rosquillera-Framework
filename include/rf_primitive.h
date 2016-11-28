@@ -5,6 +5,7 @@
 #include "rf_declares.h"
 #include <SDL2/SDL.h>
 #include <math.h>
+#include <string>
 using namespace std;
 
 class RF_Primitive
@@ -62,10 +63,9 @@ class RF_Primitive
             }
         }
 
-        static Uint32 getPixel(SDL_Surface* surface, int x, int y, int _bpp = -1)
+        static Uint32 getPixel(SDL_Surface* surface, int x, int y)
         {
-            int bpp = _bpp;
-            if(_bpp == -1) bpp = surface->format->BytesPerPixel;
+            int bpp = surface->format->BytesPerPixel;
             /* Here p is the address to the pixel we want to retrieve */
             Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
 

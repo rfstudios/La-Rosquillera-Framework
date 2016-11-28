@@ -855,11 +855,12 @@
 1473858839 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_time.h
 	<SDL2/SDL.h>
 
-1479975984 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_primitive.h
+1480073160 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_primitive.h
 	"rf_engine.h"
 	"rf_declares.h"
 	<SDL2/SDL.h>
 	<math.h>
+	<string>
 
 1476212911 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/execontrol.cpp
 	"execontrol.h"
@@ -949,7 +950,7 @@
 	"rf_engine.h"
 	<math.h>
 
-1479754892 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_engine.cpp
+1480080197 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_engine.cpp
 	"rf_engine.h"
 	<string>
 	<SDL2/SDL_image.h>
@@ -971,7 +972,7 @@
 	"rf_primitive.h"
 	<stdio.h>
 
-1479768478 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/main.cpp
+1480326225 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/main.cpp
 	<SDL2/SDL.h>
 	"rf_declares.h"
 	"rf_engine.h"
@@ -1072,7 +1073,7 @@
 	<SDL2/SDL_ttf.h>
 	<string>
 
-1479976504 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_asset_list.cpp
+1480326183 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_asset_list.cpp
 	"rf_asset_list.h"
 	"rf_engine.h"
 	"rf_primitive.h"
@@ -1161,7 +1162,7 @@
 	<string>
 	<ostream>
 
-1480005079 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/protatest.h
+1480073198 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/protatest.h
 	"rf_process.h"
 
 1479977091 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/gameobject.h

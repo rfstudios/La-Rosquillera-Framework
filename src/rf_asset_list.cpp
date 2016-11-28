@@ -79,7 +79,6 @@ RF_Asset_List::RF_Asset_List(string path)
                         {
                             Vector2<int> size = getMultiSpriteConfig(Aid,path);
                             SDL_Surface* srf = RF_Engine::instance->loadPNG_Surface(p.c_str());
-                            Uint8 bpp = srf->format->BytesPerPixel;
                             Vector2<int> scale(srf->w / size.x, srf->h / size.y);
                             SDL_Surface* dest = NULL;
 
@@ -87,26 +86,18 @@ RF_Asset_List::RF_Asset_List(string path)
                             {
                                 for(int j = 0; j < size.y; j++)
                                 {
-                                    RF_Engine::instance->Debug(("-- " + to_string(i) + "_" + to_string(j) + " --"));
-                                    dest = SDL_CreateRGBSurface(0, scale.x, scale.y, bpp,0,0,0,0);
-                                    RF_Engine::instance->Debug("Creada la surface");
+                                    dest = SDL_CreateRGBSurface(0, scale.x, scale.y, srf->format->BitsPerPixel, 0,0,0,0);
 
                                     for(int ii = 0; ii < scale.x; ii++)
                                     {
                                         for(int jj = 0; jj < scale.y; jj++)
                                         {
-                                            RF_Primitive::putPixel(dest, ii, jj, RF_Primitive::getPixel(srf, ii + scale.x*i, jj + scale.y*j, bpp));
+                                            RF_Primitive::putPixel(dest, ii, jj, RF_Primitive::getPixel(srf, ii + scale.x*i, jj + scale.y*j));
                                         }
                                     }
-                                    RF_Engine::instance->Debug("Pintados los píxeles");
 
                                     RF_Gfx2D* push = new RF_Gfx2D((Aid + "_" + to_string(i) + "_" + to_string(j)),dest);
-                                    RF_Engine::instance->Debug(("Id: " + Aid + "_" + to_string(i) + "_" + to_string(j)));
-
                                     assets.push_back(push);
-                                    RF_Engine::instance->Debug("Añadido a la lista");
-                                    RF_Engine::instance->Debug("");
-                                    dest = NULL;
                                 }
                             }
 

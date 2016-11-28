@@ -300,7 +300,7 @@ void RF_Engine::unloadAsset(string id){
 }
 
 SDL_Texture* RF_Engine::getGfx2D(string id){
-    RF_Engine::instance->Debug(("getGfx2D [Info]: " + id));
+    //RF_Engine::instance->Debug(("getGfx2D [Info]: " + id));
 
     Vector2<int> pos = search_in_assetManager(id);
     SDL_Texture* ret = NULL;
