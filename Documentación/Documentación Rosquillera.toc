@@ -1,3 +1,4 @@
+\select@language {spanish}
 \contentsline {chapter}{Introducci\IeC {\'o}n}{2}
 \contentsline {section}{El paradigma}{2}
 \contentsline {section}{Dependencias}{2}
@@ -9,7 +10,7 @@
 \contentsline {section}{La ventana}{5}
 \contentsline {section}{El reloj}{5}
 \contentsline {section}{Matem\IeC {\'a}ticas}{5}
-\contentsline {section}{Parallax}{5}
+\contentsline {section}{Parallax y el scroll}{5}
 \contentsline {section}{Sonido}{5}
 \contentsline {section}{Subsistema de 3D}{5}
 \contentsline {chapter}{ToDo}{6}

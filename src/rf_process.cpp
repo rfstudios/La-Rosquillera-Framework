@@ -41,3 +41,7 @@ void RF_Process::Update()
 {
     return;
 }
+void RF_Process::Draw()
+{
+    return;
+}

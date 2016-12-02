@@ -20,18 +20,10 @@ class SceneTest : public RF_Process
         virtual void Start();
         virtual void Update();
 
-        void metabolas();
-        float metang;
-        Vector2<int> b1, b2, b3;
-        int i,j;
-
     private:
         RF_Background* bg;
         float deltacount=0.0f;
-        RF_Parallax* pL;
-
-        int step = 0;
-        int metarange;
+        RF_Scroll* pL;
 };
 
 #endif // SCENETEST_H

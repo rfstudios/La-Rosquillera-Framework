@@ -33,6 +33,7 @@ void Game::Start()
     snake = Vector3<int>(40,30,3);
     snake_direction = 1;
 
+    fC = 5;
     setFood();
 }
 
@@ -212,12 +213,14 @@ void Game::shakeCam()
 
 void Game::handiCam()
 {
-    effect_timer -= RF_Engine::instance->time->deltaTime;
+    effect_timer -= RF_Engine::instance->time->deltaTime * 5;
+    RF_Engine::instance->Debug(RF_Engine::instance->time->deltaTime*5);
+    RF_Engine::instance->Debug(effect_timer);
 
     switch(effect)
     {
         case 1: //Escala
-            effect_timer = 20;
+            effect_timer = 20.0f;
             pL->transform.scale.x = rand()%3 + 2;
             pL->transform.scale.y = rand()%3 + 2;
 
@@ -225,7 +228,7 @@ void Game::handiCam()
             break;
 
         case 2:
-            effect_timer = 20;
+            effect_timer = 20.0f;
 
             pL->transform.scale.x = -1;
             pL->transform.scale.y = -1;

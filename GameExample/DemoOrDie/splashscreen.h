@@ -9,7 +9,7 @@ class SplashScreen : public RF_Process
 {
     public:
         SplashScreen():RF_Process("SplashScreen"){};
-        virtual ~SplashScreen();
+        virtual ~SplashScreen(){}
 
         virtual void Start();
         virtual void Update();

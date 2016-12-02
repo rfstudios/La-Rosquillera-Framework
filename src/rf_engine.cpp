@@ -125,6 +125,8 @@ void RF_Engine::update(){
             {
                 taskManager[i]->Update();
             }
+
+            taskManager[i]->Draw();
         }
     }
 }

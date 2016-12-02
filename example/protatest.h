@@ -7,7 +7,7 @@
 class protatest : public RF_Process
 {
     public:
-        protatest(){}
+        protatest():RF_Process("Prota"){}
         virtual ~protatest(){}
 
         void Start()

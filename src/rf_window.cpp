@@ -61,8 +61,8 @@ void RF_Window::render(vector<RF_Process*>& tM, vector<YW_Text*>& textSources)
 
                 if(tM[i]->ctype == C_SCROLL)
                 {
-                    r.x -= RF_Parallax::instance->transform.position.x;
-                    r.y -= RF_Parallax::instance->transform.position.y;
+                    r.x -= RF_Scroll::instance->transform.position.x;
+                    r.y -= RF_Scroll::instance->transform.position.y;
                 }
 
                 SDL_RenderCopy(renderer,tM[i]->graph,NULL,&r);

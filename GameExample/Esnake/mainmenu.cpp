@@ -10,7 +10,7 @@ void MainMenu::Start()
     pL = new RF_Parallax_Layer("eBaby", Vector2<float>(1.0f, 1.0f), Vector2<int>(REPEAT,NO_REPEAT));
     pL->transform.scale = Vector2<float>(2.0f,2.0f);
     pL->transform.position.x = 5000;
-    pL->transform.position.y = - RF_Engine::instance->ventana->height();
+    pL->transform.position.y = - RF_Engine::instance->ventana->height()-100;
 
     texto = RF_Engine::instance->write("Pulsa ENTER para empezar", {0,0,0}, Vector2<int>((RF_Engine::instance->ventana->width()>>1)-100, (RF_Engine::instance->ventana->height()>>1)-50));
 }

@@ -818,7 +818,7 @@
 1475580200 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/background.h
 	"rf_process.h"
 
-1479765431 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_process.h
+1480667478 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_process.h
 	"rf_engine.h"
 	"rf_declares.h"
 	<SDL2/SDL_image.h>
@@ -955,13 +955,13 @@
 	<string>
 	<SDL2/SDL_image.h>
 
-1473858840 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_process.cpp
+1480591310 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_process.cpp
 	"rf_process.h"
 
 1473858840 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_time.cpp
 	"rf_time.h"
 
-1480004583 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_window.cpp
+1480667350 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_window.cpp
 	"rf_window.h"
 	"rf_parallax.h"
 	<iostream>
@@ -978,10 +978,10 @@
 	"rf_engine.h"
 	"mainprocess.h"
 
-1480005029 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_parallax.cpp
+1480591407 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_parallax.cpp
 	"rf_parallax.h"
 
-1479766613 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_parallax.h
+1480667452 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_parallax.h
 	"rf_parallax_layer.h"
 	"rf_declares.h"
 	"rf_background.h"
@@ -1020,7 +1020,7 @@
 	"mainprocess.h"
 	<vector>
 
-1478159395 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/scenetest.h
+1480590409 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/scenetest.h
 	"rf_background.h"
 	"rf_process.h"
 	"rf_engine.h"
@@ -1029,7 +1029,7 @@
 	"mainprocess.h"
 	<vector>
 
-1479979265 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/scenetest.cpp
+1480590409 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/scenetest.cpp
 	"scenetest.h"
 	"protatest.h"
 	"gameobject.h"
@@ -1073,7 +1073,7 @@
 	<SDL2/SDL_ttf.h>
 	<string>
 
-1480326183 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_asset_list.cpp
+1480334458 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_asset_list.cpp
 	"rf_asset_list.h"
 	"rf_engine.h"
 	"rf_primitive.h"
@@ -1162,7 +1162,7 @@
 	<string>
 	<ostream>
 
-1480073198 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/protatest.h
+1480590841 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/protatest.h
 	"rf_process.h"
 
 1479977091 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/example/gameobject.h

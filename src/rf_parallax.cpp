@@ -1,21 +1,15 @@
 #include "rf_parallax.h"
 
-RF_Parallax* RF_Parallax::instance = NULL;
-
 RF_Parallax::RF_Parallax(Vector2<int> position):RF_Process("RF_Parallax")
 {
-    instance = this;
     RF_Engine::instance->newTask(this,-1);
     transform.position = position;
-    target = NULL;
 }
 RF_Parallax::RF_Parallax(int x, int y):RF_Process("RF_Parallax")
 {
-    instance = this;
     RF_Engine::instance->newTask(this,-1);
     transform.position.x = x;
     transform.position.y = y;
-    target = NULL;
 }
 
 void RF_Parallax::draw(RF_Background* bg)
@@ -62,6 +56,7 @@ void RF_Parallax::move(int x, int y)
                          layers[ii]->transform.position.y + (float)y / layers[ii]->getSpeed().y)
         );
     }
+    needDraw = true;
 }
 
 void RF_Parallax::position(Vector2<int> newPosition)
@@ -81,14 +76,27 @@ void RF_Parallax::position(int x, int y)
                          (float)y / layers[ii]->getSpeed().y)
         );
     }
+
+    needDraw = true;
 }
 
-void RF_Parallax::setCamera(int _target)
+void RF_Parallax::Draw()
+{
+    if(needDraw)
+    {
+        draw(RF_Background::instance);
+        needDraw = false;
+    }
+}
+
+RF_Scroll* RF_Scroll::instance = NULL;
+
+void RF_Scroll::setCamera(int _target)
 {
     target = RF_Engine::instance->taskManager[_target];
 }
 
-void RF_Parallax::Update()
+void RF_Scroll::Update()
 {
     if(target != NULL)
     {
@@ -104,6 +112,6 @@ void RF_Parallax::Update()
         }
 
         position(newPos);
-        draw(RF_Background::instance);
+        //draw(RF_Background::instance);
     }
 }

@@ -58,8 +58,3 @@ void SplashScreen::Update()
         }
     }
 }
-
-SplashScreen::~SplashScreen()
-{
-    SDL_FreeSurface(bgImg);
-}

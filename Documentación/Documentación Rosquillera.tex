@@ -1,11 +1,11 @@
 \documentclass[10pt,a4paper,titlepage]{report}
+\usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 
 \usepackage{titling}
-\renewcommand{\contentsname}{Indice de contenidos}
 \newcommand{\subtitle}[1]{
   \posttitle{
     \par\end{center}
@@ -25,6 +25,8 @@
     \addcontentsline{toc}{section}{#2}
 }
 
+\setlength{\parindent}{0pt}
+
 \author{Autor: Yawin}
 \date{}
 \title{La Rosquillera Framework}
@@ -43,7 +45,7 @@ A lo largo de los casi diez años que llevo programando videojuegos y aplicacion
 A lo largo de mi aprendizaje en el desarrollo de videojuegos, he conocido varias herramientas que me han influído en mi forma de entender los motores:
 
 \begin{itemize}
-\item Creo que todos los elementos del motor deben estar sincronizados a través de un gestor que los actualice uno a uno. Para ello entiendo la necesidad de una clase base "proceso" que agrupe a todos los elementos del juego.
+\item Creo que todos los elementos de un juego deben estar sincronizados a través de un gestor que los actualice uno a uno. Para ello entiendo la necesidad de una clase base "proceso" que agrupe a todos los elementos del juego.
 \item Todas las clases del motor deben ser virtuales para que el usuario pueda crear sus propias versiones sin tener que modificar el framework base.
 \item La gestión de recursos, así como el trabajo con las clases del framework, debe ser sencilla.
 \end{itemize}
@@ -81,7 +83,7 @@ Blah, blah, blah, blah, blah
 \mysection{2}{Matemáticas}
 Blah, blah, blah, blah, blah
 
-\mysection{3}{Parallax}
+\mysection{3}{Parallax y el scroll}
 Blah, blah, blah, blah, blah
 
 \mysection{4}{Sonido}

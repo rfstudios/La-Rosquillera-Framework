@@ -36,6 +36,7 @@ class RF_Process
 
         virtual void Start();
         virtual void Update();
+        virtual void Draw();
 
         /**Propiedades******/
             unsigned int id, father, signal = S_AWAKE;

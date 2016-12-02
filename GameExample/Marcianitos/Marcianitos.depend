@@ -10,7 +10,7 @@
 	"rf_3d_object.h"
 	<vector>
 
-1476969465 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_declares.h
+1479894099 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_declares.h
 	<vector>
 	<string>
 	<SDL2/SDL.h>
@@ -18,7 +18,7 @@
 1473858839 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_3d_object.h
 	"rf_declares.h"
 
-1477135732 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_engine.h
+1479732379 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_engine.h
 	"rf_window.h"
 	"rf_process.h"
 	"rf_declares.h"
@@ -41,7 +41,7 @@
 	<string>
 	<vector>
 
-1476212911 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_process.h
+1480667478 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_process.h
 	"rf_engine.h"
 	"rf_declares.h"
 	<SDL2/SDL_image.h>
@@ -54,26 +54,29 @@
 	<vector>
 	<math.h>
 
-1477079361 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_asset_list.h
+1479834969 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_asset_list.h
 	"rf_asset.h"
 	<SDL2/SDL_image.h>
 	<SDL2/SDL_mixer.h>
 	<SDL2/SDL_ttf.h>
+	"rf_declares.h"
 	<dirent.h>
 	<vector>
 	<string>
 
-1477135869 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_asset.h
+1479894033 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_asset.h
+	"rf_declares.h"
 	<SDL2/SDL_image.h>
 	<SDL2/SDL_mixer.h>
 	<SDL2/SDL_ttf.h>
 	<string>
 
-1475595614 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_primitive.h
+1480073160 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_primitive.h
 	"rf_engine.h"
 	"rf_declares.h"
 	<SDL2/SDL.h>
 	<math.h>
+	<string>
 
 1476212911 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_3d_object.cpp
 	"rf_3d_object.h"
@@ -123,7 +126,8 @@
 	"rf_soundmanager.h"
 	"rf_engine.h"
 
-1477080558 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_soundmanager.h
+1477852595 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_soundmanager.h
+	"rf_process.h"
 	<string>
 	<SDL2/SDL_mixer.h>
 
@@ -168,4 +172,11 @@
 
 1473858839 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Marcianitos/prota.h
 	"rf_process.h"
+
+1477137593 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Marcianitos/mainprocess.cpp
+	"mainprocess.h"
+	"execontrol.h"
+	"prota.h"
+	"enemigo.h"
+	"rf_soundmanager.h"
 
