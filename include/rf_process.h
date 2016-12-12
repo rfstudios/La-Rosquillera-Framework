@@ -37,12 +37,14 @@ class RF_Process
         virtual void Start();
         virtual void Update();
         virtual void Draw();
+        virtual void LateDraw();
 
         /**Propiedades******/
             unsigned int id, father, signal = S_AWAKE;
             string type="";
             SDL_Texture *graph;
             Transform transform;
+            int zLayer = -1;
             int ctype = C_SCREEN;
         /*******************/
 };

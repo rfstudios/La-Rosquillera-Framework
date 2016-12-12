@@ -112,6 +112,5 @@ void RF_Scroll::Update()
         }
 
         position(newPos);
-        //draw(RF_Background::instance);
     }
 }

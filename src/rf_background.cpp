@@ -2,7 +2,7 @@
 #include "rf_primitive.h"
 
 RF_Background* RF_Background::instance = NULL;
-void RF_Background::Update()
+void RF_Background::LateDraw()
 {
     generateTexture();
     return;

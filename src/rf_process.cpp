@@ -45,3 +45,7 @@ void RF_Process::Draw()
 {
     return;
 }
+void RF_Process::LateDraw()
+{
+    return;
+}

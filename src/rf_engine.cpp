@@ -159,6 +159,7 @@ int RF_Engine::newTask(RF_Process *task, int father){
 
     taskManager[pos]->father=father;
     taskManager[pos]->id=pos;
+    taskManager[pos]->zLayer = taskManager.size();
     taskManager[pos]->Start();
     return pos;
 }

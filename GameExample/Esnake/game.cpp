@@ -33,7 +33,7 @@ void Game::Start()
     snake = Vector3<int>(40,30,3);
     snake_direction = 1;
 
-    fC = 5;
+    fC = 0;
     setFood();
 }
 
@@ -214,8 +214,6 @@ void Game::shakeCam()
 void Game::handiCam()
 {
     effect_timer -= RF_Engine::instance->time->deltaTime * 5;
-    RF_Engine::instance->Debug(RF_Engine::instance->time->deltaTime*5);
-    RF_Engine::instance->Debug(effect_timer);
 
     switch(effect)
     {

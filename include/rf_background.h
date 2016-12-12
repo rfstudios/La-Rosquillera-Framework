@@ -11,7 +11,8 @@ class RF_Background : public RF_Process
         RF_Background():RF_Process("RF_Background"){instance = this;}
         virtual ~RF_Background(){}
 
-        virtual void Update();
+        virtual void Start(){zLayer = -1;}
+        virtual void LateDraw();
 
         Uint32 getPixel(int x, int y);
         void putPixel(int x, int y, Uint32 pixel);

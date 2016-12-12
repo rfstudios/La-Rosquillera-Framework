@@ -35,6 +35,7 @@ class RF_Window
     public:
         RF_Window(string i_title, int i_windowMode, int i_posX, int i_posY, int i_width, int i_height, int i_rendererMode);
         void render(vector<RF_Process*>& tM, vector<YW_Text*>& textSources);
+        void prepareToRend(vector<RF_Process*>& rM, RF_Process* nT);
         void Dispose();
         virtual ~RF_Window();
 

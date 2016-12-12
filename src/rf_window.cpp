@@ -44,31 +44,69 @@ RF_Window::~RF_Window()
     Dispose();
 }
 
+void RF_Window::prepareToRend(vector<RF_Process*>& rM, RF_Process* nT)
+{
+    if(rM.size() == 0)
+    {
+        rM.push_back(nT);
+        return;
+    }
+
+    unsigned int i = 0;
+    for(; i < rM.size(); i++)
+    {
+        if(rM[i]->zLayer >= nT->zLayer)
+        {
+            break;
+        }
+    }
+
+    if(i < rM.size())
+    {
+        rM.insert(rM.begin() + (i), nT);
+    }
+    else
+    {
+        rM.push_back(nT);
+    }
+}
+
 void RF_Window::render(vector<RF_Process*>& tM, vector<YW_Text*>& textSources)
 {
     SDL_RenderClear(renderer);
+
+    vector<RF_Process*> rM;
 
     for(unsigned int i=0;i<tM.size();i++)
     {
         if(NULL != tM[i])
         {
+            tM[i]->LateDraw();
+
             if(NULL!=tM[i]->graph)
             {
-                SDL_Rect r;
-                SDL_QueryTexture(tM[i]->graph,NULL,NULL,&r.w,&r.h);
-
-                r.x=tM[i]->transform.position.x; r.y=tM[i]->transform.position.y;
-
-                if(tM[i]->ctype == C_SCROLL)
-                {
-                    r.x -= RF_Scroll::instance->transform.position.x;
-                    r.y -= RF_Scroll::instance->transform.position.y;
-                }
-
-                SDL_RenderCopy(renderer,tM[i]->graph,NULL,&r);
+                prepareToRend(rM,tM[i]);
             }
         }
     }
+
+    for(unsigned int i=0; i<rM.size(); i++)
+    {
+        SDL_Rect r;
+        SDL_QueryTexture(rM[i]->graph,NULL,NULL,&r.w,&r.h);
+
+        r.x=rM[i]->transform.position.x; r.y=rM[i]->transform.position.y;
+
+        if(rM[i]->ctype == C_SCROLL)
+        {
+            r.x -= RF_Scroll::instance->transform.position.x;
+            r.y -= RF_Scroll::instance->transform.position.y;
+        }
+
+        SDL_RenderCopy(renderer,rM[i]->graph,NULL,&r);
+    }
+
+    rM.clear();
 
     for(unsigned int i=0;i<textSources.size();i++)
     {

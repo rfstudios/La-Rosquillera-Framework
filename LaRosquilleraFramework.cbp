@@ -49,6 +49,7 @@
 		</Linker>
 		<Unit filename="example/execontrol.cpp" />
 		<Unit filename="example/execontrol.h" />
+		<Unit filename="example/gameobject.h" />
 		<Unit filename="example/main.cpp" />
 		<Unit filename="example/mainmenu.cpp" />
 		<Unit filename="example/mainmenu.h" />
@@ -72,6 +73,7 @@
 		<Unit filename="include/rf_primitive.h" />
 		<Unit filename="include/rf_process.h" />
 		<Unit filename="include/rf_soundmanager.h" />
+		<Unit filename="include/rf_sprite.h" />
 		<Unit filename="include/rf_time.h" />
 		<Unit filename="include/rf_window.h" />
 		<Unit filename="src/rf_3d.cpp" />
@@ -83,6 +85,7 @@
 		<Unit filename="src/rf_parallax_layer.cpp" />
 		<Unit filename="src/rf_process.cpp" />
 		<Unit filename="src/rf_soundmanager.cpp" />
+		<Unit filename="src/rf_sprite.cpp" />
 		<Unit filename="src/rf_time.cpp" />
 		<Unit filename="src/rf_window.cpp" />
 		<Extensions>
