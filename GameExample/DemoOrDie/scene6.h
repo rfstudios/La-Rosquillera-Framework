@@ -1,7 +1,7 @@
 #ifndef SCENE6_H
 #define SCENE6_H
 
-#include "background.h"
+#include "rf_background.h"
 #include "rf_process.h"
 #include "rf_engine.h"
 
@@ -44,7 +44,6 @@ class Scene6 : public RF_Process
         void bezierText(string text, int y);
 
     private:
-        background* bg;
         float deltaCount = 0.0f;
         int step = 0, step2 = 0, cuentatexto = 0;
 };

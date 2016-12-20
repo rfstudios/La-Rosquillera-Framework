@@ -20,6 +20,8 @@
 */
 
 #include "rf_engine.h"
+#include "rf_primitive.h"
+#include "rf_background.h"
 #include <string>
 #include <SDL2/SDL_image.h>
 using namespace std;
@@ -75,6 +77,12 @@ void RF_Engine::newWindow(string title, int windowMode, int posX, int posY, int 
     {
         write("Version de debug", {255,255,255}, Vector2<int>(ventana->width()-164,ventana->height()-30));
     }
+
+    //Levantamos el proceso que controla el fondo
+        newTask(new RF_Background(),-1);
+
+    //Inicializamos el fondo
+        RF_Background::instance->prepareSurface();
 }
 void RF_Engine::destroyWindow(){
     delete(ventana);
@@ -323,8 +331,6 @@ SDL_Texture* RF_Engine::getGfx2D(string id){
     return ret;
 }
 SDL_Surface* RF_Engine::getGfx2DSrf(string id){
-    RF_Engine::instance->Debug(("getGfx2DSrf [Info]: " + id));
-
     Vector2<int> pos = search_in_assetManager(id);
     SDL_Surface* ret = NULL;
 
@@ -380,6 +386,94 @@ TTF_Font* RF_Engine::getFont(string id, int pitch){
     }
 
     return ret;
+}
+Vector2<int> RF_Engine::getMultiSprite_Info(string id){
+    Vector2<int> pos = search_in_assetManager((id + "_info"));
+    Vector2<int> ret;
+
+    if(pos.y != -1)
+    {
+        ret = dynamic_cast<RF_MultiSprite_Info*>(assetManager[pos.x]->assets[pos.y])->size;
+    }
+    else
+    {
+        ret = pos;
+    }
+
+    return ret;
+}
+RF_Tiled_Map* RF_Engine::getTiledMap(string id){
+    Vector2<int> pos = search_in_assetManager(id);
+
+    if(pos.y != -1)
+    {
+        return dynamic_cast<RF_Tiled_Map*>(assetManager[pos.x]->assets[pos.y]);
+    }
+    else
+    {
+        return NULL;
+    }
+
+}
+void RF_Engine::createTiledSurface(string id){
+    RF_Tiled_Map* tMap = RF_Engine::instance->getTiledMap(id);
+
+    if(tMap == NULL) {return;}
+    if(tMap->srf != NULL){SDL_FreeSurface(tMap->srf);}
+
+    Vector2<int> lim;
+    for(unsigned int i = 0; i < tMap->map->tilesets.size(); i++)
+    {
+        /**Obtenemos el nombre del fichero sin extensión (que es el id del asset)**/
+            string ext = tMap->map->tilesets[i]->filename;
+            const size_t pos = ext.find_last_of('.');
+            string Aid = ext; Aid.erase(pos);
+        /****/
+        lim = RF_Engine::instance->getMultiSprite_Info(Aid);
+
+        if(lim.y!=-1)
+        {
+            for(int jj = 0; jj < lim.y; jj++)
+            {
+                for(int ii = 0; ii < lim.x; ii++)
+                {
+                    tMap->realTiles.push_back((Aid + "_" + to_string(ii) + "_" + to_string(jj)));
+                }
+            }
+        }
+        else
+        {
+            tMap->realTiles.push_back(Aid);
+        }
+    }
+
+    tMap->srf = SDL_CreateRGBSurface(0, tMap->map->width*tMap->map->tileWidth,
+                                        tMap->map->height*tMap->map->tileHeight,
+                                        RF_Background::instance->screen->format->BitsPerPixel, 0,0,0,0);
+    SDL_Surface* tmpSrf;
+
+    for(int i = 0; i < tMap->map->width; i++)
+    {
+        for(int j = 0; j < tMap->map->height; j++)
+        {
+            int til = tMap->map->layers[0]->data[j*tMap->map->width + i];
+            Uint32 color = 0x000000;
+
+            for(int ii = 0; ii < tMap->map->tileWidth; ii++)
+            {
+                for(int jj = 0; jj < tMap->map->tileHeight; jj++)
+                {
+                    if(til > 0)
+                    {
+                        tmpSrf = RF_Engine::instance->getGfx2DSrf(tMap->realTiles[til-1]);
+                        color = RF_Primitive::getPixel(tmpSrf,ii,jj);
+                    }
+
+                    RF_Primitive::putPixel(tMap->srf, i*tMap->map->tileWidth + ii, j*tMap->map->tileHeight + jj, color);
+                }
+            }
+        }
+    }
 }
 
 Vector2<int> RF_Engine::search_in_assetManager(string id){

@@ -1,0 +1,92 @@
+# depslib dependency file v1.0
+1481800453 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/RPG/main.cpp
+	<SDL2/SDL.h>
+	<rf_declares.h>
+	<rf_engine.h>
+	"mainprocess.h"
+
+1479894099 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_declares.h
+	<vector>
+	<string>
+	<SDL2/SDL.h>
+
+1479732379 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_engine.h
+	"rf_window.h"
+	"rf_process.h"
+	"rf_declares.h"
+	"rf_time.h"
+	"rf_math.h"
+	"rf_asset_list.h"
+	"rf_asset.h"
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_mixer.h>
+	<SDL2/SDL_ttf.h>
+	<vector>
+	<iostream>
+	<stdio.h>
+
+1481197126 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_window.h
+	"rf_declares.h"
+	"rf_process.h"
+	<SDL2/SDL.h>
+	<string>
+	<vector>
+
+1481199247 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_process.h
+	"rf_engine.h"
+	"rf_declares.h"
+	<SDL2/SDL_image.h>
+	<string>
+
+1473858839 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_time.h
+	<SDL2/SDL.h>
+
+1476361599 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_math.h
+	<vector>
+	<math.h>
+
+1479834969 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_asset_list.h
+	"rf_asset.h"
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_mixer.h>
+	<SDL2/SDL_ttf.h>
+	"rf_declares.h"
+	<dirent.h>
+	<vector>
+	<string>
+
+1479894033 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_asset.h
+	"rf_declares.h"
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_mixer.h>
+	<SDL2/SDL_ttf.h>
+	<string>
+
+1481794532 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/RPG/include/mainprocess.h
+	"rf_process.h"
+	<rf_background.h>
+	<rf_declares.h>
+	<rf_primitive.h>
+	<rf_soundmanager.h>
+	<SDL2/SDL_ttf.h>
+	"execontrol.h"
+
+1481199460 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_background.h
+	"rf_process.h"
+
+1480073160 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_primitive.h
+	"rf_engine.h"
+	"rf_declares.h"
+	<SDL2/SDL.h>
+	<math.h>
+	<string>
+
+1477852595 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_soundmanager.h
+	"rf_process.h"
+	<string>
+	<SDL2/SDL_mixer.h>
+
+1481794560 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/RPG/include/execontrol.h
+	<rf_process.h>
+

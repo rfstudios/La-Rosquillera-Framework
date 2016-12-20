@@ -5,7 +5,6 @@
 void Scene3::Start(){
     RF_Engine::instance->Debug(type);
 
-    bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
     SDL_Surface* bgImgS = RF_Engine::instance->getGfx2DSrf("euskal");
     for(int i=0; i<640; i++)
     {
@@ -43,7 +42,7 @@ void Scene3::Update(){
 
             if(16800 < RF_Engine::instance->time->fixedCTime())
             {
-                bg->clearSurface(0x000000);
+                RF_Background::instance->clearSurface(0x000000);
                 dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->state() = 4;
             }
         }
@@ -56,7 +55,7 @@ void Scene3::Update(){
 
 void Scene3::metaballs(int type){
     float metang = M_PI*step*0.075;
-    bg->clearSurface(0x000000);
+    RF_Background::instance->clearSurface(0x000000);
 
     Vector3<int> b1, b2, b3;
     b1.x=300+cos(metang*2.5)*150; b1.y=300+sin(metang*2)*150;   b1.z=15;//15
@@ -75,13 +74,13 @@ void Scene3::metaballs(int type){
                 switch(type)
                 {
                     case 0:
-                        bg->putPixel(i,j,bgImg[i][j]);
+                        RF_Background::instance->putPixel(i,j,bgImg[i][j]);
                         break;
                     case 1:
-                        bg->putPixel(i,j,bgImg[i][j]);
+                        RF_Background::instance->putPixel(i,j,bgImg[i][j]);
                         break;
                     case 2:
-                        bg->putPixel(i,j,bgImg2[i][j]);
+                        RF_Background::instance->putPixel(i,j,bgImg2[i][j]);
                         break;
                 }
             }
@@ -91,11 +90,11 @@ void Scene3::metaballs(int type){
                 {
                     if(type == 1)
                     {
-                        bg->putPixel(i,j,bgImg2[i][j]);
+                        RF_Background::instance->putPixel(i,j,bgImg2[i][j]);
                     }
                     else
                     {
-                        bg->putPixel(i,j,bgImg[i][j]);
+                        RF_Background::instance->putPixel(i,j,bgImg[i][j]);
                     }
                 }
             }

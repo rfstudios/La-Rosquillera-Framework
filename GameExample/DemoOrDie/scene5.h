@@ -3,7 +3,7 @@
 
 #include "rf_process.h"
 #include "rf_engine.h"
-#include "background.h"
+#include "rf_background.h"
 
 #include <math.h>
 using namespace std;
@@ -66,8 +66,6 @@ class Scene5 : public RF_Process
         int step = 0, textCont = 0;
         float deltaCount = 0;
         void creaTexto(string txt, Vector2<int> p);
-
-        background* bg;
 };
 
 #endif // SCENE5_H

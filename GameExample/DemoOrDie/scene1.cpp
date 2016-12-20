@@ -8,13 +8,12 @@ void Scene1::Start()
 
     srand (RF_Engine::instance->time->currentTime);
     bgImg = RF_Engine::instance->getGfx2DSrf("demoordie");
-    bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
 
     for(int i=0; i < bgImg->w; i++)
     {
         for(int j=0; j < bgImg->h; j++)
         {
-            bg->putPixel(i,j,RF_Primitive::getPixel(bgImg,i,j));
+            RF_Background::instance->putPixel(i,j,RF_Primitive::getPixel(bgImg,i,j));
         }
     }
 
@@ -74,7 +73,7 @@ void Scene1::Update()
         }
         else
         {
-            bg->clearSurface(0x000000);
+            RF_Background::instance->clearSurface(0x000000);
             dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->state() = 2;
         }
     }
@@ -91,7 +90,7 @@ void Scene1::setBar(int x, int width, bool black){
                 Uint32 tmpC = RF_Primitive::getPixel(bgImg,i,j);
                 if(black) tmpC = 0xffffff;
 
-                bg->putPixel(i,j,0xffffff - tmpC);
+                RF_Background::instance->putPixel(i,j,0xffffff - tmpC);
             }
         }
     }
@@ -103,7 +102,7 @@ void Scene1::getBar(int x, int width){
         {
             if(0 <= i && 0 <= j && bgImg->w > i && bgImg->h > j)
             {
-                bg->putPixel(i,j,RF_Primitive::getPixel(bgImg,i,j));
+                RF_Background::instance->putPixel(i,j,RF_Primitive::getPixel(bgImg,i,j));
             }
         }
     }
@@ -115,10 +114,10 @@ void Scene1::revolveChanels(int mod){
         {
             if(0 <= i && 0 <= j && bgImg->w > i && bgImg->h > j)
             {
-                Uint32 tmpC = bg->getPixel(i,j);
+                Uint32 tmpC = RF_Background::instance->getPixel(i,j);
                 Uint8 r,g,b; SDL_GetRGB(tmpC,bgImg->format,&r,&g,&b);
                 int r_mod = (rand()%10) * mod;
-                bg->putPixel(i,j,SDL_MapRGB(bgImg->format,255 - (b + r_mod),255 - (r + r_mod),255 - (g + r_mod)));
+                RF_Background::instance->putPixel(i,j,SDL_MapRGB(bgImg->format,255 - (b + r_mod),255 - (r + r_mod),255 - (g + r_mod)));
             }
         }
     }

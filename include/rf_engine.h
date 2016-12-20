@@ -103,6 +103,9 @@ class RF_Engine
             Mix_Music* getAudioClip(string id);
             Mix_Chunk* getFXClip(string id);
             TTF_Font* getFont(string id, int pitch = -1);
+            Vector2<int> getMultiSprite_Info(string id);
+            RF_Tiled_Map* getTiledMap(string id);
+            void createTiledSurface(string id);
             Vector2<int> search_in_assetManager(string id);
             int _search_in_assetManager(int i, string id);
             int assetCount(string id);

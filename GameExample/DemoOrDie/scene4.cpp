@@ -5,7 +5,6 @@
 void Scene4::Start(){
     RF_Engine::instance->Debug(type);
 
-    bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
     SDL_Surface* bgImgS = RF_Engine::instance->getGfx2DSrf("eBaby");
     SDL_Surface* bgImgS2 = RF_Engine::instance->getGfx2DSrf("logo");
     for(int i=0; i<640; i++)
@@ -74,11 +73,11 @@ void Scene4::Update(){
                     x=(calc11)*cos(step*0.01)-(calc21)*sin(step*0.01); while(x<0){x+=640;} while(x>639){x-=640;}
                     y=(calc11)*sin(step*0.01)+(calc21)*cos(step*0.01); while(y<0){y+=480;} while(y>479){y-=480;}
 
-                    bg->putPixel(i,j,bgImg2[x][y]);
+                    RF_Background::instance->putPixel(i,j,bgImg2[x][y]);
                 }
                 else if(calcTemp < 0.80 && calcTemp > 0.795)
                 {
-                    bg->putPixel(i,j,0x010101);
+                    RF_Background::instance->putPixel(i,j,0x010101);
                 }
                 else
                 {
@@ -87,7 +86,7 @@ void Scene4::Update(){
                     x=(calc12)*-cos(step*0.01)-(calc22)*sin(step*0.01); while(x<0){x+=640;} while(x>639){x-=640;}
                     y=(calc32)*-sin(step*0.01)+(calc22)*cos(step*0.01); while(y<0){y+=480;} while(y>479){y-=480;}
 
-                    bg->putPixel(i,j,bgImg[x][y]);
+                    RF_Background::instance->putPixel(i,j,bgImg[x][y]);
                 }
             }
         }
@@ -98,7 +97,7 @@ void Scene4::Update(){
 
     if(16800 <= RF_Engine::instance->time->fixedCTime())
     {
-        bg->clearSurface(0x000000);
+        RF_Background::instance->clearSurface(0x000000);
         dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->state() = 5;
     }
 }

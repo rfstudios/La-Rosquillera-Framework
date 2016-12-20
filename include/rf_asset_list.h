@@ -1,12 +1,12 @@
 #ifndef RF_ASSET_LIST_H
 #define RF_ASSET_LIST_H
 
+#include "rf_declares.h"
 #include "rf_asset.h"
+
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
-
-#include "rf_declares.h"
 #include <dirent.h>
 #include <vector>
 #include <string>

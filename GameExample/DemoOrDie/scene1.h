@@ -1,7 +1,7 @@
 #ifndef SCENE1_H
 #define SCENE1_H
 
-#include "background.h"
+#include "rf_background.h"
 #include "rf_process.h"
 #include "rf_engine.h"
 
@@ -16,7 +16,6 @@ class Scene1 : public RF_Process
 
     private:
         SDL_Surface* bgImg;
-        background* bg;
 
         void setBar(int x, int width, bool black = false);
         void getBar(int x, int width);

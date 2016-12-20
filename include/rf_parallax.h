@@ -19,6 +19,7 @@ class RF_Parallax : public RF_Process
 
         void draw(RF_Background* bg);
         int newLayer(string path = "", Vector2<float> speed = Vector2<float>(1.0f, 1.0f), Vector2<int> mirror = Vector2<int>(1,0));
+        int newLayer(SDL_Surface* srf = NULL, Vector2<float> speed = Vector2<float>(1.0f, 1.0f), Vector2<int> mirror = Vector2<int>(1,0));
         void move(Vector2<int> newPosition);
         void move(int x, int y);
         void position(Vector2<int> newPosition);

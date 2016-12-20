@@ -1,5 +1,3 @@
-/*ESTA ES UNA PRUEBA DE REPOSITORIOS*/
-
 #include <SDL2/SDL.h>
 #include "rf_declares.h"
 #include "rf_engine.h"
@@ -11,7 +9,7 @@ int main()
         RF_Engine *e = new RF_Engine(true);
 
     //Creamos una nueva ventana para el motor
-        e->newWindow("Parallax", /*SDL_WINDOW_FULLSCREEN |*/ SDL_WINDOW_OPENGL, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_RENDERER_ACCELERATED); //1080, 520
+        e->newWindow("Esnake", /*SDL_WINDOW_FULLSCREEN |*/ SDL_WINDOW_OPENGL, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_RENDERER_ACCELERATED); //1080, 520
 
     //Levantamos el proceso maestro de nuestro programa
         e->newTask(new mainProcess());

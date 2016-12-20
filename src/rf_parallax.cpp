@@ -39,6 +39,16 @@ int RF_Parallax::newLayer(string path, Vector2<float> speed, Vector2<int> mirror
     return layers.size();
 }
 
+int RF_Parallax::newLayer(SDL_Surface* srf, Vector2<float> speed, Vector2<int> mirror)
+{
+    layers.push_back(new RF_Parallax_Layer(srf,speed,mirror));
+
+    if(size.x < layers[layers.size()-1]->size.x){size.x = layers[layers.size()-1]->size.x;}
+    if(size.y < layers[layers.size()-1]->size.y){size.y = layers[layers.size()-1]->size.y;}
+
+    return layers.size();
+}
+
 void RF_Parallax::move(Vector2<int> newPosition)
 {
     move(newPosition.x,newPosition.y);

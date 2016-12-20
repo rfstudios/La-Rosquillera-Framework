@@ -9,6 +9,14 @@ RF_Parallax_Layer::RF_Parallax_Layer(string file, Vector2<float> speed, Vector2<
     if(file == ""){size.x = -1; return;}
     int error = setGfx(file);
 }
+RF_Parallax_Layer::RF_Parallax_Layer(SDL_Surface* srf, Vector2<float> speed, Vector2<int> mirror)
+{
+    lSpeed = speed;
+    _mirror = mirror;
+
+    if(srf == NULL){size.x = -1; return;}
+    int error = setGfx(srf);
+}
 
 void RF_Parallax_Layer::setPos(Vector2<int> newPos)
 {

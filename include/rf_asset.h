@@ -2,11 +2,16 @@
 #define RF_ASSET_H
 
 #include "rf_declares.h"
+#include "NLTmxMap.h"
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
+
+#include <iostream>
 #include <string>
 using namespace std;
+
+class RF_Engine;
 
 class RF_Asset
 {
@@ -51,6 +56,18 @@ class RF_FXClip : public RF_Asset
         }
 
         Mix_Chunk* clip;
+};
+
+class RF_MultiSprite_Info : public RF_Asset
+{
+    public:
+        RF_MultiSprite_Info(string name, Vector2<int> sizes):RF_Asset(name)
+        {
+            size = sizes;
+        }
+        ~RF_MultiSprite_Info(){}
+
+        Vector2<int> size;
 };
 
 class RF_Gfx2D : public RF_Asset
@@ -102,5 +119,29 @@ class RF_Font : public RF_Asset
 
         TTF_Font* font;
         string path;
+};
+
+class RF_Tiled_Map : public RF_Asset
+{
+    public:
+        RF_Tiled_Map(string name, NLTmxMap* _map):RF_Asset(name)
+        {
+            map = _map;
+        }
+
+        virtual ~RF_Tiled_Map()
+        {
+            delete map;
+            map = NULL;
+
+            if(srf != NULL)
+            {
+                SDL_FreeSurface(srf);
+            }
+        }
+
+        NLTmxMap* map;
+        SDL_Surface* srf = NULL;
+        vector<string> realTiles;
 };
 #endif // RF_ASSET_H

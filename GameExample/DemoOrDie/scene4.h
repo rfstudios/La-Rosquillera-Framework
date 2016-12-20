@@ -3,7 +3,7 @@
 
 #include "rf_process.h"
 #include "rf_engine.h"
-#include "background.h"
+#include "rf_background.h"
 
 #include <math.h>
 using namespace std;
@@ -18,7 +18,6 @@ class Scene4 : public RF_Process
         virtual void Update();
 
     private:
-        background* bg;
         Uint32 bgImg[640][480], bgImg2[640][480];
         int step = 0;
         float deltacount = 0.0f;

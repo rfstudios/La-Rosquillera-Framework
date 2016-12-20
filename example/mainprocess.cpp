@@ -22,15 +22,6 @@ void mainProcess::Start()
     //la tecla esc;
         RF_Engine::instance->newTask(new exeControl(),id);
 
-    //Levantamos el proceso que controla el fondo
-        int bgr = RF_Engine::instance->newTask(new RF_Background(),id);
-
-    //Establecemos un puntero a la instancia del fondo
-        bg = dynamic_cast<RF_Background*>(RF_Engine::instance->taskManager[bgr]);
-
-    //Inicializamos el fondo
-        bg->prepareSurface();
-
     //Cargamos recursos
         RF_Engine::instance->loadAsset("resources/gfx");
         RF_Engine::instance->loadAsset("resources/misc");

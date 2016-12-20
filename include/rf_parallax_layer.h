@@ -10,6 +10,7 @@ class RF_Parallax_Layer
 {
     public:
         RF_Parallax_Layer(string file="", Vector2<float> speed = Vector2<float>(1.0f,1.0f), Vector2<int> mirror = Vector2<int>(1,0));
+        RF_Parallax_Layer(SDL_Surface* srf, Vector2<float> speed = Vector2<float>(1.0f,1.0f), Vector2<int> mirror = Vector2<int>(1,0));
         virtual ~RF_Parallax_Layer(){}
 
         Uint32 getRotoPixel(Vector2<int> pos);

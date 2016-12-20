@@ -8,7 +8,6 @@ void Scene5::Start(){
     RF_Engine::instance->Debug(type);
 
     RF_Engine::instance->font = RF_Engine::instance->getFont("Times_New_Roman", 30);
-    bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
 }
 
 void Scene5::Update(){
@@ -22,7 +21,7 @@ void Scene5::Update(){
         deltaCount += RF_Engine::instance->time->deltaTime;
         if(0.025 < deltaCount)
         {
-            bg->clearSurface();
+            RF_Background::instance->clearSurface();
             if(79 == step%80)
             {
                 switch(textCont)
@@ -57,7 +56,7 @@ void Scene5::Update(){
     }
     else
     {
-        bg->clearSurface();
+        RF_Background::instance->clearSurface();
         dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->state() = 6;
     }
 }
@@ -168,10 +167,10 @@ void puntoVessel::Update(){
     {
         int x = 320 + sin(M_PI*((vida + RF_Engine::instance->time->fixedCTime())*1.2)*0.00016)*300;
         int y = 120 + sin(M_PI*((vida + RF_Engine::instance->time->fixedCTime())*1.2)*5*0.0005) * 100;
-        fScene->bg->putPixel(x,y, 0xffffff);
-        fScene->bg->putPixel(x,y+1, 0xffffff);
-        fScene->bg->putPixel(x+1,y, 0xffffff);
-        fScene->bg->putPixel(x+1,y+1, 0xffffff);
+        RF_Background::instance->putPixel(x,y, 0xffffff);
+        RF_Background::instance->putPixel(x,y+1, 0xffffff);
+        RF_Background::instance->putPixel(x+1,y, 0xffffff);
+        RF_Background::instance->putPixel(x+1,y+1, 0xffffff);
     }
 }
 

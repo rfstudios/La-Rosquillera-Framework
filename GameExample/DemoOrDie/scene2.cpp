@@ -11,7 +11,6 @@ void Scene2::Start()
     RF_Engine::instance->Debug(type);
 
     RF_Engine::instance->font = RF_Engine::instance->getFont("Times_New_Roman", 30);
-    bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
     RF_3D::loadObj("resources/ico.yawobj");
     RF_3D::loadObj("resources/cubo.yawobj");
 
@@ -26,7 +25,7 @@ void Scene2::Update()
 
     if(0.025f < deltaCount)
     {
-        bg->clearSurface(0x000000);
+        RF_Background::instance->clearSurface(0x000000);
         step++; step2++;
 
         if(!lastFrame && cuentaobj == 0)
@@ -80,7 +79,7 @@ void Scene2::Update()
 
             SDL_Surface* tmpSrf = SDL_CreateRGBSurface(0,RF_Engine::instance->ventana->width(), RF_Engine::instance->ventana->height(),32,0,0,0,0);
             RF_3D::Draw_Only(tmpSrf, objtorend);
-            bg->addSurface(tmpSrf);
+            RF_Background::instance->addSurface(tmpSrf);
             SDL_FreeSurface(tmpSrf);
 
             if(step2 > 100)
@@ -127,7 +126,7 @@ void Scene2::Update()
 
     if(55078 <= RF_Engine::instance->time->fixedCTime())
     {
-        bg->clearSurface(0x000000);
+        RF_Background::instance->clearSurface(0x000000);
         dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->state() = 3;
     }
     return;
@@ -186,7 +185,7 @@ bool Scene2::Starfield(int limit){
         {
             for(int j = 0; j < sCant; j++)
             {
-                bg->putPixel(xx+i, yy+j, 0xffffff);
+                RF_Background::instance->putPixel(xx+i, yy+j, 0xffffff);
                 painted = true;
             }
         }

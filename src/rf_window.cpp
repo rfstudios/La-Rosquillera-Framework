@@ -24,8 +24,7 @@
 #include <iostream>
 using namespace std;
 
-RF_Window::RF_Window(string i_title, int i_windowMode, int i_posX, int i_posY, int i_width, int i_height, int i_rendererMode)
-{
+RF_Window::RF_Window(string i_title, int i_windowMode, int i_posX, int i_posY, int i_width, int i_height, int i_rendererMode){
     _title=i_title;
     _windowMode=i_windowMode;
     _posX=i_posX;
@@ -38,14 +37,11 @@ RF_Window::RF_Window(string i_title, int i_windowMode, int i_posX, int i_posY, i
     window = SDL_CreateWindow(_title.c_str(), _posX, _posY, _width, _height, _windowMode);
     renderer = SDL_CreateRenderer(window,_index,_rendererMode);
 }
-
-RF_Window::~RF_Window()
-{
+RF_Window::~RF_Window(){
     Dispose();
 }
 
-void RF_Window::prepareToRend(vector<RF_Process*>& rM, RF_Process* nT)
-{
+void RF_Window::prepareToRend(vector<RF_Process*>& rM, RF_Process* nT){
     if(rM.size() == 0)
     {
         rM.push_back(nT);
@@ -70,9 +66,7 @@ void RF_Window::prepareToRend(vector<RF_Process*>& rM, RF_Process* nT)
         rM.push_back(nT);
     }
 }
-
-void RF_Window::render(vector<RF_Process*>& tM, vector<YW_Text*>& textSources)
-{
+void RF_Window::render(vector<RF_Process*>& tM, vector<YW_Text*>& textSources){
     SDL_RenderClear(renderer);
 
     vector<RF_Process*> rM;
@@ -124,9 +118,7 @@ void RF_Window::render(vector<RF_Process*>& tM, vector<YW_Text*>& textSources)
 
     SDL_RenderPresent(renderer);
 }
-
-void RF_Window::Dispose()
-{
+void RF_Window::Dispose(){
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
 }

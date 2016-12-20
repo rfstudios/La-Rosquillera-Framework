@@ -2,6 +2,7 @@
 #include "rf_engine.h"
 #include "rf_primitive.h"
 
+#include "NLTmxMap.h"
 #include <fstream>
 
 RF_Asset_List::~RF_Asset_List()
@@ -102,6 +103,9 @@ RF_Asset_List::RF_Asset_List(string path)
                             }
 
                             SDL_FreeSurface(srf);
+
+                            RF_MultiSprite_Info* nI = new RF_MultiSprite_Info((Aid + "_info"),Vector2<int>(size));
+                            assets.push_back(nI);
                         }
                     }
                     else if(t == 1) //AudioClip
@@ -128,6 +132,14 @@ RF_Asset_List::RF_Asset_List(string path)
                         RF_Font* nA = new RF_Font(Aid, TTF_OpenFont(p.c_str(),pt), p);
                         assets.push_back(nA);
                     }
+                    else if(t == 3) //Tiled Map
+                    {
+                        char * xml = (char*) loadFile(p.c_str(), true);
+                        NLTmxMap* map = NLLoadTmxMap(xml);
+                        RF_Tiled_Map* nTM = new RF_Tiled_Map(Aid, map);
+
+                        assets.push_back(nTM);
+                    }
                 }
         }
 
@@ -147,6 +159,10 @@ int RF_Asset_List::asset_type(string ext)
     else if(ext == "ttf")
     {
         return 2; //Ttf
+    }
+    else if(ext == "tmx")
+    {
+        return 3; //Tiled
     }
 }
 

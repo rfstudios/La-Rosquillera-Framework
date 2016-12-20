@@ -1,7 +1,7 @@
 #ifndef SCENE2_H
 #define SCENE2_H
 
-#include "background.h"
+#include "rf_background.h"
 #include "rf_process.h"
 #include "rf_engine.h"
 
@@ -46,7 +46,6 @@ class Scene2 : public RF_Process
         void Scrolltext(string text, int y);
 
     private:
-        background* bg;
         vector<Vector2<int>> stars;
         vector<int> stars_speed;
 

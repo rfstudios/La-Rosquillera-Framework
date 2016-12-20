@@ -10,8 +10,6 @@ void Scene6::Start(){
     RF_Engine::instance->Debug(type);
 
     RF_Engine::instance->font = RF_Engine::instance->getFont("Times_New_Roman", 30);
-    bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
-
     RF_3D_Object* tmpObj = new RF_3D_Object();
 
     for(float i = -7.5; i < 7.5; i+=0.2)
@@ -29,11 +27,6 @@ void Scene6::Start(){
     RF_3D::objectList.push_back(tmpObj);
 
     RF_3D::renderMode() = RM_LandScape;
-
-    /*bezierText("La scene no estaba muerta ",100);
-    bezierText("Estaba de parranda ",150);
-    bezierText("The scene will rock again ",300);*/
-    /**/
 }
 
 void Scene6::Update(){
@@ -41,7 +34,7 @@ void Scene6::Update(){
     deltaCount += RF_Engine::instance->time->deltaTime;
     if(0.025f < deltaCount)
     {
-        bg->clearSurface(0x000000);
+        RF_Background::instance->clearSurface(0x000000);
 
         for(int i = 0; i < RF_3D::objectList[0]->_vertex.size(); i++)
         {
@@ -51,7 +44,7 @@ void Scene6::Update(){
 
         SDL_Surface* tmpSrf = SDL_CreateRGBSurface(0,RF_Engine::instance->ventana->width(), RF_Engine::instance->ventana->height(),32,0,0,0,0);
         RF_3D::Draw_Only(tmpSrf, 0);
-        bg->addSurface(tmpSrf);
+        RF_Background::instance->addSurface(tmpSrf);
         SDL_FreeSurface(tmpSrf);
 
         RF_Engine::instance->Debug(step2);
@@ -97,7 +90,7 @@ void Scene6::Update(){
         step2++;
         if(1327 < step2)
         {
-            bg->clearSurface(0x000000);
+            RF_Background::instance->clearSurface(0x000000);
             dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->state() = 7;
         }
 

@@ -38,7 +38,8 @@
 			<Add directory="include" />
 			<Add directory="src" />
 			<Add directory="example" />
-			<Add directory="lib" />
+			<Add directory="utils/RapidXML" />
+			<Add directory="utils/TestNLTmxMap" />
 		</Compiler>
 		<Linker>
 			<Add library="SDL2" />
@@ -88,6 +89,12 @@
 		<Unit filename="src/rf_sprite.cpp" />
 		<Unit filename="src/rf_time.cpp" />
 		<Unit filename="src/rf_window.cpp" />
+		<Unit filename="utils/RapidXML/rapidxml.hpp" />
+		<Unit filename="utils/RapidXML/rapidxml_iterators.hpp" />
+		<Unit filename="utils/RapidXML/rapidxml_print.hpp" />
+		<Unit filename="utils/RapidXML/rapidxml_utils.hpp" />
+		<Unit filename="utils/TestNLTmxMap/NLTmxMap.cpp" />
+		<Unit filename="utils/TestNLTmxMap/NLTmxMap.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

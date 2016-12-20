@@ -3,7 +3,7 @@
 
 #include "rf_process.h"
 #include "rf_engine.h"
-#include "background.h"
+#include "rf_background.h"
 
 class SplashScreen : public RF_Process
 {
@@ -16,7 +16,6 @@ class SplashScreen : public RF_Process
 
     private:
         SDL_Surface* bgImg;
-        background* bg;
 
         float deltaCont = 0.0f, tempPause = 5.0;
         int step;

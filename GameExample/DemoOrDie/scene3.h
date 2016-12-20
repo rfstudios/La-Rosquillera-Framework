@@ -3,7 +3,7 @@
 
 #include "rf_process.h"
 #include "rf_engine.h"
-#include "background.h"
+#include "rf_background.h"
 
 #include <math.h>
 #include <vector>
@@ -23,7 +23,6 @@ class Scene3 : public RF_Process
     private:
         Uint32 bgImg[640][480];
         Uint32 bgImg2[640][480];
-        background* bg;
         int step = 0;
 
         float deltaCont = 0, ballC = 1;
