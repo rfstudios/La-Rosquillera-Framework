@@ -71,7 +71,6 @@ void RF_Background::putPixel(int x, int y, Uint32 pixel){
 }
 void RF_Background::prepareSurface(){
     if(screen != NULL){SDL_FreeSurface(screen);}
-    RF_Engine::instance->Debug(("Ancho: " + to_string(RF_Engine::instance->ventana->width()) + " Alto: " + to_string(RF_Engine::instance->ventana->height())));
     screen = SDL_CreateRGBSurface(0,RF_Engine::instance->ventana->width(), RF_Engine::instance->ventana->height(),32,0,0,0,0);
 }
 void RF_Background::generateTexture(){

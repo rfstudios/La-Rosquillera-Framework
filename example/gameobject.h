@@ -6,7 +6,7 @@
 class gameobject : public RF_Sprite
 {
     public:
-        gameobject():RF_Sprite("Gameobject","euria"){}
+        gameobject():RF_Sprite("Gameobject","mago",4,4,4.0f){}
         virtual ~gameobject(){}
 
         virtual void Start()
