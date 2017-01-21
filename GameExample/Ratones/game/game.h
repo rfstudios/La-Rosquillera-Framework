@@ -86,6 +86,8 @@ class Game : public RF_Process
         bool checkVictory();
         void callLevel(int l);
 
+        void borra_todo();
+
         vector<Score> scores;
         int population[4];
         int tools_available[6];

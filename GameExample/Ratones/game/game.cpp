@@ -82,11 +82,7 @@ void Game::Update()
             }
         }
 
-        RF_Engine::instance->sendSignal(id,S_KILL_CHILD);
-        RF_Engine::instance->sendSignal("NPC_Raton",S_KILL_TREE);
-        RF_Engine::instance->sendSignal("Madriguera",S_KILL_TREE);
-        RF_Engine::instance->sendSignal("Spawner",S_KILL_TREE);
-        RF_Engine::instance->sendSignal("Node",S_KILL_TREE);
+        borra_todo();
         gameStatus = 2;
     }
     else if(gameStatus == 2)
@@ -253,11 +249,7 @@ void Game::callLevel(int l)
             break;
 
         default:
-            RF_Engine::instance->sendSignal("NPC_Raton",S_KILL_TREE);
-            RF_Engine::instance->sendSignal("Madriguera",S_KILL_TREE);
-            RF_Engine::instance->sendSignal("Spawner",S_KILL_TREE);
-            RF_Engine::instance->sendSignal("Node",S_KILL_TREE);
-            RF_Engine::instance->sendSignal("tool_gui",S_KILL_TREE);
+            borra_todo();
             dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->state() = 3;
             break;
     }
@@ -269,4 +261,19 @@ void Game::callLevel(int l)
     //Resetea la tool
         selectedTool = 5;
         ChangeTool();
+}
+
+void Game::borra_todo()
+{
+    unsigned int siz = RF_Engine::instance->taskManager.size();
+    for(unsigned int i = 0; i < siz; i++)
+    {
+        if(RF_Engine::instance->taskManager[i] != NULL)
+        {
+            if(RF_Engine::instance->taskManager[i]->father == id)
+            {
+                RF_Engine::instance->taskManager[i]->signal = S_KILL_TREE;
+            }
+        }
+    }
 }

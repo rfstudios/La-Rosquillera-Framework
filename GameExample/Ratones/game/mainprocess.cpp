@@ -27,22 +27,10 @@ void mainProcess::Start()
     //9stateMachine = 1;
     scene = RF_Engine::instance->newTask(new SplashScreen(),id);
 
-    fuente = RF_Engine::instance->getFont("Coving01", 25);
     return;
 }
 
 void mainProcess::Update(){
-    if(siz != RF_Engine::instance->taskManager.size())
-    {
-        if(fps > -1)
-        {
-            RF_Engine::instance->deleteText(fps);
-        }
-        RF_Engine::instance->font = fuente;
-        fps = RF_Engine::instance->write(to_string(siz),{255,255,255},Vector2<float>(320,20));
-
-        siz = RF_Engine::instance->taskManager.size();
-    }
     switch(stateMachine)
     {
         case 1: //MenuOpciones
