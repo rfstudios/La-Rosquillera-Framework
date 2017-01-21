@@ -26,7 +26,7 @@ using namespace std;
 
 RF_Window::RF_Window(string i_title, int i_windowMode, int i_posX, int i_posY, int i_width, int i_height, int i_rendererMode){
     _title=i_title;
-    _windowMode=i_windowMode;
+    _windowMode=i_windowMode | SDL_WINDOW_OPENGL | SDL_WINDOW_MOUSE_FOCUS;
     _posX=i_posX;
     _posY=i_posY;
     _width=i_width;

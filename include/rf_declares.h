@@ -54,8 +54,16 @@ enum RF_Signal{
     S_AWAKE_TREE,
     S_KILL,
     S_KILL_TREE,
+    S_KILL_CHILD,
     S_SLEEP,
     S_SLEEP_TREE,
+};
+
+enum SpawnColors{
+    SPAWN_RED,
+    SPAWN_GREEN,
+    SPAWN_YELLOW,
+    SPAWN_BLUE
 };
 template<typename T>
 struct Vector2{

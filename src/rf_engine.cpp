@@ -24,6 +24,7 @@
 #include "rf_background.h"
 #include <string>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mouse.h>
 using namespace std;
 
 RF_Engine* RF_Engine::instance = NULL;
@@ -114,6 +115,19 @@ void RF_Engine::input(){
         {
             case SDL_QUIT: //Si pulsamos el botón de cerrar ventana
                 key[_close_window]=true;
+                break;
+
+            case SDL_MOUSEMOTION:
+                SDL_GetMouseState(&mouse.x,&mouse.y);
+                //SDL_GetGlobalMouseState();
+                break;
+
+            case SDL_MOUSEBUTTONDOWN:
+                mouse.z = 1;
+                break;
+
+            case SDL_MOUSEBUTTONUP:
+                mouse.z = 0;
                 break;
 
             default:
@@ -230,14 +244,27 @@ void RF_Engine::manageSignals(){
                         {
                             if(taskManager[ii]->father==i)
                             {
-                                delete(taskManager[ii]);
-                                taskManager[ii] = NULL;
+                                taskManager[ii]->signal = S_KILL_TREE;
                             }
                         }
                     }
 
                     delete(taskManager[i]);
                     taskManager[i] = NULL;
+                    break;
+                case S_KILL_CHILD:
+                    for(unsigned int ii=0;ii<taskManager.size();ii++)
+                    {
+                        if(taskManager[ii])
+                        {
+                            if(taskManager[ii]->father==i)
+                            {
+                                taskManager[ii]->signal = S_KILL_TREE;
+                            }
+                        }
+                    }
+
+                    taskManager[i]->signal = S_AWAKE;
                     break;
             }
         }
@@ -554,13 +581,23 @@ RF_Process* RF_Engine::collision(int target, RF_Process* sender){
     SDL_QueryTexture(sender->graph,NULL,NULL,&pscal1.x,&pscal1.y);
     SDL_QueryTexture(t->graph,NULL,NULL,&pscal2.x,&pscal2.y);
 
-    if((ppos1.x+pscal1.x)>ppos2.x && (ppos1.y+pscal1.y)>ppos2.y && (ppos2.x+pscal2.x)>ppos1.x && (ppos2.y+pscal2.y)>ppos1.y)
+    //if((ppos1.x+pscal1.x)>ppos2.x && (ppos1.y+pscal1.y)>ppos2.y && (ppos2.x+pscal2.x)>ppos1.x && (ppos2.y+pscal2.y)>ppos1.y)
+    if(collision(ppos1,pscal1,ppos2,pscal2))
     {
         return t;
     }
 
     return NULL;
 }
+bool RF_Engine::collision(Vector2<int>ppos1, Vector2<int> pscal1, Vector2<int>ppos2, Vector2<int> pscal2){
+    if((ppos1.x+pscal1.x)>ppos2.x && (ppos1.y+pscal1.y)>ppos2.y && (ppos2.x+pscal2.x)>ppos1.x && (ppos2.y+pscal2.y)>ppos1.y)
+    {
+        return true;
+    }
+
+    return false;
+}
+
 int RF_Engine::write(string txt, SDL_Color color, Vector2<float> pos){
     Vector2<int> posInt; posInt.x = (int)pos.x; posInt.y = (int)pos.y;
     return write(txt, color, posInt);

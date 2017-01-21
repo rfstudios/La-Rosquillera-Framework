@@ -76,6 +76,7 @@ class RF_Engine
 
         SDL_Event event;    //Evento para controlar teclado
         bool key[_FOO_KEY]; //Array de teclas pulsadas
+        Vector3<int> mouse;
         RF_Time *time;
 
         /**Textos*****************/
@@ -117,6 +118,7 @@ class RF_Engine
             SDL_Texture* loadPNG(string file);
             RF_Process* collision(string target, RF_Process* sender);
             RF_Process* collision(int target, RF_Process* sender);
+            bool collision(Vector2<int>ppos1,Vector2<int> pscal1,Vector2<int>ppos2,Vector2<int> pscal2);
 
             RF_Math* math;
 
