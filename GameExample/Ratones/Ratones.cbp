@@ -92,6 +92,7 @@
 		<Unit filename="game/gameobjects/colorchanger.h" />
 		<Unit filename="game/gameobjects/dureza.h" />
 		<Unit filename="game/gameobjects/elevator.h" />
+		<Unit filename="game/gameobjects/floor_splitter.h" />
 		<Unit filename="game/gameobjects/madriguera.cpp" />
 		<Unit filename="game/gameobjects/madriguera.h" />
 		<Unit filename="game/gameobjects/npc_mouse.cpp" />
@@ -99,6 +100,7 @@
 		<Unit filename="game/gameobjects/spawner.cpp" />
 		<Unit filename="game/gameobjects/spawner.h" />
 		<Unit filename="game/gameobjects/splitter.h" />
+		<Unit filename="game/gameobjects/tool_gui.h" />
 		<Unit filename="game/mainmenu.cpp" />
 		<Unit filename="game/mainmenu.h" />
 		<Unit filename="game/mainprocess.cpp" />

@@ -10,7 +10,16 @@ class Elevator : public Node
 {
     public:
         Elevator():Node(){}
-        virtual ~Elevator(){}
+        virtual ~Elevator()
+        {
+            if(target)
+            {
+                if(target->Speed().x == 0)
+                {
+                    Restaura();
+                }
+            }
+        }
 
         virtual void Start()
         {
@@ -52,7 +61,7 @@ class Elevator : public Node
                 if(((int)transform.position.y % 10) == 0 && Game::instance->Plataformas[(int)transform.position.x/10][(int)transform.position.y/10] > 0 && (int)transform.position.y != realPos.y)
                 {
                     on_use = 2;
-                    target->Speed() = targetSpeed;
+                    Restaura();
                 }
                 else
                 {
@@ -71,6 +80,12 @@ class Elevator : public Node
                     on_use = 0;
                 }
             }
+        }
+
+        void Restaura()
+        {
+            target->Speed() = targetSpeed;
+            target->on_place = true;
         }
 
     private:

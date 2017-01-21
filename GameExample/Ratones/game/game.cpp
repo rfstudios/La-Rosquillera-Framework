@@ -2,12 +2,14 @@
 #include "mainprocess.h"
 #include "raton.h"
 
+#include "gameobjects/tool_gui.h"
 #include "gameobjects/spawner.h"
 #include "gameobjects/madriguera.h"
 #include "gameobjects/dureza.h"
 #include "gameobjects/splitter.h"
 #include "gameobjects/elevator.h"
 #include "gameobjects/colorchanger.h"
+#include "gameobjects/floor_splitter.h"
 
 #include "test.h"
 
@@ -35,23 +37,32 @@ void Game::Update()
                 pressed = true;
                 ChangeTool();
             }
+            if(RF_Engine::instance->key[_return])
+            {
+                pressed = true;
+                gameStatus = 1;
+                lvl--;
+            }
 
             if(Raton::instance->OnClick)
             {
-                RF_Process* aux = RF_Engine::instance->collision("node",Raton::instance);
-                if(aux)
+                if(tools_available[selectedTool] > 0 || tools_available[selectedTool] <= -1)
                 {
-                    RF_Engine::instance->sendSignal(aux->id,S_KILL_TREE);
+                    RF_Process* aux = RF_Engine::instance->collision("node",Raton::instance);
+                    if(aux)
+                    {
+                        RF_Engine::instance->sendSignal(aux->id,S_KILL_TREE);
+                    }
+
+                    PlaceNode(selectedTool,Vector2<int>((int)Raton::instance->transform.position.x/10,(int)Raton::instance->transform.position.y/10));
+                    tools_available[selectedTool]--;
                 }
-
-                PlaceNode(selectedTool,Vector2<int>((int)Raton::instance->transform.position.x/10,(int)Raton::instance->transform.position.y/10));
-
                 pressed = true;
             }
         }
         else
         {
-            if(!RF_Engine::instance->key[_space] && !Raton::instance->OnClick)
+            if(!RF_Engine::instance->key[_space] && !Raton::instance->OnClick && !RF_Engine::instance->key[_return])
             {
                 pressed = false;
             }
@@ -59,6 +70,18 @@ void Game::Update()
     }
     else if(gameStatus == 1)
     {
+        if(pressed)
+        {
+            if(!RF_Engine::instance->key[_return] && !Raton::instance->OnClick)
+            {
+                pressed = false;
+            }
+            else
+            {
+                return;
+            }
+        }
+
         RF_Engine::instance->sendSignal(id,S_KILL_CHILD);
         RF_Engine::instance->sendSignal("NPC_Raton",S_KILL_TREE);
         RF_Engine::instance->sendSignal("Madriguera",S_KILL_TREE);
@@ -80,6 +103,16 @@ void Game::parseLevel()
         for(unsigned int j = 0; j < 48; j++)
         {
             PlaceNode(Plataformas[i][j], Vector2<int>(i,j));
+        }
+    }
+
+    int p = 0, aux;
+    for(int i = 0; i < 6; i++)
+    {
+        if(tools_available[i] > 0 || tools_available[i] == -1)
+        {
+            aux = RF_Engine::instance->newTask(new tool_gui(i, Vector2<float>(580.0, 20.0 + (p*20.0))), id);
+            p++;
         }
     }
 }
@@ -112,6 +145,10 @@ void Game::PlaceNode(int node, Vector2<int> pos)
     {
         aux_id = RF_Engine::instance->newTask(new ColorChanger(),Game::instance->id);
     }
+    else if(node == 5)
+    {
+        aux_id = RF_Engine::instance->newTask(new Floor_Splitter(),Game::instance->id);
+    }
 
     RF_Engine::instance->taskManager[aux_id]->transform.position = Vector2<float>(pos.x*10,pos.y*10);
 
@@ -131,8 +168,13 @@ void Game::SetPoint(int col)
 
 void Game::ChangeTool()
 {
-    selectedTool++;
-    if(selectedTool > 4){selectedTool = 0;}
+    int go = 0;
+    do
+    {
+        selectedTool++;
+        go++;
+        if(selectedTool > 5){selectedTool = 0;}
+    }while(tools_available[selectedTool] == 0 && go <= 7);
 
     string toolname;
     switch(selectedTool)
@@ -152,9 +194,19 @@ void Game::ChangeTool()
         case 4:
             toolname = "colorchanger";
             break;
+        case 5:
+            toolname = "floor_splitter";
+            break;
     }
 
-    Raton::instance->graph = RF_Engine::instance->getGfx2D(toolname);
+    if(go <= 7)
+    {
+        Raton::instance->graph = RF_Engine::instance->getGfx2D(toolname);
+    }
+    else
+    {
+        Raton::instance->graph = NULL;
+    }
 }
 
 bool Game::checkVictory()
@@ -177,6 +229,11 @@ void Game::callLevel(int l)
     scores.clear();
     RF_Engine::instance->deleteText(-1);
 
+    for(int i = 0; i < 6; i++)
+    {
+        tools_available[i] = 0;
+    }
+
     switch(l)
     {
         case 1:
@@ -189,6 +246,9 @@ void Game::callLevel(int l)
             Levels::Level3();
             break;
         case 4:
+            Levels::Level4();
+            break;
+        case 5:
             Levels::Level20();
             break;
 
@@ -197,6 +257,7 @@ void Game::callLevel(int l)
             RF_Engine::instance->sendSignal("Madriguera",S_KILL_TREE);
             RF_Engine::instance->sendSignal("Spawner",S_KILL_TREE);
             RF_Engine::instance->sendSignal("Node",S_KILL_TREE);
+            RF_Engine::instance->sendSignal("tool_gui",S_KILL_TREE);
             dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->state() = 3;
             break;
     }
@@ -204,4 +265,8 @@ void Game::callLevel(int l)
     parseLevel();
 
     gameStatus = 0;
+
+    //Resetea la tool
+        selectedTool = 5;
+        ChangeTool();
 }

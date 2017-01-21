@@ -54,6 +54,7 @@ struct Score{
                 tmpCol="Blue";
                 break;
         }
+        RF_Engine::instance->font = RF_Engine::instance->getFont("Coving01",25);
         text = RF_Engine::instance->write((tmpCol + ": " + to_string(value) + "/" + to_string(victory)), {255,255,255}, pos);
     }
 };
@@ -87,6 +88,7 @@ class Game : public RF_Process
 
         vector<Score> scores;
         int population[4];
+        int tools_available[6];
         int vict[4];
         int lvl = 1;
         Vector2<float> mouseSpeed;

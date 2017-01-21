@@ -20,6 +20,13 @@ class ColorChanger : public Node
             {
                 Game::instance->Plataformas[(int)barrier[1]->transform.position.x/10][(int)barrier[1]->transform.position.y/10] = 0;
             }
+            if(target)
+            {
+                if(target->Speed().x == 0)
+                {
+                    Restaura();
+                }
+            }
         }
 
         virtual void Start()
@@ -86,7 +93,7 @@ class ColorChanger : public Node
                     changing = 0.0;
 
                     Game::instance->population[target->Color()]--;
-                    target->Speed() = targetSpeed;
+                    Restaura();
                     target->Color()++;
                     if(target->Color() > SPAWN_BLUE){target->Color() = SPAWN_RED;}
                     target->graph = RF_Engine::instance->getGfx2D(("mouse_" + to_string(target->Color())));
@@ -117,6 +124,12 @@ class ColorChanger : public Node
                     on_use = 0;
                 }
             }
+        }
+
+        void Restaura()
+        {
+            target->Speed() = targetSpeed;
+            target->on_place = true;
         }
 
     private:

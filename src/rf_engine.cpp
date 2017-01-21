@@ -395,8 +395,6 @@ Mix_Chunk* RF_Engine::getFXClip(string id){
     return ret;
 }
 TTF_Font* RF_Engine::getFont(string id, int pitch){
-    RF_Engine::instance->Debug(("getFont [Info]: " + id));
-
     Vector2<int> pos = search_in_assetManager(id);
 
     TTF_Font* ret = NULL;

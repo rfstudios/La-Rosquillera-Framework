@@ -20,5 +20,12 @@ void Spawner::Update()
             RF_Engine::instance->taskManager[r]->transform.position = transform.position;
             Game::instance->population[color]++;
         }
+
+        if(change)
+        {
+            color++;
+            if(color > SPAWN_BLUE){ color = SPAWN_RED; }
+            graph = RF_Engine::instance->getGfx2D(("spawner_" + to_string(color)));
+        }
     }
 }

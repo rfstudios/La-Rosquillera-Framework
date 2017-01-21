@@ -24,12 +24,25 @@ void mainProcess::Start()
         RF_Engine::instance->loadAsset("resources/common");
         RF_Engine::instance->font = RF_Engine::instance->getFont("Coving01",25);
 
-    stateMachine = 1;
-    //scene = RF_Engine::instance->newTask(new SplashScreen(),id);
+    //9stateMachine = 1;
+    scene = RF_Engine::instance->newTask(new SplashScreen(),id);
+
+    fuente = RF_Engine::instance->getFont("Coving01", 25);
     return;
 }
 
 void mainProcess::Update(){
+    if(siz != RF_Engine::instance->taskManager.size())
+    {
+        if(fps > -1)
+        {
+            RF_Engine::instance->deleteText(fps);
+        }
+        RF_Engine::instance->font = fuente;
+        fps = RF_Engine::instance->write(to_string(siz),{255,255,255},Vector2<float>(320,20));
+
+        siz = RF_Engine::instance->taskManager.size();
+    }
     switch(stateMachine)
     {
         case 1: //MenuOpciones
@@ -60,7 +73,7 @@ void mainProcess::Update(){
                 RF_Engine::instance->time->setFixedCTime();
                 scene = RF_Engine::instance->newTask(new Game(),id);
 
-                RF_SoundManager::playSong(RF_Engine::instance->getAudioClip("music"),-1);
+                RF_SoundManager::playSong(RF_Engine::instance->getAudioClip("GlobalGameJam_Aki"),-1);
             }
             break;
         case 3: //EndScene

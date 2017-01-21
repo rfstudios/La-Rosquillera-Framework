@@ -19,6 +19,7 @@ class SplashScreen : public RF_Process
         float deltaCont = 0.0f, tempPause = 1.5;
         int step;
         int w,h;
+        bool banned = false;
 };
 
 #endif // SPLASHSCREEN_H

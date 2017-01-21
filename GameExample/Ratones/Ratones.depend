@@ -103,7 +103,7 @@
 1482229674 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/include/rf_background.h
 	"rf_process.h"
 
-1484982856 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_engine.cpp
+1485022846 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/src/rf_engine.cpp
 	"rf_engine.h"
 	"rf_primitive.h"
 	"rf_background.h"
@@ -165,7 +165,7 @@
 1484939749 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/execontrol.h
 	"rf_process.h"
 
-1484983476 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/mainprocess.cpp
+1485026868 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/mainprocess.cpp
 	"mainprocess.h"
 	"execontrol.h"
 	"raton.h"
@@ -178,11 +178,11 @@
 	"rf_soundmanager.h"
 	<SDL2/SDL_ttf.h>
 
-1484939536 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/mainprocess.h
+1485027237 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/mainprocess.h
 	"rf_process.h"
 	"rf_background.h"
 
-1484978043 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/main.cpp
+1485026908 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/main.cpp
 	<SDL2/SDL.h>
 	"rf_declares.h"
 	"rf_engine.h"
@@ -207,11 +207,11 @@
 	"rf_process.h"
 	"rf_engine.h"
 
-1484944843 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/splashscreen.h
+1485016771 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/splashscreen.h
 	"rf_process.h"
 	"rf_engine.h"
 
-1484943599 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/splashscreen.cpp
+1485017574 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/splashscreen.cpp
 	"splashscreen.h"
 	"mainprocess.h"
 	"rf_primitive.h"
@@ -226,40 +226,42 @@
 1484949711 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/mainmenu.h
 	"rf_process.h"
 
-1484983536 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/game.h
+1485022862 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/game.h
 	"rf_process.h"
 	"rf_engine.h"
 	<vector>
 
-1484982648 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/game.cpp
+1485023096 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/game.cpp
 	"game.h"
 	"mainprocess.h"
 	"raton.h"
+	"gameobjects/tool_gui.h"
 	"gameobjects/spawner.h"
 	"gameobjects/madriguera.h"
 	"gameobjects/dureza.h"
 	"gameobjects/splitter.h"
 	"gameobjects/elevator.h"
 	"gameobjects/colorchanger.h"
+	"gameobjects/floor_splitter.h"
 	"test.h"
 
-1484966492 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/gameobjects/spawner.cpp
+1485012246 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/gameobjects/spawner.cpp
 	"spawner.h"
 	"game.h"
 	"gameobjects/npc_mouse.h"
 
-1484955896 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/gameobjects/spawner.h
+1485012138 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/gameobjects/spawner.h
 	"rf_process.h"
 	"rf_engine.h"
 
-1484983674 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/gameobjects/npc_mouse.cpp
+1485012808 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/gameobjects/npc_mouse.cpp
 	"gameobjects/npc_mouse.h"
 	"game.h"
 
-1484967354 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/gameobjects/npc_mouse.h
+1485023652 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/gameobjects/npc_mouse.h
 	"rf_process.h"
 
-1484966434 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/gameobjects/madriguera.cpp
+1485022094 source:/home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/gameobjects/madriguera.cpp
 	"madriguera.h"
 	"game.h"
 	"gameobjects/npc_mouse.h"
@@ -279,7 +281,7 @@
 	"rf_engine.h"
 	"game.h"
 
-1484983675 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/worlds/test.h
+1485023750 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/worlds/test.h
 	"rf_engine.h"
 	"game.h"
 	"gameobjects/madriguera.h"
@@ -291,13 +293,13 @@
 	"gameobjects/dureza.h"
 	"game.h"
 
-1484974790 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/gameobjects/elevator.h
+1485023602 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/gameobjects/elevator.h
 	"rf_process.h"
 	"rf_engine.h"
 	"gameobjects/npc_mouse.h"
 	"gameobjects/dureza.h"
 
-1484974100 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/gameobjects/colorchanger.h
+1485023652 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/gameobjects/colorchanger.h
 	"rf_engine.h"
 	"game.h"
 	"gameobjects/dureza.h"
@@ -308,4 +310,13 @@
 
 1484981527 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/endscene.h
 	"rf_process.h"
+
+1484995348 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/gameobjects/floor_splitter.h
+	"game.h"
+	"rf_process.h"
+	"rf_engine.h"
+
+1485020594 /home/yawin/Dokumentuak/Proyectos/La-Rosquillera-Framework/GameExample/Ratones/game/gameobjects/tool_gui.h
+	"rf_process.h"
+	"game.h"
 

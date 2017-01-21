@@ -28,7 +28,7 @@ void NPC_Mouse::Update()
     //Control de giro
         if(direction == DIR_LEFT)
         {
-            if(Game::instance->Plataformas[((int)transform.position.x)/10][(int)transform.position.y/10] > 0  > 0 &&
+            if(Game::instance->Plataformas[((int)transform.position.x)/10][(int)transform.position.y/10] > 0 &&
               (Game::instance->Plataformas[((int)transform.position.x)/10][(int)transform.position.y/10] < 100 ||
                Game::instance->Plataformas[((int)transform.position.x)/10][(int)transform.position.y/10] > 103))
             {

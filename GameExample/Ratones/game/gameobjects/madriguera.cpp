@@ -20,4 +20,22 @@ void Madriguera::Update()
             Game::instance->SetPoint(color);
         }
     }
+    else
+    {
+        Vector2<float> pos = transform.position;
+        transform.position.y -= 10;
+
+        col = dynamic_cast<NPC_Mouse*>(RF_Engine::instance->collision("NPC_Raton", this));
+        if(col)
+        {
+            if(col->Color() == color)
+            {
+                RF_Engine::instance->sendSignal(col->id,S_KILL);
+                Game::instance->population[color]--;
+                Game::instance->SetPoint(color);
+            }
+        }
+
+        transform.position = pos;
+    }
 }

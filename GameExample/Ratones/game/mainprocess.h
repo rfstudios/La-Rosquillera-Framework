@@ -21,6 +21,10 @@ class mainProcess : public RF_Process
         int stateMachine = 0;
         int scene;
 
+        int fps = -1;
+        TTF_Font* fuente;
+        int siz = 0;
+
         void breik(RF_Process* escena){}
 };
 

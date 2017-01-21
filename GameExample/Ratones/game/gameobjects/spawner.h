@@ -9,7 +9,16 @@ class Spawner : public RF_Process
     public:
         Spawner(int spawnColor = SPAWN_RED, float frequency = 1.0):RF_Process("Spawner")
         {
-            color = spawnColor;
+            if(spawnColor > -1)
+            {
+                color = spawnColor;
+            }
+            else
+            {
+                color = rand()%4;
+                change = true;
+
+            }
             freq = frequency;
         }
 
@@ -20,11 +29,13 @@ class Spawner : public RF_Process
 
         int& Color(){ return color;}
         float& Freq(){ return freq;}
+        bool& Change(){ return change;}
 
     private:
         int color;
         float freq;
         float deltaCount = 0.0;
+        bool change = false;
 
 };
 
