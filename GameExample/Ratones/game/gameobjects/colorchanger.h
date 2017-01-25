@@ -139,6 +139,7 @@ class ColorChanger : public Node
 
         NPC_Mouse* target;
         Vector2<float> targetSpeed;
+        int targetdir;
 
         dureza* barrier[2];
 };

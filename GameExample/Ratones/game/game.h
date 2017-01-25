@@ -92,7 +92,7 @@ class Game : public RF_Process
         int population[4];
         int tools_available[6];
         int vict[4];
-        int lvl = 1;
+        int lvl = 4;
         Vector2<float> mouseSpeed;
 
         int selectedTool = 1;

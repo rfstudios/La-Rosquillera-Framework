@@ -36,10 +36,35 @@ class Splitter : public Node
                 dir = true;
             }
 
-            if(dir)
+            if(estado == 0)
             {
-                transform.position.x += 10;
-                if(RF_Engine::instance->collision("NPC_Raton",this))
+                if(dir)
+                {
+                    transform.position.x += 10;
+                    if(RF_Engine::instance->collision("NPC_Raton",this))
+                    {
+                        estado = 1;
+                    }
+                }
+                else
+                {
+                    transform.position.x -= 10;
+                    if(RF_Engine::instance->collision("NPC_Raton",this))
+                    {
+                        estado = 1;
+                    }
+                }
+
+                transform.position.x = realPos.x;
+
+            }
+            else
+            {
+                espera += RF_Engine::instance->time->deltaTime;
+                if(espera < 1.0){return;}
+                espera = 0;
+
+                if(dir)
                 {
                     dir = false;
                     Game::instance->Plataformas[(realPos.x + 10)/10][(realPos.y - 10)/10] = 1;
@@ -47,11 +72,7 @@ class Splitter : public Node
 
                     split->transform.position.x = realPos.x + 10;
                 }
-            }
-            else
-            {
-                transform.position.x -= 10;
-                if(RF_Engine::instance->collision("NPC_Raton",this))
+                else
                 {
                     dir = true;
                     Game::instance->Plataformas[(realPos.x + 10)/10][(realPos.y - 10)/10] = 0;
@@ -59,14 +80,16 @@ class Splitter : public Node
 
                     split->transform.position.x = realPos.x-10;
                 }
-            }
 
-            transform.position.x = realPos.x;
+                estado = 0;
+            }
         }
 
     private:
         bool dir = false;
         dureza* split = NULL;
+        int estado = 0;
+        float espera = 0.0;
 
         Vector2<int> realPos = Vector2<int>(-1,0);
 };

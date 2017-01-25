@@ -5,7 +5,6 @@
 void MainMenu::Start()
 {
     RF_Engine::instance->Debug(type);
-    bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
 
     pL = new RF_Parallax_Layer("eBaby", Vector2<float>(1.0f, 1.0f), Vector2<int>(REPEAT,NO_REPEAT));
     pL->transform.scale = Vector2<float>(2.0f,2.0f);
@@ -17,15 +16,15 @@ void MainMenu::Start()
 
 void MainMenu::Update()
 {
-        if(RF_Engine::instance->key[_return])
-        {
-            dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->state() = 2;
-            RF_Engine::instance->deleteText(texto);
-            delete pL;
+    if(RF_Engine::instance->key[_return])
+    {
+        dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->state() = 2;
+        RF_Engine::instance->deleteText(texto);
+        delete pL;
 
-            return;
-        }
+        return;
+    }
 
-        pL->transform.position.x -= RF_Engine::instance->math->preCos(RF_Engine::instance->time->currentTime * 100) * 1000 * RF_Engine::instance->time->deltaTime;
-        pL->drawAlone(bg);
+    pL->transform.position.x -= RF_Engine::instance->math->preCos(RF_Engine::instance->time->currentTime * 100) * 1000 * RF_Engine::instance->time->deltaTime;
+    pL->drawAlone(RF_Background::instance);
 }

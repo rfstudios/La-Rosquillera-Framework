@@ -17,7 +17,7 @@ class SplashScreen : public RF_Process
         SDL_Surface* bgImg;
 
         float deltaCont = 0.0f, tempPause = 1.5;
-        int step;
+        float step;
         int w,h;
         bool banned = false;
 };

@@ -10,7 +10,7 @@ void SplashScreen::Start()
     srand (RF_Engine::instance->time->currentTime);
     bgImg = RF_Engine::instance->getGfx2DSrf("logo");
     RF_Background::instance->clearSurface(0xffffff);
-    step = 0;
+    step = 0.0;
 
     w = -320 + RF_Engine::instance->ventana->width() * 0.5;
     h = -240 + RF_Engine::instance->ventana->height() * 0.5;
@@ -24,7 +24,7 @@ void SplashScreen::Update()
         deltaCont = 0.0f;
         tempPause = 0.0;
 
-        step++;
+        step += RF_Engine::instance->time->deltaTime*100;
 
         int stp = step;
         if(900 <= stp){stp = 900;}
@@ -37,11 +37,11 @@ void SplashScreen::Update()
                 RF_Background::instance->clearSurface(0xFFFFFF);
                 graph = RF_Engine::instance->getGfx2D("banner");
 
-                transform.position.x = 5;
+                transform.position.x = 20;
                 transform.position.y = (RF_Engine::instance->ventana->height()>>1) - 108;
             }
         }
-        else if(650 <= step && 850 > step)
+        else if(550 <= step && 750 > step)
         {
             if(banned)
             {
@@ -49,7 +49,7 @@ void SplashScreen::Update()
                 graph = NULL;
             }
         }
-        else if(850 <= step && 1000 >= step)
+        else if(750 <= step && 1000 >= step)
         {
             RF_Background::instance->clearSurface(0xffffff);
 

@@ -58,22 +58,22 @@ class Elevator : public Node
             }
             else if(on_use == 1)
             {
-                if(((int)transform.position.y % 10) == 0 && Game::instance->Plataformas[(int)transform.position.x/10][(int)transform.position.y/10] > 0 && (int)transform.position.y != realPos.y)
+                if(Game::instance->Plataformas[(int)transform.position.x/10][((int)transform.position.y)/10] > 0 && (int)transform.position.y < realPos.y - 10)
                 {
                     on_use = 2;
                     Restaura();
                 }
                 else
                 {
-                    transform.position.y--;
-                    target->transform.position.y--;
+                    transform.position.y -= RF_Engine::instance->time->deltaTime*100;
+                    target->transform.position.y -= RF_Engine::instance->time->deltaTime*100;
                 }
             }
             else
             {
                 if((int)transform.position.y < realPos.y)
                 {
-                    transform.position.y += 0.2;
+                    transform.position.y += 20 * RF_Engine::instance->time->deltaTime;
                 }
                 else
                 {
@@ -86,6 +86,7 @@ class Elevator : public Node
         {
             target->Speed() = targetSpeed;
             target->on_place = true;
+            target->transform.position.y = ((int)target->transform.position.y / 10) * 10;
         }
 
     private:

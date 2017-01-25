@@ -245,12 +245,17 @@ void Game::callLevel(int l)
             Levels::Level4();
             break;
         case 5:
-            Levels::Level20();
+            Levels::Level5();
+            break;
+        case 6:
+            Levels::Level6();
+            break;
+        case 7:
+            Levels::Level7();
             break;
 
         default:
-            borra_todo();
-            dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->state() = 3;
+            Levels::End();
             break;
     }
 

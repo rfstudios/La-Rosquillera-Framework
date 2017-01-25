@@ -33,6 +33,8 @@
 			<Add option="-Wall" />
 			<Add directory="../../include" />
 			<Add directory="../../src" />
+			<Add directory="../../utils/TestNLTmxMap" />
+			<Add directory="../../utils/RapidXML" />
 		</Compiler>
 		<Linker>
 			<Add option="-lSDL2 -lSDL2main -lSDL2_image -lSDL2_ttf -lSDL2_mixer" />
@@ -63,6 +65,12 @@
 		<Unit filename="../../src/rf_soundmanager.cpp" />
 		<Unit filename="../../src/rf_time.cpp" />
 		<Unit filename="../../src/rf_window.cpp" />
+		<Unit filename="../../utils/RapidXML/rapidxml.hpp" />
+		<Unit filename="../../utils/RapidXML/rapidxml_iterators.hpp" />
+		<Unit filename="../../utils/RapidXML/rapidxml_print.hpp" />
+		<Unit filename="../../utils/RapidXML/rapidxml_utils.hpp" />
+		<Unit filename="../../utils/TestNLTmxMap/NLTmxMap.cpp" />
+		<Unit filename="../../utils/TestNLTmxMap/NLTmxMap.h" />
 		<Unit filename="execontrol.cpp" />
 		<Unit filename="execontrol.h" />
 		<Unit filename="game.cpp" />

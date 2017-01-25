@@ -6,8 +6,6 @@
 void SceneTest::Start()
 {
     RF_Engine::instance->Debug(type);
-    bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
-
     //RF_SoundManager::playSong("musica", -1);
 
     pL = new RF_Scroll(0,0);

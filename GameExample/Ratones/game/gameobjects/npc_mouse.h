@@ -22,12 +22,13 @@ class NPC_Mouse : public RF_Process
 
         int& Color(){ return color;}
         Vector2<float>& Speed(){ return speed;}
+
         bool on_place = false;
+        int direction = DIR_RIGHT;
 
     private:
         int color;
         Vector2<float> speed = Vector2<float>(1.0, 0.5);
-        int direction = DIR_RIGHT;
 };
 
 #endif // NPC_MOUSE_H

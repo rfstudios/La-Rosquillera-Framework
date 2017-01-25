@@ -21,7 +21,16 @@ class mainProcess : public RF_Process
         int stateMachine = 0;
         int scene;
 
+        Uint32 bgImg[640][480];
+        Uint32 bgImg2[640][480];
+        float deltacount = 0;
+        float metang;
+        Vector3<int> b1, b2, b3, b4;
+        float radio = 0.80, goo = 0.90, result;
+        int mi, mj, mii, mjj, step = 0;
+
         void breik(RF_Process* escena){}
+        void Fantasy();
 };
 
 #endif // MAINPROCESS_H

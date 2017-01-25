@@ -31,6 +31,8 @@ class Spawner : public RF_Process
         float& Freq(){ return freq;}
         bool& Change(){ return change;}
 
+        bool colors_to_change[4] = {true, true, true, true};
+
     private:
         int color;
         float freq;

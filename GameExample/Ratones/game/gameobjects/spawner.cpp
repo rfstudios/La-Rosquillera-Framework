@@ -23,8 +23,11 @@ void Spawner::Update()
 
         if(change)
         {
-            color++;
-            if(color > SPAWN_BLUE){ color = SPAWN_RED; }
+            do
+            {
+                color++;
+                if(color > SPAWN_BLUE){ color = SPAWN_RED; }
+            }while(colors_to_change[color] == false);
             graph = RF_Engine::instance->getGfx2D(("spawner_" + to_string(color)));
         }
     }

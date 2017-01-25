@@ -26,16 +26,16 @@ void NPC_Mouse::Update()
         }
 
     //Control de giro
-        if(direction == DIR_LEFT)
+        if(direction == DIR_LEFT && on_place)
         {
-            if(Game::instance->Plataformas[((int)transform.position.x)/10][(int)transform.position.y/10] > 0 &&
-              (Game::instance->Plataformas[((int)transform.position.x)/10][(int)transform.position.y/10] < 100 ||
-               Game::instance->Plataformas[((int)transform.position.x)/10][(int)transform.position.y/10] > 103))
+            if(Game::instance->Plataformas[((int)transform.position.x - 1)/10][(int)transform.position.y/10] > 0 &&
+              (Game::instance->Plataformas[((int)transform.position.x - 1)/10][(int)transform.position.y/10] < 100 ||
+               Game::instance->Plataformas[((int)transform.position.x - 1)/10][(int)transform.position.y/10] > 103))
             {
                 direction = DIR_RIGHT;
             }
         }
-        else
+        else if(direction == DIR_RIGHT && on_place)
         {
             if(Game::instance->Plataformas[((int)transform.position.x + 10)/10][(int)transform.position.y/10] > 0  > 0 &&
               (Game::instance->Plataformas[((int)transform.position.x + 10)/10][(int)transform.position.y/10] < 100 ||
@@ -47,22 +47,40 @@ void NPC_Mouse::Update()
 
     if(!on_place)
     {
-        transform.position.y += speed.y;
+        transform.position.y += speed.y * RF_Engine::instance->time->deltaTime;
+
+        if((int)transform.position.y % 10 != 0)
+        {
+            if(direction == DIR_RIGHT)
+            {
+                transform.position.x = (((int)transform.position.x) / 10) * 10;
+            }
+            else
+            {
+                transform.position.x = (((int)transform.position.x + 10) / 10) * 10;
+            }
+        }
 
         if(transform.position.y > RF_Engine::instance->ventana->height() + 10)
         {
-            transform.position.y = -10;
+            signal = S_KILL;
+            Game::instance->population[color]--;
         }
     }
     else
     {
+        if(speed.x > 0)
+        {
+            transform.position.y = ((int)transform.position.y / 10) * 10;
+        }
+
         if(direction == DIR_RIGHT)
         {
-            transform.position.x += speed.x;
+            transform.position.x += speed.x * RF_Engine::instance->time->deltaTime;
         }
         else
         {
-            transform.position.x -= speed.x;
+            transform.position.x -= speed.x * RF_Engine::instance->time->deltaTime;
         }
 
         if(transform.position.x > RF_Engine::instance->ventana->width() - 10)

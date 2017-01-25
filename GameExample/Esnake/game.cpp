@@ -5,15 +5,14 @@ void Game::Start()
 {
     RF_Engine::instance->Debug(type);
 
-    bg = dynamic_cast<mainProcess*>(RF_Engine::instance->taskManager[father])->bg;
     pL = new RF_Parallax_Layer();
         pL->getMirroring() = Vector2<int>(REPEAT,REPEAT);
-        pL->size = Vector2<int>(bg->screen->w,bg->screen->h);
+        pL->size = Vector2<int>(RF_Background::instance->screen->w,RF_Background::instance->screen->h);
         pL->transform.position = Vector2<int>(0,0);
         pL->transform.scale = Vector2<float>(1.0f,1.0f);
         pL->transform.rotation = 0;
 
-    for(i=0; i<bg->screen->w * bg->screen->h; i++)
+    for(i=0; i<RF_Background::instance->screen->w * RF_Background::instance->screen->h; i++)
     {
         pL->data.push_back(0x000000);
     }
@@ -26,9 +25,9 @@ void Game::Start()
         }
     }
 
-    rectSize.x = bg->screen->w / 80;
-    rectSize.y = bg->screen->h / 60;
-    pL->drawAlone(bg);
+    rectSize.x = RF_Background::instance->screen->w / 80;
+    rectSize.y = RF_Background::instance->screen->h / 60;
+    pL->drawAlone(RF_Background::instance);
 
     snake = Vector3<int>(40,30,3);
     snake_direction = 1;
@@ -62,7 +61,7 @@ void Game::Update()
 
         handiCam();
         shakeCam();
-        pL->drawAlone(bg);
+        pL->drawAlone(RF_Background::instance);
     }
 }
 
@@ -113,8 +112,8 @@ void Game::SnakeUpdate()
     if(gamegrid[snake.x][snake.y] > 0)
     {
         losed = true;
-        dosTextos.x = RF_Engine::instance->write("You lose",{255,255,255},Vector2<int>((bg->screen->w>>1)-50, (bg->screen->h>>1)-50));
-        dosTextos.y = RF_Engine::instance->write("[ENTER] para volver a intentarlo",{255,255,255},Vector2<int>((bg->screen->w>>1)-150, (bg->screen->h>>1)));
+        dosTextos.x = RF_Engine::instance->write("You lose",{255,255,255},Vector2<int>((RF_Background::instance->screen->w>>1)-50, (RF_Background::instance->screen->h>>1)-50));
+        dosTextos.y = RF_Engine::instance->write("[ENTER] para volver a intentarlo",{255,255,255},Vector2<int>((RF_Background::instance->screen->w>>1)-150, (RF_Background::instance->screen->h>>1)));
     }
 
     gamegrid[snake.x][snake.y] = snake.z;
@@ -251,7 +250,7 @@ void Game::drawRect()
     {
         for(jj = j*rectSize.y; jj < (j+1)*rectSize.y; jj++)
         {
-            pL->data[bg->screen->w * jj + ii] = color;
+            pL->data[RF_Background::instance->screen->w * jj + ii] = color;
         }
     }
 }
@@ -270,12 +269,12 @@ void Game::restart()
     fC = 0;
 
     pL->getMirroring() = Vector2<int>(REPEAT,REPEAT);
-    pL->size = Vector2<int>(bg->screen->w,bg->screen->h);
+    pL->size = Vector2<int>(RF_Background::instance->screen->w,RF_Background::instance->screen->h);
     pL->transform.position = Vector2<int>(0,0);
     pL->transform.scale = Vector2<float>(1.0f,1.0f);
     pL->transform.rotation = 0;
 
-    for(i=0; i<bg->screen->w * bg->screen->h; i++)
+    for(i=0; i<RF_Background::instance->screen->w * RF_Background::instance->screen->h; i++)
     {
         pL->data.push_back(0x000000);
     }
