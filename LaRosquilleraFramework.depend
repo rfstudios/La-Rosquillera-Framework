@@ -1330,7 +1330,7 @@
 	<math.h>
 	<string>
 
-1487062662 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/include/rf_parallax.h
+1487063405 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/include/rf_parallax.h
 	"rf_parallax_layer.h"
 	"rf_declares.h"
 	"rf_background.h"
@@ -1390,7 +1390,7 @@
 	"NLTmxMap.h"
 	<fstream>
 
-1486990661 source:/home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/src/rf_engine.cpp
+1487062827 source:/home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/src/rf_engine.cpp
 	"rf_engine.h"
 	"rf_primitive.h"
 	"rf_background.h"
@@ -1432,7 +1432,7 @@
 	"rf_background.h"
 	"rf_primitive.h"
 
-1487062624 source:/home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/src/rf_parallax.cpp
+1487063648 source:/home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/src/rf_parallax.cpp
 	"rf_parallax.h"
 
 1486990661 source:/home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/src/rf_parallax_layer.cpp

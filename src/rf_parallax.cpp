@@ -100,12 +100,12 @@ void RF_Scroll::Update(){
     if(target != NULL)
     {
         Vector2<int> newPos = transform.position;
-        if(target->transform.position.x > RF_Engine::instance->ventana->width()>>1 && target->transform.position.x < size.x - (RF_Engine::instance->ventana->width()>>1))
+        if((target->transform.position.x > RF_Engine::instance->ventana->width()>>1 || !_limit) && (target->transform.position.x < size.x - (RF_Engine::instance->ventana->width()>>1) || !_limit))
         {
             newPos.x = target->transform.position.x - (RF_Engine::instance->ventana->width()>>1);
         }
 
-        if(target->transform.position.y > RF_Engine::instance->ventana->height()>>1 && target->transform.position.y < size.y - (RF_Engine::instance->ventana->height()>>1))
+        if((target->transform.position.y > RF_Engine::instance->ventana->height()>>1 || !_limit) && (target->transform.position.y < size.y - (RF_Engine::instance->ventana->height()>>1) || !_limit))
         {
             newPos.y = target->transform.position.y - (RF_Engine::instance->ventana->height()>>1);
         }
