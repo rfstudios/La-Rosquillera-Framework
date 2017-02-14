@@ -11,8 +11,8 @@ using namespace std;
 class RF_Parallax : public RF_Process
 {
     public:
-        RF_Parallax(Vector2<int> position);
-        RF_Parallax(int x=0, int y=0);
+        RF_Parallax(Vector2<int> position, bool limit = false);
+        RF_Parallax(int x=0, int y=0, bool limit = false);
         virtual ~RF_Parallax(){}
 
         virtual void Draw();
@@ -32,6 +32,7 @@ class RF_Parallax : public RF_Process
         vector<RF_Parallax_Layer*> layers;
 
         int i,j;
+        bool _limit;
         unsigned int ii;
         Uint32 color;
 

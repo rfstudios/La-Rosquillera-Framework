@@ -25,7 +25,7 @@ class RF_Parallax_Layer
         int setGfx(string file);
         int setGfx(SDL_Surface* file);
 
-        void drawAlone(RF_Background* bg);
+        void drawAlone();
 
     private:
         int i,j;

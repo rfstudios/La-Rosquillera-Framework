@@ -97,7 +97,7 @@ void RF_Engine::run(){
         wait_to_draw += RF_Engine::instance->time->deltaTime;
         input();
         update();
-    }while(wait_to_draw < 1 / (float)fps);
+    }while(wait_to_draw < 1.0 / (float)fps);
 
     render();
 }
