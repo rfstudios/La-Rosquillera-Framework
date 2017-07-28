@@ -14,14 +14,16 @@ RF_Parallax::RF_Parallax(int x, int y):RF_Process("RF_Parallax")
 
 void RF_Parallax::draw(RF_Background* bg)
 {
+    tam = layers.size();
     for(i = bg->screen->w - 1; i >= 0; i--)
     {
         for(j = bg->screen->h - 1; j >= 0; j--)
         {
             color = 0x000000;
-            for(ii = 0; ii < layers.size() && color == 0x000000; ii++)
+            tmpVector.x = i; tmpVector.y = j;
+            for(ii = 0; ii < tam; ii++)
             {
-                color = layers[ii]->getRotoPixel(Vector2<int>(i,j));
+                color = color | layers[ii]->getRotoPixel(tmpVector);
             }
 
             bg->putPixel(i,j,color);
