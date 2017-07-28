@@ -91,11 +91,11 @@ class RF_Primitive
                     break;
 
                 case 4:
-                    return *(Uint32 *)p;
+                    return p[0] << 16 | p[1] << 8 | p[2] | p[3] << 32;//return *(Uint32 *)p;
                     break;
 
                 default:
-                    return 0;       /* shouldn't happen, but avoids warnings */
+                    return 0;
             }
         }
 

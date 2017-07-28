@@ -634,7 +634,7 @@
 	<SDL2/SDL_image.h>
 	<string>
 
-1485367340 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/include/rf_engine.h
+1501201264 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/include/rf_engine.h
 	"rf_window.h"
 	"rf_process.h"
 	"rf_declares.h"
@@ -665,7 +665,7 @@
 1482859102 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/include/rf_time.h
 	<SDL2/SDL.h>
 
-1501200692 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/include/rf_primitive.h
+1501284397 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/include/rf_primitive.h
 	"rf_engine.h"
 	"rf_declares.h"
 	<SDL2/SDL.h>
@@ -807,7 +807,7 @@
 	"rf_parallax.h"
 	<iostream>
 
-1485367340 source:/home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/src/rf_engine.cpp
+1501201264 source:/home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/src/rf_engine.cpp
 	"rf_engine.h"
 	"rf_primitive.h"
 	"rf_background.h"
@@ -1202,13 +1202,14 @@
 	<string>
 	<vector>
 
-<<<<<<< HEAD
+1485055074 D
+
 1482859344 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/include/rf_math.h
 	<vector>
 	<math.h>
 
 1482859344 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/include/rf_asset_list.h
-=======
+
 1485055074 source:/home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/example/execontrol.cpp
 	"execontrol.h"
 
@@ -1257,7 +1258,8 @@
 	<math.h>
 
 1485055074 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/include/rf_asset_list.h
->>>>>>> c0b1979d580ed83ea33acab8ef3ac6c5e9e8b7a2
+
+1486990661 1979d580ed83ea33acab8ef3ac6c5e9e8b7a2
 	"rf_declares.h"
 	"rf_asset.h"
 	<SDL2/SDL_image.h>
@@ -1266,12 +1268,6 @@
 	<dirent.h>
 	<vector>
 	<string>
-
-<<<<<<< HEAD
-1482859344 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/include/rf_asset.h
-=======
-1485055074 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/include/rf_asset.h
->>>>>>> c0b1979d580ed83ea33acab8ef3ac6c5e9e8b7a2
 	"rf_declares.h"
 	"NLTmxMap.h"
 	<SDL2/SDL_image.h>
@@ -1279,8 +1275,53 @@
 	<SDL2/SDL_ttf.h>
 	<iostream>
 	<string>
+	"mainmenu.h"
+	"rf_background.h"
+	"mainprocess.h"
+	"rf_background.h"
+	"rf_process.h"
+	"rf_engine.h"
+	"rf_parallax_layer.h"
+	<vector>
+	"rf_engine.h"
+	"rf_declares.h"
+	"rf_background.h"
+	<SDL2/SDL_image.h>
+	"rf_background.h"
+	"rf_process.h"
+	"rf_engine.h"
+	"rf_primitive.h"
+	"rf_parallax.h"
+	"mainprocess.h"
+	<vector>
+	"rf_parallax_layer.h"
+	"rf_declares.h"
+	"rf_background.h"
+	"rf_process.h"
+	<vector>
+	"scenetest.h"
+	"protatest.h"
+	"gameobject.h"
+	"rf_soundmanager.h"
+	<rf_process.h>
+	"rf_engine.h"
+	<string>
+	"rf_process.h"
+	<string>
+	<SDL2/SDL_mixer.h>
+	"rapidxml.hpp"
+	<iostream>
+	<cstring>
+	"NLTmxMap.h"
+	<cstdlib>
+	<cassert>
+	<new>
+	<exception>
 
-<<<<<<< HEAD
+1482859344 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/include/rf_asset.h
+
+1485055074 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/include/rf_asset.h
+
 1482859344 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/utils/TestNLTmxMap/NLTmxMap.h
 	<string>
 	<vector>
@@ -1288,8 +1329,11 @@
 1482859344 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/include/rf_background.h
 	"rf_process.h"
 
-1482859344 source:/home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/example/mainmenu.cpp
-=======
+1501201264 source:/home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/example/mainmenu.cpp
+	"mainmenu.h"
+	"rf_background.h"
+	"mainprocess.h"
+
 1485055074 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/utils/TestNLTmxMap/NLTmxMap.h
 	<string>
 	<vector>
@@ -1308,35 +1352,21 @@
 	"rf_process.h"
 
 1487062697 source:/home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/example/mainmenu.cpp
->>>>>>> c0b1979d580ed83ea33acab8ef3ac6c5e9e8b7a2
-	"mainmenu.h"
-	"rf_background.h"
-	"mainprocess.h"
 
-<<<<<<< HEAD
 1482859276 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/example/mainmenu.h
-=======
-1485055074 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/example/mainmenu.h
->>>>>>> c0b1979d580ed83ea33acab8ef3ac6c5e9e8b7a2
-	"rf_background.h"
-	"rf_process.h"
-	"rf_engine.h"
-	"rf_parallax_layer.h"
-	<vector>
 
-<<<<<<< HEAD
-1482859344 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/include/rf_parallax_layer.h
-=======
-1487062688 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/include/rf_parallax_layer.h
->>>>>>> c0b1979d580ed83ea33acab8ef3ac6c5e9e8b7a2
+1485055074 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/example/mainmenu.h
+
+1501201264 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/include/rf_parallax_layer.h
 	"rf_engine.h"
 	"rf_declares.h"
 	"rf_background.h"
 	<SDL2/SDL_image.h>
 
-<<<<<<< HEAD
+1487062688 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/include/rf_parallax_layer.h
+
 1482859344 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/example/scenetest.h
-=======
+
 1485055074 source:/home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/example/mainprocess.cpp
 	"mainprocess.h"
 	"execontrol.h"
@@ -1353,18 +1383,14 @@
 	"rf_background.h"
 
 1485055074 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/example/scenetest.h
->>>>>>> c0b1979d580ed83ea33acab8ef3ac6c5e9e8b7a2
+
+1501201717 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/include/rf_parallax.h
+	"rf_parallax_layer.h"
+	"rf_declares.h"
 	"rf_background.h"
 	"rf_process.h"
-	"rf_engine.h"
-	"rf_primitive.h"
-	"rf_parallax.h"
-	"mainprocess.h"
 	<vector>
 
-<<<<<<< HEAD
-1501197949 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/include/rf_parallax.h
-=======
 1485055074 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/include/rf_primitive.h
 	"rf_engine.h"
 	"rf_declares.h"
@@ -1373,59 +1399,36 @@
 	<string>
 
 1487063405 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/include/rf_parallax.h
->>>>>>> c0b1979d580ed83ea33acab8ef3ac6c5e9e8b7a2
-	"rf_parallax_layer.h"
-	"rf_declares.h"
-	"rf_background.h"
-	"rf_process.h"
-	<vector>
 
-<<<<<<< HEAD
 1501201013 source:/home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/example/scenetest.cpp
-=======
-1487062756 source:/home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/example/scenetest.cpp
->>>>>>> c0b1979d580ed83ea33acab8ef3ac6c5e9e8b7a2
-	"scenetest.h"
-	"protatest.h"
-	"gameobject.h"
-	"rf_soundmanager.h"
 
-<<<<<<< HEAD
+1487062756 source:/home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/example/scenetest.cpp
+
 1482859344 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/example/protatest.h
 	"rf_sprite.h"
 
 1482859344 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/include/rf_sprite.h
-=======
+
 1485055074 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/example/protatest.h
 	"rf_sprite.h"
 
 1485055074 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/include/rf_sprite.h
->>>>>>> c0b1979d580ed83ea33acab8ef3ac6c5e9e8b7a2
-	<rf_process.h>
-	"rf_engine.h"
-	<string>
 
-<<<<<<< HEAD
 1485367271 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/example/gameobject.h
 	<rf_sprite.h>
 
 1482859344 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/include/rf_soundmanager.h
-=======
+
 1485055074 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/example/gameobject.h
 	<rf_sprite.h>
 
 1485055074 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/include/rf_soundmanager.h
->>>>>>> c0b1979d580ed83ea33acab8ef3ac6c5e9e8b7a2
-	"rf_process.h"
-	<string>
-	<SDL2/SDL_mixer.h>
 
-<<<<<<< HEAD
-1501198430 source:/home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/src/rf_background.cpp
+1501201103 source:/home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/src/rf_background.cpp
 	"rf_background.h"
 	"rf_primitive.h"
 
-1482859344 source:/home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/src/rf_parallax_layer.cpp
+1501201264 source:/home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/src/rf_parallax_layer.cpp
 	"rf_parallax_layer.h"
 	"rf_primitive.h"
 
@@ -1437,7 +1440,7 @@
 	"rf_sprite.h"
 
 1482859344 source:/home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/utils/TestNLTmxMap/NLTmxMap.cpp
-=======
+
 1485055074 source:/home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/example/splashscreen.cpp
 	"splashscreen.h"
 	"mainprocess.h"
@@ -1496,34 +1499,23 @@
 	<iostream>
 
 1485055074 source:/home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/utils/TestNLTmxMap/NLTmxMap.cpp
->>>>>>> c0b1979d580ed83ea33acab8ef3ac6c5e9e8b7a2
-	"rapidxml.hpp"
-	<iostream>
-	<cstring>
-	"NLTmxMap.h"
 
-<<<<<<< HEAD
 1482859344 /home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/utils/RapidXML/rapidxml.hpp
-=======
-1485055074 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/utils/RapidXML/rapidxml.hpp
->>>>>>> c0b1979d580ed83ea33acab8ef3ac6c5e9e8b7a2
-	<cstdlib>
-	<cassert>
-	<new>
-	<exception>
 
-<<<<<<< HEAD
-1501199767 source:/home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/src/rf_asset_list.cpp
+1485055074 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/utils/RapidXML/rapidxml.hpp
+
+1501241787 source:/home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/src/rf_asset_list.cpp
 	"rf_asset_list.h"
 	"rf_engine.h"
 	"rf_primitive.h"
 	"NLTmxMap.h"
 	<fstream>
 
-1501197829 source:/home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/src/rf_parallax.cpp
+1501283986 source:/home/yawin/Dokumentuak/Dev/La-Rosquillera-Framework/src/rf_parallax.cpp
 	"rf_parallax.h"
 
-=======
+1501197829 ax.h"
+
 1486988869 source:/home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/src/rf_background.cpp
 	"rf_background.h"
 	"rf_primitive.h"
@@ -1535,4 +1527,3 @@
 	"rf_parallax_layer.h"
 	"rf_primitive.h"
 
->>>>>>> c0b1979d580ed83ea33acab8ef3ac6c5e9e8b7a2
