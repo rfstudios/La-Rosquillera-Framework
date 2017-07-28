@@ -11,13 +11,13 @@ using namespace std;
 class RF_Parallax : public RF_Process
 {
     public:
-        RF_Parallax(Vector2<int> position);
-        RF_Parallax(int x=0, int y=0);
+        RF_Parallax(Vector2<int> position, bool limit = true);
+        RF_Parallax(int x=0, int y=0, bool limit = true);
         virtual ~RF_Parallax(){}
 
         virtual void Draw();
 
-        void draw(RF_Background* bg);
+        void draw();
         int newLayer(string path = "", Vector2<float> speed = Vector2<float>(1.0f, 1.0f), Vector2<int> mirror = Vector2<int>(1,0));
         int newLayer(SDL_Surface* srf = NULL, Vector2<float> speed = Vector2<float>(1.0f, 1.0f), Vector2<int> mirror = Vector2<int>(1,0));
         void move(Vector2<int> newPosition);
@@ -34,6 +34,7 @@ class RF_Parallax : public RF_Process
         Vector2<int> tmpVector = Vector2<int>(0,0);
         int i,j;
         unsigned int ii, tam;
+        bool _limit;
         Uint32 color;
 
         bool needDraw = false;
@@ -44,12 +45,12 @@ class RF_Scroll : public RF_Parallax
     public:
         static RF_Scroll* instance;
 
-        RF_Scroll(Vector2<int> position) : RF_Parallax(position)
+        RF_Scroll(Vector2<int> position, bool limit = true) : RF_Parallax(position, limit)
         {
             instance = this;
             target = NULL;
         }
-        RF_Scroll(int x=0, int y=0) : RF_Parallax(x,y)
+        RF_Scroll(int x=0, int y=0, bool limit = true) : RF_Parallax(x,y, limit)
         {
             instance = this;
             target = NULL;

@@ -29,5 +29,5 @@ void MainMenu::Update()
         pL->transform.position.x -= RF_Engine::instance->math->preCos(RF_Engine::instance->time->currentTime * 100) * 1000 * RF_Engine::instance->time->deltaTime;
         //pL->transform.position.y = RF_Engine::instance->math->preSin(RF_Engine::instance->time->currentTime * 100) * 1000 * RF_Engine::instance->time->deltaTime;
         RF_Engine::instance->Debug(pL->transform.position.x);
-        pL->drawAlone(bg);
+        pL->drawAlone();
 }

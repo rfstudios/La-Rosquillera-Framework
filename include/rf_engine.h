@@ -56,6 +56,11 @@ class RF_Engine
             void input();
             void update();
             void render();
+            float wait_to_draw;
+        /*********************/
+
+        /**Control de frames**/
+            int fps = 60;
         /*********************/
 
         /**Control de ejecución*******/

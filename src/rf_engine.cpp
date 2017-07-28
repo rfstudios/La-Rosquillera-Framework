@@ -90,8 +90,15 @@ void RF_Engine::destroyWindow(){
 }
 
 void RF_Engine::run(){
-    input();
-    update();
+    wait_to_draw = 0;
+
+    do
+    {
+        wait_to_draw += RF_Engine::instance->time->deltaTime;
+        input();
+        update();
+    }while(wait_to_draw < 1.0 / (float)fps);
+
     render();
 }
 
@@ -147,12 +154,18 @@ void RF_Engine::update(){
             {
                 taskManager[i]->Update();
             }
-
-            taskManager[i]->Draw();
         }
     }
 }
 void RF_Engine::render(){
+    for(unsigned int i=0;i<taskManager.size();i++)
+    {
+        if(NULL != taskManager[i])
+        {
+            taskManager[i]->Draw();
+        }
+    }
+
     ventana->render(taskManager, textSources);
 }
 /****************************************************************/
@@ -579,7 +592,6 @@ RF_Process* RF_Engine::collision(int target, RF_Process* sender){
     SDL_QueryTexture(sender->graph,NULL,NULL,&pscal1.x,&pscal1.y);
     SDL_QueryTexture(t->graph,NULL,NULL,&pscal2.x,&pscal2.y);
 
-    //if((ppos1.x+pscal1.x)>ppos2.x && (ppos1.y+pscal1.y)>ppos2.y && (ppos2.x+pscal2.x)>ppos1.x && (ppos2.y+pscal2.y)>ppos1.y)
     if(collision(ppos1,pscal1,ppos2,pscal2))
     {
         return t;
@@ -658,14 +670,14 @@ void RF_Engine::deleteText(int txtID){
 }
 
 Vector2<int> RF_Engine::rotozoom(Vector2<int> pos, Transform2D<int> t, Vector2<int> lim, Vector2<bool> mirror){
-    if(t.scale.x == 0) t.scale.x = 1;
-    if(t.scale.y == 0) t.scale.y = 1;
+    /*if(t.scale.x == 0) t.scale.x = 1;
+    if(t.scale.y == 0) t.scale.y = 1;*/
 
-    retorno.x=t.position.x + pos.x * t.scale.x;
-    retorno.y=t.position.y + pos.y * t.scale.y;
+    retorno.x=t.position.x + pos.x;// * t.scale.x;
+    retorno.y=t.position.y + pos.y;// * t.scale.y;
 
-    retorno.x = retorno.x * math->preCos(t.rotation*1000) - retorno.y * math->preSin(t.rotation*1000);
-    retorno.y = retorno.y * math->preSin(t.rotation*1000) + retorno.y * math->preCos(t.rotation*1000);
+    /*retorno.x = retorno.x * math->preCos(t.rotation*1000) - retorno.y * math->preSin(t.rotation*1000);
+    retorno.y = retorno.y * math->preSin(t.rotation*1000) + retorno.y * math->preCos(t.rotation*1000);*/
 
     if(retorno.x < 0 || retorno.x > lim.x - 1)
     {
