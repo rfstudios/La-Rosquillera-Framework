@@ -1323,7 +1323,7 @@
 	"mainprocess.h"
 	<vector>
 
-1485055074 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/include/rf_primitive.h
+1494583195 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/include/rf_primitive.h
 	"rf_engine.h"
 	"rf_declares.h"
 	<SDL2/SDL.h>
@@ -1337,13 +1337,14 @@
 	"rf_process.h"
 	<vector>
 
-1487062756 source:/home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/example/scenetest.cpp
+1508321866 source:/home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/example/scenetest.cpp
 	"scenetest.h"
 	"protatest.h"
 	"gameobject.h"
 	"rf_soundmanager.h"
+	"rf_3d.h"
 
-1485055074 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/example/protatest.h
+1500727497 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/example/protatest.h
 	"rf_sprite.h"
 
 1485055074 /home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/include/rf_sprite.h
@@ -1383,7 +1384,7 @@
 	"rf_engine.h"
 	<math.h>
 
-1485055074 source:/home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/src/rf_asset_list.cpp
+1490092221 source:/home/yawin/Dokumentuak/Proyectos/C++/La-Rosquillera-Framework/src/rf_asset_list.cpp
 	"rf_asset_list.h"
 	"rf_engine.h"
 	"rf_primitive.h"

@@ -134,11 +134,11 @@ RF_Asset_List::RF_Asset_List(string path)
                     }
                     else if(t == 3) //Tiled Map
                     {
-                        char * xml = (char*) loadFile(p.c_str(), true);
+                       /* char * xml = (char*) loadFile(p.c_str(), true);
                         NLTmxMap* map = NLLoadTmxMap(xml);
                         RF_Tiled_Map* nTM = new RF_Tiled_Map(Aid, map);
 
-                        assets.push_back(nTM);
+                        assets.push_back(nTM);*/
                     }
                 }
         }

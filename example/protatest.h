@@ -10,6 +10,7 @@ class protatest : public RF_Sprite
         protatest():RF_Sprite("Prota","lluvia",4,4,10){}
         virtual ~protatest(){}
 
+
         void Start()
         {
             ctype = C_SCROLL;

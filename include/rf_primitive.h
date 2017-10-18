@@ -14,8 +14,7 @@ class RF_Primitive
         RF_Primitive() {}
         virtual ~RF_Primitive() {}
 
-        static void drawLine(SDL_Surface* surf, Vector2<int> p0, Vector2<int> p1, Uint32 color)
-        {
+        static void drawLine(SDL_Surface* surf, Vector2<int> p0, Vector2<int> p1, Uint32 color){
             int dX = p1.x - p0.x;
             int dY = p1.y - p0.y;
 
@@ -34,10 +33,7 @@ class RF_Primitive
                 pF.y += inc.y;
             }
         }
-
-
-        static void drawFCircle(SDL_Surface* surf, Vector2<int> p, int r, Uint32 color)
-        {
+        static void drawFCircle(SDL_Surface* surf, Vector2<int> p, int r, Uint32 color){
             for(float i = 0; i <= r; i+=0.1)
             {
                 float j2 = r*r-i*i;
@@ -47,9 +43,7 @@ class RF_Primitive
                 drawLine(surf,Vector2<int>(p.x-round(i),p.y+round(j)), Vector2<int>(p.x+round(i),p.y+round(j)),color);
             }
         }
-
-        static void drawCircle(SDL_Surface* surf, Vector2<int> p, int r, Uint32 color)
-        {
+        static void drawCircle(SDL_Surface* surf, Vector2<int> p, int r, Uint32 color){
             for(float i = 0; i <= r; i+=0.1)
             {
                 float j2 = r*r-i*i;
@@ -62,9 +56,7 @@ class RF_Primitive
                 putPixel(surf,p.x-round(i),p.y-round(j),color);
             }
         }
-
-        static Uint32 getPixel(SDL_Surface* surface, int x, int y)
-        {
+        static Uint32 getPixel(SDL_Surface* surface, int x, int y){
             int bpp = surface->format->BytesPerPixel;
             /* Here p is the address to the pixel we want to retrieve */
             Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
@@ -93,9 +85,7 @@ class RF_Primitive
                 return 0;       /* shouldn't happen, but avoids warnings */
             }
         }
-
-        static void putPixel(SDL_Surface* surface, int x, int y, Uint32 pixel)
-        {
+        static void putPixel(SDL_Surface* surface, int x, int y, Uint32 pixel){
             if(0 > x || 0 > y || surface->w <= x || surface->h <= y){return;}
 
             int bpp = surface->format->BytesPerPixel;
