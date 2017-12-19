@@ -164,6 +164,8 @@ int RF_Asset_List::asset_type(string ext)
     {
         return 3; //Tiled
     }
+
+    return -1;
 }
 
 string RF_Asset_List::getConfig(string file)

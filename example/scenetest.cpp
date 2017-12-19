@@ -25,8 +25,14 @@ void SceneTest::Start()
 
     //RF_Engine::instance->createTiledSurface("prueba");
     //pL->newLayer(RF_Engine::instance->getTiledMap("prueba")->srf, Vector2<float>(1.0f, 1.0f),Vector2<int>(BLOCK,BLOCK));
+
     //pL->newLayer("Pueblo", Vector2<float>(1.0f, 1.0f),Vector2<int>(BLOCK,BLOCK));
     //RF_Engine::instance->write("Pulsa WASD para movimiento", {255,255,255}, Vector2<int>(10,RF_Engine::instance->ventana->height()-30));
+
+    pL->newLayer("nube2", Vector2<float>(2.0f, 1.0f),Vector2<int>(REPEAT,BLOCK));
+    pL->newLayer("Pueblo", Vector2<float>(1.0f, 1.0f),Vector2<int>(BLOCK,BLOCK));
+    RF_Engine::instance->write("Pulsa WASD para movimiento", {255,255,255}, Vector2<int>(10,RF_Engine::instance->ventana->height()-30));
+
 
     //pL->setCamera(RF_Engine::instance->newTask(new protatest(),id));
     //RF_Engine::instance->newTask(new gameobject(),id);

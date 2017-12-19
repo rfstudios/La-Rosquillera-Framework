@@ -31,9 +31,10 @@ class RF_Parallax : public RF_Process
     protected:
         vector<RF_Parallax_Layer*> layers;
 
+        Vector2<int> tmpVector = Vector2<int>(0,0);
         int i,j;
+        unsigned int ii, tam;
         bool _limit;
-        unsigned int ii;
         Uint32 color;
 
         bool needDraw = false;
